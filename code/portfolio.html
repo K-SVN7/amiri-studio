@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" type="image/png" href="logo.png">
+  <title>Portfolio — Amiri Studio</title>
+  <meta name="description" content="Découvrez les réalisations d'Amiri Studio — sites vitrine pour restaurants, artisans, freelances et indépendants."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root{
+      --black:#080808;--white:#f5f2ed;--grey:#141414;--grey2:#1c1c1c;
+      --muted:#666;--border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.15);
+      --fd:'Bebas Neue',sans-serif;--fb:'DM Sans',sans-serif;--fm:'DM Mono',monospace;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--black);color:var(--white);font-family:var(--fb);font-size:16px;line-height:1.6;overflow-x:hidden;cursor:none;}
+    a{color:inherit;text-decoration:none;}img{display:block;max-width:100%;}ul{list-style:none;}
+    body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.028'/%3E%3C/svg%3E");pointer-events:none;z-index:9998;}
+
+    /* CURSOR */
+    #cursor{width:10px;height:10px;background:var(--white);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s;mix-blend-mode:difference;}
+    #cursor.big{width:44px;height:44px;}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:1.6rem 5vw;transition:padding .4s,background .4s,border-color .4s;border-bottom:1px solid transparent;}
+    nav.sc{padding:1rem 5vw;background:rgba(8,8,8,.93);backdrop-filter:blur(20px);border-color:var(--border);}
+    .n-logo{display:flex;align-items:center;gap:.7rem;}
+    .n-logo img{width:34px;filter:invert(1);}
+    .n-name{font-family:var(--fd);font-size:1.35rem;letter-spacing:.05em;}
+    .n-links{display:flex;align-items:center;gap:2.5rem;}
+    .n-links a{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;transition:color .2s;position:relative;}
+    .n-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--white);transition:width .3s cubic-bezier(.16,1,.3,1);}
+    .n-links a:hover{color:var(--white);}
+    .n-links a:hover::after,.n-links a.active::after{width:100%;}
+    .n-links a.active{color:var(--white);}
+    .n-cta{border:1px solid rgba(255,255,255,.3)!important;color:var(--white)!important;padding:.5rem 1.4rem;border-radius:2rem;transition:background .25s,color .25s!important;}
+    .n-cta::after{display:none!important;}
+    .n-cta:hover{background:var(--white)!important;color:var(--black)!important;}
+    .hmbg{display:none;background:none;border:none;cursor:none;flex-direction:column;gap:5px;padding:4px;}
+    .hmbg span{display:block;width:22px;height:1px;background:var(--white);transition:all .3s;}
+    .mob-menu{display:none;position:fixed;inset:0;background:var(--black);z-index:498;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;}
+    .mob-menu.open{display:flex;}
+    .mob-menu a{font-family:var(--fd);font-size:3rem;letter-spacing:.05em;color:var(--muted);transition:color .2s;}
+    .mob-menu a:hover{color:var(--white);}
+
+    /* SHARED */
+    .outline{-webkit-text-stroke:1px rgba(255,255,255,.25);color:transparent;}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);}
+    .reveal.vis{opacity:1;transform:none;}
+    .rd1{transition-delay:.08s;}.rd2{transition-delay:.16s;}.rd3{transition-delay:.24s;}
+    .btn-w{display:inline-flex;align-items:center;gap:.7rem;background:var(--white);color:var(--black);font-family:var(--fb);font-weight:600;font-size:.875rem;padding:.9rem 2rem;border:1px solid var(--white);cursor:none;transition:background .25s,color .25s;}
+    .btn-w:hover{background:transparent;color:var(--white);}
+    .btn-w svg{transition:transform .25s;}
+    .btn-w:hover svg{transform:translateX(4px);}
+
+    /* PAGE HERO */
+    .page-hero{min-height:52vh;display:flex;align-items:flex-end;padding:0 5vw 5rem;position:relative;overflow:hidden;}
+    .ph-lines{position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 79px,rgba(255,255,255,.025) 79px,rgba(255,255,255,.025) 80px);pointer-events:none;}
+    .ph-bg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--fd);font-size:clamp(140px,24vw,420px);color:rgba(255,255,255,.016);pointer-events:none;user-select:none;white-space:nowrap;}
+    .ph-inner{max-width:1200px;margin:0 auto;width:100%;position:relative;z-index:2;}
+    .ph-label{display:flex;align-items:center;gap:.75rem;font-family:var(--fm);font-size:.7rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.25rem;opacity:0;animation:fadeUp .8s .3s cubic-bezier(.16,1,.3,1) forwards;}
+    .ph-label-line{width:28px;height:1px;background:var(--muted);}
+    .ph-title{font-family:var(--fd);font-size:clamp(3.5rem,9vw,11rem);line-height:.92;overflow:hidden;}
+    .ph-title .ln{display:block;overflow:hidden;}
+    .ph-title .ln span{display:block;transform:translateY(110%);animation:slideUp .9s cubic-bezier(.16,1,.3,1) forwards;}
+    .ph-title .ln:nth-child(1) span{animation-delay:.4s;}
+    .ph-title .ln:nth-child(2) span{animation-delay:.55s;}
+    .ph-count{margin-top:1.5rem;font-family:var(--fm);font-size:.68rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;opacity:0;animation:fadeUp .8s .8s cubic-bezier(.16,1,.3,1) forwards;}
+    @keyframes slideUp{to{transform:translateY(0);}}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
+
+    /* MARQUEE */
+    .mq-strip{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:.9rem 0;overflow:hidden;background:var(--grey);}
+    .mq-track{display:flex;gap:3rem;width:max-content;animation:mq 22s linear infinite;}
+    @keyframes mq{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+    .mq-item{display:flex;align-items:center;gap:.6rem;font-family:var(--fm);font-size:.68rem;color:var(--muted);letter-spacing:.06em;white-space:nowrap;text-transform:uppercase;}
+    .mq-dot{width:3px;height:3px;background:var(--muted);border-radius:50%;}
+
+    /* FILTERS */
+    .filters-bar{padding:3rem 5vw 0;border-bottom:1px solid var(--border);}
+    .filters-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:0;overflow-x:auto;scrollbar-width:none;}
+    .filters-inner::-webkit-scrollbar{display:none;}
+    .f-btn{font-family:var(--fm);font-size:.68rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;padding:1rem 1.5rem;border:none;background:none;cursor:none;border-bottom:2px solid transparent;transition:color .25s,border-color .25s;white-space:nowrap;}
+    .f-btn:hover{color:var(--white);}
+    .f-btn.active{color:var(--white);border-color:var(--white);}
+
+    /* GRID */
+    .portfolio-section{padding:4rem 5vw 8rem;}
+    .portfolio-inner{max-width:1200px;margin:0 auto;}
+
+    .p-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:1px;
+      background:var(--border);
+    }
+
+    /* PROJECT CARD */
+    .p-card{
+      background:var(--black);
+      position:relative;
+      overflow:hidden;
+      cursor:none;
+    }
+
+    /* hide/show with filter */
+    .p-card.hidden{
+      display:none;
+    }
+
+    .p-card-img{
+      width:100%;
+      aspect-ratio:4/3;
+      object-fit:cover;
+      display:block;
+      filter:brightness(.65) grayscale(.2);
+      transition:transform .6s cubic-bezier(.16,1,.3,1), filter .4s;
+    }
+
+    .p-card:hover .p-card-img{
+      transform:scale(1.05);
+      filter:brightness(.45) grayscale(0);
+    }
+
+    /* overlay */
+    .p-card-ov{
+      position:absolute;
+      inset:0;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      padding:1.75rem;
+      background:linear-gradient(to top, rgba(0,0,0,.92) 0%, rgba(0,0,0,.2) 50%, transparent 100%);
+    }
+
+    .p-cat{
+      font-family:var(--fm);
+      font-size:.6rem;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,.45);
+      margin-bottom:.35rem;
+      transform:translateY(6px);
+      transition:transform .4s cubic-bezier(.16,1,.3,1), color .3s;
+    }
+
+    .p-name{
+      font-family:var(--fd);
+      font-size:1.6rem;
+      letter-spacing:.03em;
+      line-height:1;
+      margin-bottom:.6rem;
+      transform:translateY(6px);
+      transition:transform .4s .04s cubic-bezier(.16,1,.3,1);
+    }
+
+    .p-desc{
+      font-size:.78rem;
+      color:rgba(255,255,255,.5);
+      font-weight:300;
+      line-height:1.5;
+      max-width:320px;
+      opacity:0;
+      transform:translateY(8px);
+      transition:opacity .35s .06s, transform .4s .06s cubic-bezier(.16,1,.3,1);
+      margin-bottom:1rem;
+    }
+
+    .p-link{
+      display:inline-flex;
+      align-items:center;
+      gap:.4rem;
+      font-family:var(--fm);
+      font-size:.62rem;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,.35);
+      opacity:0;
+      transform:translateY(8px);
+      transition:opacity .35s .1s, transform .4s .1s cubic-bezier(.16,1,.3,1), color .2s;
+    }
+
+    .p-card:hover .p-cat,
+    .p-card:hover .p-name{transform:none;}
+
+    .p-card:hover .p-desc,
+    .p-card:hover .p-link{opacity:1;transform:none;}
+
+    .p-card:hover .p-link{color:var(--white);}
+
+    /* top border flash on hover */
+    .p-card::before{
+      content:'';
+      position:absolute;
+      top:0;left:0;right:0;
+      height:2px;
+      background:var(--white);
+      transform:scaleX(0);
+      transform-origin:left;
+      transition:transform .4s cubic-bezier(.16,1,.3,1);
+      z-index:2;
+    }
+    .p-card:hover::before{transform:scaleX(1);}
+
+    /* empty state */
+    .empty-state{
+      grid-column:1/-1;
+      padding:6rem 2rem;
+      text-align:center;
+      display:none;
+    }
+    .empty-state.show{display:block;}
+    .empty-state p{font-family:var(--fd);font-size:2rem;color:rgba(255,255,255,.08);letter-spacing:.05em;}
+
+    /* CTA */
+    .cta{padding:8rem 5vw;text-align:center;position:relative;overflow:hidden;border-top:1px solid var(--border);}
+    .cta-tick{position:absolute;top:50%;left:0;right:0;transform:translateY(-50%);font-family:var(--fd);font-size:clamp(70px,14vw,180px);color:rgba(255,255,255,.022);white-space:nowrap;pointer-events:none;animation:tickM 20s linear infinite;letter-spacing:.05em;}
+    @keyframes tickM{from{transform:translateY(-50%) translateX(0);}to{transform:translateY(-50%) translateX(-33.33%);}}
+    .cta-in{position:relative;z-index:2;max-width:700px;margin:0 auto;}
+    .cta-t{font-family:var(--fd);font-size:clamp(2.5rem,7vw,8rem);line-height:.92;margin-bottom:2rem;}
+    .cta-sub{font-size:.875rem;color:var(--muted);line-height:1.7;font-weight:300;max-width:420px;margin:0 auto 2.5rem;}
+    .cta-acts{display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap;}
+    .btn-ghost{display:inline-flex;align-items:center;gap:.5rem;font-size:.75rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;font-family:var(--fm);transition:color .2s;cursor:none;}
+    .btn-ghost:hover{color:var(--white);}
+    .btn-ghost svg{transition:transform .2s;}
+    .btn-ghost:hover svg{transform:translateX(3px);}
+
+    /* FOOTER */
+    footer{padding:2rem 5vw;border-top:1px solid var(--border);}
+    .ft-in{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+    .ft-logo{display:flex;align-items:center;gap:.6rem;font-family:var(--fd);font-size:1.1rem;letter-spacing:.05em;}
+    .ft-logo img{width:26px;filter:invert(1);}
+    .ft-links{display:flex;gap:2rem;flex-wrap:wrap;}
+    .ft-links a{font-family:var(--fm);font-size:.65rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;transition:color .2s;cursor:none;}
+    .ft-links a:hover{color:var(--white);}
+    .ft-cp{font-family:var(--fm);font-size:.62rem;color:var(--muted);}
+
+    @media(max-width:1024px){.p-grid{grid-template-columns:repeat(2,1fr);}}
+    @media(max-width:768px){
+      body{cursor:auto;}#cursor{display:none;}
+      .n-links{display:none;}.hmbg{display:flex;}
+      .p-grid{grid-template-columns:1fr;}
+      /* always show desc on mobile */
+      .p-desc,.p-link{opacity:1;transform:none;}
+      .ft-in{flex-direction:column;}
+    }
+  </style>
+</head>
+<body>
+
+<div id="cursor"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="n-logo">
+    <img src="logo.png" alt="logo"/>
+    <span class="n-name">AMIRI STUDIO</span>
+  </a>
+  <ul class="n-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="portfolio.html" class="active">Portfolio</a></li>
+    <li><a href="offres.html">Offres</a></li>
+    <li><a href="apropos.html">À propos</a></li>
+    <li><a href="contact.html" class="n-cta">Devis gratuit</a></li>
+  </ul>
+  <button class="hmbg" id="hmbg" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mob-menu" id="mobMenu">
+  <a href="index.html" onclick="closeMob()">Accueil</a>
+  <a href="portfolio.html" onclick="closeMob()">Portfolio</a>
+  <a href="offres.html" onclick="closeMob()">Offres</a>
+  <a href="apropos.html" onclick="closeMob()">À propos</a>
+  <a href="contact.html" onclick="closeMob()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="ph-lines"></div>
+  <div class="ph-bg">WORK</div>
+  <div class="ph-inner">
+    <div class="ph-label">
+      <span class="ph-label-line"></span>
+      Sites réalisés · Amiri Studio
+    </div>
+    <h1 class="ph-title">
+      <span class="ln"><span>MES</span></span>
+      <span class="ln"><span class="outline">RÉALISATIONS.</span></span>
+    </h1>
+    <div class="ph-count" id="totalCount">— projets</div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="mq-strip">
+  <div class="mq-track">
+    <div class="mq-item"><span class="mq-dot"></span>Restaurant</div>
+    <div class="mq-item"><span class="mq-dot"></span>Artisan</div>
+    <div class="mq-item"><span class="mq-dot"></span>Coiffeur</div>
+    <div class="mq-item"><span class="mq-dot"></span>Pâtisserie</div>
+    <div class="mq-item"><span class="mq-dot"></span>Freelance</div>
+    <div class="mq-item"><span class="mq-dot"></span>Caviste</div>
+    <div class="mq-item"><span class="mq-dot"></span>Startup</div>
+    <div class="mq-item"><span class="mq-dot"></span>Commerce local</div>
+    <div class="mq-item"><span class="mq-dot"></span>Restaurant</div>
+    <div class="mq-item"><span class="mq-dot"></span>Artisan</div>
+    <div class="mq-item"><span class="mq-dot"></span>Coiffeur</div>
+    <div class="mq-item"><span class="mq-dot"></span>Pâtisserie</div>
+    <div class="mq-item"><span class="mq-dot"></span>Freelance</div>
+    <div class="mq-item"><span class="mq-dot"></span>Caviste</div>
+    <div class="mq-item"><span class="mq-dot"></span>Startup</div>
+    <div class="mq-item"><span class="mq-dot"></span>Commerce local</div>
+  </div>
+</div>
+
+<!-- FILTERS -->
+<div class="filters-bar">
+  <div class="filters-inner" id="filtersInner">
+    <button class="f-btn active" data-filter="tout">Tout</button>
+    <button class="f-btn" data-filter="restaurant">Restaurant</button>
+    <button class="f-btn" data-filter="artisan">Artisan</button>
+    <button class="f-btn" data-filter="coiffeur">Coiffeur</button>
+    <button class="f-btn" data-filter="patisserie">Pâtisserie</button>
+    <button class="f-btn" data-filter="freelance">Freelance</button>
+    <button class="f-btn" data-filter="caviste">Caviste</button>
+  </div>
+</div>
+
+<!-- GRID -->
+<section class="portfolio-section">
+  <div class="portfolio-inner">
+    <div class="p-grid" id="grid">
+
+      <!--
+      ════════════════════════════════════════
+      COMMENT AJOUTER / MODIFIER UN PROJET :
+      - data-cat   → catégorie pour le filtre (minuscules, sans accent)
+      - href       → lien vers le site (dans <a class="p-link">)
+      - src        → remplace l'URL Unsplash par ton screenshot
+      - p-cat      → catégorie affichée (avec majuscule)
+      - p-name     → nom du projet
+      - p-desc     → courte description du projet
+      ════════════════════════════════════════
+      -->
+
+      <!-- PROJET 1 -->
+      <div class="p-card reveal" data-cat="restaurant">
+        <img class="p-card-img"
+          src="restau-screen.png"
+          alt="Le Chalut — Restaurant Rennes"/>
+        <div class="p-card-ov">
+          <div class="p-cat">Restaurant</div>
+          <div class="p-name">Le jardin d'émile</div>
+          <p class="p-desc">Site vitrine avec système de réservation intégré pour un restaurant de fruits de mer à Lyon. Design épuré, menu interactif et SEO local optimisé.</p>
+          <a class="p-link" href="https://le-jardin-d-emile.vercel.app/" target="_blank" rel="noopener">
+            Voir le site
+            <svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- PROJET 2 -->
+      <div class="p-card reveal rd1" data-cat="coiffeur">
+        <img class="p-card-img"
+          src="coiffeur-screen.png"
+          alt="Atelier Noir — Coiffeur Brest"/>
+        <div class="p-card-ov">
+          <div class="p-cat">Coiffeur</div>
+          <div class="p-name">Atelier Lumière</div>
+          <p class="p-desc">Landing page premium pour un salon de coiffure haut de gamme à Malestroit.Galerie photos, prise de contact directe et identité visuelle forte.</p>
+          <a class="p-link" href="https://coiffeur-malestroit-test-666f.vercel.app/" target="_blank" rel="noopener">
+            Voir le site
+            <svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- PROJET 3 -->
+      <div class="p-card reveal rd2" data-cat="caviste">
+        <img class="p-card-img"
+          src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80"
+          alt="Cave Armorique — Caviste"/>
+        <div class="p-card-ov">
+          <div class="p-cat">Caviste</div>
+          <div class="p-name">CAVE ARMORIQUE</div>
+          <p class="p-desc">Site vitrine 3 pages pour un caviste indépendant en Bretagne. Catalogue de vins, formulaire de commande et référencement local optimisé.</p>
+          <a class="p-link" href="https://LIEN-PROJET-3.fr" target="_blank" rel="noopener">
+            Voir le site
+            <svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- PROJET 4 -->
+      <div class="p-card reveal" data-cat="patisserie">
+        <img class="p-card-img"
+          src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80"
+          alt="Maison Kerlann — Pâtisserie"/>
+        <div class="p-card-ov">
+          <div class="p-cat">Pâtisserie</div>
+          <div class="p-name">MAISON KERLANN</div>
+          <p class="p-desc">Site vitrine artisanal pour une pâtisserie familiale. Galerie de créations, horaires, commandes en ligne et Google Maps intégré.</p>
+          <a class="p-link" href="https://LIEN-PROJET-4.fr" target="_blank" rel="noopener">
+            Voir le site
+            <svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- PROJET 5 -->
+      <div class="p-card reveal rd1" data-cat="freelance">
+        <img class="p-card-img"
+          src="coach-screen.png"
+          alt="Studio Malo — Graphiste"/>
+        <div class="p-card-ov">
+          <div class="p-cat">Freelance</div>
+          <div class="p-name">Coach à domicile</div>
+          <p class="p-desc">Site vitrine pour coach à domicile avec possibilité de réservations et page de paiement via stripe.</p>
+          <a class="p-link" href="https://k-svn7.github.io/coach-Vannes/index.html" target="_blank" rel="noopener">
+            Voir le site
+            <svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- PROJET 6 -->
+      <div class="p-card reveal rd2" data-cat="artisan">
+        <img class="p-card-img"
+          src="sucre-sale-screen.png"
+          alt="Forge Breizh — Artisan"/>
+        <div class="p-card-ov">
+          <div class="p-cat">Artisan</div>
+          <div class="p-name">Sucré Salé</div>
+          <p class="p-desc">Site pour un magasin artisanal. Catalogue de créations,SEO optimisé et design attractif.</p>
+          <a class="p-link" href="https://k-svn7.github.io/site-sucre-sale/" target="_blank" rel="noopener">
+            Voir le site
+            <svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- PROJET 7 -->
+      <div class="p-card reveal" data-cat="restaurant">
+        <img class="p-card-img"
+          src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80"
+          alt="Brasserie du Port — Restaurant"/>
+        <div class="p-card-ov">
+          <div class="p-cat">Restaurant</div>
+          <div class="p-name">BRASSERIE DU PORT</div>
+          <p class="p-desc">Site vitrine pour une brasserie traditionnelle face au port. Menus dynamiques, galerie ambiance et réservation directe par formulaire.</p>
+          <a class="p-link" href="https://LIEN-PROJET-7.fr" target="_blank" rel="noopener">
+            Voir le site
+            <svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- PROJET 8 -->
+      <div class="p-card reveal rd1" data-cat="freelance">
+        <img class="p-card-img"
+          src="https://images.unsplash.com/photo-1542744094-3a31f272c490?w=800&q=80"
+          alt="Clara Viaud — Photographe"/>
+        <div class="p-card-ov">
+          <div class="p-cat">Freelance</div>
+          <div class="p-name">CLARA VIAUD</div>
+          <p class="p-desc">Portfolio photographe avec galerie immersive plein écran, formulaire de contact et présentation des prestations mariage & portrait.</p>
+          <a class="p-link" href="https://LIEN-PROJET-8.fr" target="_blank" rel="noopener">
+            Voir le site
+            <svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- PROJET 9 -->
+      <div class="p-card reveal rd2" data-cat="artisan">
+        <img class="p-card-img"
+          src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=800&q=80"
+          alt="L'Atelier du Bois — Menuisier"/>
+        <div class="p-card-ov">
+          <div class="p-cat">Artisan</div>
+          <div class="p-name">L'ATELIER DU BOIS</div>
+          <p class="p-desc">Site 3 pages pour un menuisier sur-mesure. Présentation des réalisations, demande de devis et référencement local pour attirer les chantiers proches.</p>
+          <a class="p-link" href="https://LIEN-PROJET-9.fr" target="_blank" rel="noopener">
+            Voir le site
+            <svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- état vide -->
+      <div class="empty-state" id="emptyState">
+        <p>AUCUN PROJET DANS CETTE CATÉGORIE.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="cta-tick">AMIRI STUDIO &mdash; AMIRI STUDIO &mdash; AMIRI STUDIO &mdash; AMIRI STUDIO &mdash;</div>
+  <div class="cta-in reveal">
+    <h2 class="cta-t">
+      VOTRE PROJET<br>
+      <span class="outline">EST LE SUIVANT ?</span>
+    </h2>
+    <p class="cta-sub">Maquette gratuite. Aucun engagement. Vous décidez après avoir vu le résultat.</p>
+    <div class="cta-acts">
+      <a href="contact.html" class="btn-w">
+        Demander ma maquette gratuite
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="offres.html" class="btn-ghost">
+        Voir les offres & tarifs
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-in">
+    <div class="ft-logo">
+      <img src="logo.png" alt="logo"/>
+      AMIRI STUDIO
+    </div>
+    <div class="ft-links">
+      <a href="index.html">Accueil</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="offres.html">Offres</a>
+      <a href="index.html#a-propos">À propos</a>
+      <a href="contact.html">Contact</a>
+      <a href="#">Mentions légales</a>
+    </div>
+    <p class="ft-cp">© 2025 Amiri Studio · Bretagne</p>
+  </div>
+</footer>
+
+<script>
+/* CURSOR */
+const cur=document.getElementById('cursor');
+let mx=0,my=0,cx=0,cy=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+(function animC(){cx+=(mx-cx)*.14;cy+=(my-cy)*.14;cur.style.left=cx+'px';cur.style.top=cy+'px';requestAnimationFrame(animC);})();
+document.querySelectorAll('a,button,.p-card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>cur.classList.add('big'));
+  el.addEventListener('mouseleave',()=>cur.classList.remove('big'));
+});
+
+/* NAV */
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('sc',scrollY>50),{passive:true});
+
+/* MOBILE MENU */
+document.getElementById('hmbg').addEventListener('click',()=>{
+  const o=document.getElementById('mobMenu').classList.toggle('open');
+  document.body.style.overflow=o?'hidden':'';
+});
+function closeMob(){document.getElementById('mobMenu').classList.remove('open');document.body.style.overflow='';}
+
+/* REVEAL */
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target);}});
+},{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* PROJECT COUNT */
+const allCards=document.querySelectorAll('.p-card[data-cat]');
+document.getElementById('totalCount').textContent=allCards.length+' projets réalisés';
+
+/* FILTERS */
+const filterBtns=document.querySelectorAll('.f-btn');
+const emptyState=document.getElementById('emptyState');
+
+filterBtns.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    filterBtns.forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter=btn.dataset.filter;
+    let visible=0;
+    allCards.forEach(card=>{
+      const match=filter==='tout'||card.dataset.cat===filter;
+      if(match){
+        card.classList.remove('hidden');
+        // re-trigger reveal animation
+        card.classList.remove('vis');
+        requestAnimationFrame(()=>requestAnimationFrame(()=>{
+          if(!card.classList.contains('vis')) io.observe(card);
+        }));
+        visible++;
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+    emptyState.classList.toggle('show', visible===0);
+  });
+});
+</script>
+</body>
+</html>

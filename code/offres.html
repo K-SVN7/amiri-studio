@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <link rel="icon" type="image/png" href="logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Offres & Tarifs — Amiri Studio</title>
+  <meta name="description" content="Découvrez les offres d'Amiri Studio : Landing Page à 70€, Site Vitrine à 100€, Site Pro à 200€. Maquette gratuite avant tout développement."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --black:#080808;--white:#f5f2ed;--grey:#141414;--grey2:#1c1c1c;
+      --muted:#666;--border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.15);
+      --fd:'Bebas Neue',sans-serif;--fb:'DM Sans',sans-serif;--fm:'DM Mono',monospace;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--black);color:var(--white);font-family:var(--fb);font-size:16px;line-height:1.6;overflow-x:hidden;cursor:none;}
+    a{color:inherit;text-decoration:none;}img{display:block;max-width:100%;}ul{list-style:none;}
+
+    /* Grain */
+    body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.028'/%3E%3C/svg%3E");pointer-events:none;z-index:9998;}
+
+    /* Cursor */
+    #cursor{width:10px;height:10px;background:var(--white);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s;mix-blend-mode:difference;}
+    #cursor.big{width:44px;height:44px;}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:1.6rem 5vw;transition:padding .4s,background .4s,border-color .4s;border-bottom:1px solid transparent;}
+    nav.sc{padding:1rem 5vw;background:rgba(8,8,8,.93);backdrop-filter:blur(20px);border-color:var(--border);}
+    .n-logo{display:flex;align-items:center;gap:.7rem;}
+    .n-logo img{width:34px;filter:invert(1);}
+    .n-name{font-family:var(--fd);font-size:1.35rem;letter-spacing:.05em;}
+    .n-links{display:flex;align-items:center;gap:2.5rem;}
+    .n-links a{font-size:.78rem;font-weight:400;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;transition:color .2s;position:relative;}
+    .n-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--white);transition:width .3s cubic-bezier(.16,1,.3,1);}
+    .n-links a:hover{color:var(--white);}
+    .n-links a:hover::after{width:100%;}
+    .n-links a.active{color:var(--white);}
+    .n-links a.active::after{width:100%;}
+    .n-cta{border:1px solid rgba(255,255,255,.3)!important;color:var(--white)!important;padding:.5rem 1.4rem;border-radius:2rem;transition:background .25s,color .25s!important;}
+    .n-cta::after{display:none!important;}
+    .n-cta:hover{background:var(--white)!important;color:var(--black)!important;}
+    .hmbg{display:none;background:none;border:none;cursor:none;flex-direction:column;gap:5px;padding:4px;}
+    .hmbg span{display:block;width:22px;height:1px;background:var(--white);transition:all .3s;}
+    .mob-menu{display:none;position:fixed;inset:0;background:var(--black);z-index:498;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;}
+    .mob-menu.open{display:flex;}
+    .mob-menu a{font-family:var(--fd);font-size:3rem;letter-spacing:.05em;color:var(--muted);transition:color .2s;}
+    .mob-menu a:hover{color:var(--white);}
+
+    /* SHARED */
+    .eyebrow{display:flex;align-items:center;gap:.7rem;font-family:var(--fm);font-size:.66rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-bottom:1rem;}
+    .eyebrow::before{content:'';width:20px;height:1px;background:var(--muted);}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);}
+    .reveal.vis{opacity:1;transform:none;}
+    .rd1{transition-delay:.1s;}.rd2{transition-delay:.2s;}.rd3{transition-delay:.3s;}.rd4{transition-delay:.4s;}
+    .outline{-webkit-text-stroke:1px rgba(255,255,255,.25);color:transparent;}
+    .btn-w{display:inline-flex;align-items:center;gap:.7rem;background:var(--white);color:var(--black);font-family:var(--fb);font-weight:600;font-size:.875rem;padding:.9rem 2rem;border:1px solid var(--white);cursor:none;transition:background .25s,color .25s;letter-spacing:.02em;}
+    .btn-w:hover{background:transparent;color:var(--white);}
+    .btn-w svg{transition:transform .25s;}
+    .btn-w:hover svg{transform:translateX(4px);}
+    .btn-ghost{display:inline-flex;align-items:center;gap:.5rem;font-size:.75rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;font-family:var(--fm);transition:color .2s;cursor:none;}
+    .btn-ghost:hover{color:var(--white);}
+    .btn-ghost svg{transition:transform .2s;}
+    .btn-ghost:hover svg{transform:translateX(3px);}
+
+    /* PAGE HERO */
+    .page-hero{min-height:52vh;display:flex;align-items:flex-end;padding:0 5vw 5rem;position:relative;overflow:hidden;}
+    .ph-lines{position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 79px,rgba(255,255,255,.025) 79px,rgba(255,255,255,.025) 80px);pointer-events:none;}
+    .ph-bg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--fd);font-size:clamp(160px,28vw,480px);color:rgba(255,255,255,.016);pointer-events:none;user-select:none;white-space:nowrap;}
+    .ph-inner{max-width:1200px;margin:0 auto;width:100%;position:relative;z-index:2;}
+    .ph-label{display:flex;align-items:center;gap:.75rem;font-family:var(--fm);font-size:.7rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.25rem;opacity:0;animation:fadeUp .8s .3s cubic-bezier(.16,1,.3,1) forwards;}
+    .ph-label-line{width:28px;height:1px;background:var(--muted);}
+    .ph-title{font-family:var(--fd);font-size:clamp(3.5rem,9vw,11rem);line-height:.92;letter-spacing:-.01em;overflow:hidden;}
+    .ph-title .ln{display:block;overflow:hidden;}
+    .ph-title .ln span{display:block;transform:translateY(110%);animation:slideUp .9s cubic-bezier(.16,1,.3,1) forwards;}
+    .ph-title .ln:nth-child(1) span{animation-delay:.4s;}
+    .ph-title .ln:nth-child(2) span{animation-delay:.55s;}
+    .ph-sub{margin-top:2rem;font-size:.9rem;color:var(--muted);max-width:500px;line-height:1.75;font-weight:300;opacity:0;animation:fadeUp .8s .8s cubic-bezier(.16,1,.3,1) forwards;}
+    .ph-sub strong{color:var(--white);font-weight:500;}
+    @keyframes slideUp{to{transform:translateY(0);}}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
+
+    /* MARQUEE */
+    .mq-strip{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:.9rem 0;overflow:hidden;background:var(--grey);}
+    .mq-track{display:flex;gap:3rem;width:max-content;animation:mq 22s linear infinite;}
+    .mq-track:hover{animation-play-state:paused;}
+    @keyframes mq{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+    .mq-item{display:flex;align-items:center;gap:.6rem;font-family:var(--fm);font-size:.68rem;color:var(--muted);letter-spacing:.06em;white-space:nowrap;text-transform:uppercase;}
+    .mq-dot{width:3px;height:3px;background:var(--muted);border-radius:50%;}
+
+    /* ══ PRICING CARDS ══ */
+    .pricing-section{padding:7rem 5vw;border-bottom:1px solid var(--border);}
+    .pricing-inner{max-width:1200px;margin:0 auto;}
+    .pricing-hd{text-align:center;margin-bottom:5rem;}
+    .pricing-title{font-family:var(--fd);font-size:clamp(2.5rem,5vw,5.5rem);line-height:.95;margin-bottom:1rem;}
+    .pricing-sub{font-size:.9rem;color:var(--muted);max-width:500px;margin:0 auto;line-height:1.75;font-weight:300;}
+
+    .cards-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:1px;
+      background:var(--border);
+      border:1px solid var(--border);
+      position:relative;
+    }
+
+    .p-card{
+      background:var(--black);
+      padding:2.5rem 2rem 2rem;
+      position:relative;
+      display:flex;
+      flex-direction:column;
+      transition:background .3s;
+      cursor:none;
+    }
+    .p-card:hover{background:var(--grey);}
+
+    /* Featured card */
+    .p-card.featured{
+      background:var(--white);
+      color:var(--black);
+    }
+    .p-card.featured:hover{background:#ede9e3;}
+    .p-card.featured .p-num{color:rgba(0,0,0,.25);}
+    .p-card.featured .p-name{color:var(--black);}
+    .p-card.featured .p-price{color:var(--black);}
+    .p-card.featured .p-desc{color:rgba(0,0,0,.6);}
+    .p-card.featured .p-badge{background:var(--black);color:var(--white);}
+    .p-card.featured .feat-line{background:rgba(0,0,0,.12);}
+    .p-card.featured .feat-item{color:rgba(0,0,0,.7);}
+    .p-card.featured .feat-item svg{color:var(--black);}
+    .p-card.featured .p-extra{color:rgba(0,0,0,.45);border-color:rgba(0,0,0,.12);}
+    .p-card.featured .btn-feat{background:var(--black);color:var(--white);border-color:var(--black);}
+    .p-card.featured .btn-feat:hover{background:transparent;color:var(--black);}
+
+    .featured-tag{
+      position:absolute;
+      top:-1px;left:50%;transform:translateX(-50%);
+      background:var(--white);
+      color:var(--black);
+      font-family:var(--fm);
+      font-size:.6rem;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      padding:.3rem 1rem;
+      white-space:nowrap;
+    }
+    .p-card.featured .featured-tag{background:var(--black);color:var(--white);}
+
+    .p-num{font-family:var(--fm);font-size:.62rem;color:var(--muted);letter-spacing:.1em;margin-bottom:1.5rem;}
+    .p-name{font-family:var(--fd);font-size:1.5rem;letter-spacing:.04em;margin-bottom:1rem;}
+
+    .p-price-wrap{margin-bottom:1.25rem;}
+    .p-price{font-family:var(--fd);font-size:4.5rem;line-height:1;letter-spacing:-.02em;}
+    .p-price-sub{font-family:var(--fm);font-size:.65rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-top:.2rem;}
+    .p-card.featured .p-price-sub{color:rgba(0,0,0,.45);}
+
+    .p-desc{font-size:.82rem;color:var(--muted);line-height:1.65;font-weight:300;margin-bottom:1.75rem;flex-grow:1;}
+
+    .feat-line{height:1px;background:var(--border);margin-bottom:1.5rem;}
+
+    .feat-list{display:flex;flex-direction:column;gap:.75rem;margin-bottom:1.75rem;}
+    .feat-item{display:flex;align-items:flex-start;gap:.6rem;font-size:.8rem;color:var(--muted);font-weight:300;line-height:1.45;}
+    .feat-item svg{flex-shrink:0;margin-top:2px;color:var(--white);}
+    .p-card.featured .feat-item{color:rgba(0,0,0,.7);}
+
+    .p-extra{font-family:var(--fm);font-size:.62rem;color:var(--muted);letter-spacing:.06em;padding-top:1rem;border-top:1px solid var(--border);margin-bottom:1.75rem;}
+
+    .btn-feat{display:flex;align-items:center;justify-content:center;gap:.6rem;background:transparent;color:var(--white);border:1px solid var(--border2);font-family:var(--fb);font-weight:600;font-size:.82rem;padding:.85rem 1.5rem;cursor:none;transition:background .25s,color .25s,border-color .25s;letter-spacing:.02em;margin-top:auto;}
+    .btn-feat:hover{background:var(--white);color:var(--black);border-color:var(--white);}
+    .btn-feat svg{transition:transform .25s;}
+    .btn-feat:hover svg{transform:translateX(4px);}
+
+    /* ══ COMPARISON TABLE ══ */
+    .table-section{padding:7rem 5vw;border-bottom:1px solid var(--border);}
+    .table-inner{max-width:1200px;margin:0 auto;}
+    .table-hd{margin-bottom:4rem;}
+    .table-title{font-family:var(--fd);font-size:clamp(2rem,4vw,4.5rem);line-height:.95;margin-bottom:.75rem;}
+    .table-sub{font-size:.875rem;color:var(--muted);font-weight:300;max-width:480px;line-height:1.7;}
+
+    .comp-table{width:100%;border-collapse:collapse;border:1px solid var(--border);}
+    .comp-table th,.comp-table td{padding:1rem 1.25rem;text-align:left;border-bottom:1px solid var(--border);font-size:.82rem;}
+    .comp-table thead th{font-family:var(--fd);font-size:1.1rem;letter-spacing:.04em;background:var(--grey);vertical-align:bottom;padding-bottom:1.25rem;}
+    .comp-table thead th:first-child{font-family:var(--fm);font-size:.65rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;font-style:normal;}
+    .th-featured{background:var(--white)!important;color:var(--black)!important;}
+    .comp-table tbody tr{transition:background .2s;cursor:none;}
+    .comp-table tbody tr:hover{background:rgba(255,255,255,.025);}
+    .comp-table tbody td{color:var(--muted);font-weight:300;vertical-align:middle;}
+    .comp-table tbody td:first-child{color:var(--white);font-weight:400;}
+    .td-feat{background:rgba(255,255,255,.03);}
+    .check{color:var(--white);display:flex;align-items:center;}
+    .check-feat{color:var(--black);}
+    .cross{color:rgba(255,255,255,.2);}
+    .td-featured-cell{background:#f0ece4;color:var(--black)!important;}
+
+    /* Check / cross icons inline */
+    .ic-check{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;background:rgba(255,255,255,.12);border-radius:50%;color:var(--white);}
+    .ic-check-feat{background:rgba(0,0,0,.1)!important;color:var(--black)!important;}
+    .ic-cross{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;opacity:.25;color:var(--white);}
+    .td-featured-cell .ic-check{background:rgba(0,0,0,.1);color:var(--black);}
+    .td-featured-cell .ic-cross{color:var(--black);opacity:.3;}
+
+    /* ══ REFONTE SECTION ══ */
+    .refonte-section{padding:7rem 5vw;border-bottom:1px solid var(--border);}
+    .refonte-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;}
+    .ref-label-wrap{display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem;}
+    .ref-badge{font-family:var(--fm);font-size:.62rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--border2);padding:.3rem .75rem;}
+    .ref-title{font-family:var(--fd);font-size:clamp(2.5rem,4.5vw,5rem);line-height:.95;margin-bottom:1.5rem;}
+    .ref-desc{font-size:.875rem;color:var(--muted);line-height:1.75;font-weight:300;margin-bottom:2rem;}
+    .ref-desc strong{color:var(--white);font-weight:500;}
+
+    .ref-points{display:flex;flex-direction:column;gap:1rem;margin-bottom:2.5rem;}
+    .ref-point{display:flex;align-items:flex-start;gap:.75rem;font-size:.82rem;color:var(--muted);font-weight:300;line-height:1.5;}
+    .ref-point-num{font-family:var(--fm);font-size:.62rem;color:rgba(255,255,255,.3);letter-spacing:.08em;flex-shrink:0;margin-top:2px;width:20px;}
+
+    .ref-visual{background:var(--grey);border:1px solid var(--border);padding:2.5rem;position:relative;}
+    .ref-visual::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--white);}
+    .ref-v-title{font-family:var(--fd);font-size:1.1rem;letter-spacing:.04em;margin-bottom:.5rem;}
+    .ref-v-sub{font-family:var(--fm);font-size:.65rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:2rem;}
+
+    .ref-steps{display:flex;flex-direction:column;gap:0;}
+    .ref-step{display:flex;align-items:flex-start;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--border);}
+    .ref-step:last-child{border-bottom:none;}
+    .ref-step-n{font-family:var(--fd);font-size:1.8rem;color:rgba(255,255,255,.08);line-height:1;flex-shrink:0;width:36px;}
+    .ref-step-body{}
+    .ref-step-t{font-family:var(--fd);font-size:1.05rem;letter-spacing:.03em;margin-bottom:.25rem;}
+    .ref-step-d{font-size:.75rem;color:var(--muted);font-weight:300;line-height:1.5;}
+
+    .ref-cta-note{font-family:var(--fm);font-size:.65rem;color:var(--muted);letter-spacing:.06em;line-height:1.5;margin-bottom:1.5rem;padding:1rem;border:1px solid var(--border);background:rgba(255,255,255,.02);}
+    .ref-cta-note strong{color:var(--white);}
+
+    /* ══ FAQ ══ */
+    .faq-section{padding:7rem 5vw;border-bottom:1px solid var(--border);}
+    .faq-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1.6fr;gap:6rem;align-items:start;}
+    .faq-left .faq-title{font-family:var(--fd);font-size:clamp(2rem,4vw,4rem);line-height:.95;margin-bottom:1rem;}
+    .faq-left p{font-size:.875rem;color:var(--muted);font-weight:300;line-height:1.7;}
+    .faq-list{display:flex;flex-direction:column;gap:0;}
+    .faq-item{border-bottom:1px solid var(--border);cursor:none;}
+    .faq-q{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.5rem 0;font-size:.9rem;font-weight:500;transition:color .2s;}
+    .faq-item:hover .faq-q{color:var(--white);}
+    .faq-q svg{flex-shrink:0;transition:transform .3s;color:var(--muted);}
+    .faq-item.open .faq-q svg{transform:rotate(45deg);color:var(--white);}
+    .faq-a{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.16,1,.3,1);}
+    .faq-a-in{font-size:.83rem;color:var(--muted);line-height:1.7;font-weight:300;padding-bottom:1.5rem;}
+
+    /* ══ CTA ══ */
+    .cta{padding:8rem 5vw;text-align:center;position:relative;overflow:hidden;}
+    .cta-tick{position:absolute;top:50%;left:0;right:0;transform:translateY(-50%);font-family:var(--fd);font-size:clamp(70px,14vw,180px);color:rgba(255,255,255,.022);white-space:nowrap;pointer-events:none;animation:tickM 20s linear infinite;letter-spacing:.05em;}
+    @keyframes tickM{from{transform:translateY(-50%) translateX(0);}to{transform:translateY(-50%) translateX(-33.33%);}}
+    .cta-in{position:relative;z-index:2;max-width:700px;margin:0 auto;}
+    .cta-t{font-family:var(--fd);font-size:clamp(2.5rem,7vw,8rem);line-height:.92;letter-spacing:.01em;margin-bottom:2rem;}
+    .cta-sub{font-size:.875rem;color:var(--muted);line-height:1.7;font-weight:300;max-width:420px;margin:0 auto 2.5rem;}
+    .cta-acts{display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap;}
+
+    /* FOOTER */
+    footer{padding:2rem 5vw;border-top:1px solid var(--border);}
+    .ft-in{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+    .ft-logo{display:flex;align-items:center;gap:.6rem;font-family:var(--fd);font-size:1.1rem;letter-spacing:.05em;}
+    .ft-logo img{width:26px;filter:invert(1);}
+    .ft-links{display:flex;gap:2rem;flex-wrap:wrap;}
+    .ft-links a{font-family:var(--fm);font-size:.65rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;transition:color .2s;cursor:none;}
+    .ft-links a:hover{color:var(--white);}
+    .ft-cp{font-family:var(--fm);font-size:.62rem;color:var(--muted);}
+
+    /* RESPONSIVE */
+    @media(max-width:1024px){
+      .refonte-inner{grid-template-columns:1fr;gap:3rem;}
+      .faq-inner{grid-template-columns:1fr;gap:2.5rem;}
+      .cards-grid{grid-template-columns:1fr;}
+      .comp-table{font-size:.75rem;}
+    }
+    @media(max-width:768px){
+      body{cursor:auto;}#cursor{display:none;}
+      .n-links{display:none;}.hmbg{display:flex;}
+      .cards-grid{grid-template-columns:1fr;}
+      .comp-table th,.comp-table td{padding:.75rem .6rem;}
+    }
+  </style>
+</head>
+<body>
+
+<div id="cursor"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="n-logo">
+    <img src="logo.png" alt="logo"/>
+    <span class="n-name">AMIRI STUDIO</span>
+  </a>
+  <ul class="n-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="offres.html" class="active">Offres</a></li>
+    <li><a href="contact.html" class="n-cta">Devis gratuit</a></li>
+  </ul>
+  <button class="hmbg" id="hmbg" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mob-menu" id="mobMenu">
+  <a href="index.html" onclick="closeMob()">Accueil</a>
+  <a href="portfolio.html" onclick="closeMob()">Portfolio</a>
+  <a href="offres.html" onclick="closeMob()">Offres</a>
+  <a href="contact.html" onclick="closeMob()">Contact</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="ph-lines"></div>
+  <div class="ph-bg">OFFRES</div>
+  <div class="ph-inner">
+    <div class="ph-label">
+      <span class="ph-label-line"></span>
+      Tarifs transparents · Maquette gratuite incluse
+    </div>
+    <h1 class="ph-title">
+      <span class="ln"><span>OFFRES &</span></span>
+      <span class="ln"><span class="outline">TARIFS.</span></span>
+    </h1>
+    <p class="ph-sub">
+      <strong>Trois formules claires</strong>, pensées pour chaque étape de votre développement. Zéro frais cachés. Vous payez uniquement après avoir validé votre maquette.
+    </p>
+  </div>
+</section>
+
+
+
+<!-- PRICING CARDS -->
+<section class="pricing-section">
+  <div class="pricing-inner">
+    <div class="pricing-hd reveal">
+      <div class="eyebrow" style="justify-content:center">Choisissez votre formule</div>
+      <h2 class="pricing-title">LA FORMULE<br><span class="outline">QUI VOUS CORRESPOND.</span></h2>
+      <p class="pricing-sub">Des tarifs accessibles, bien loin des agences web. Pour chaque formule : design sur-mesure, code propre et maquette offerte.</p>
+    </div>
+
+    <div class="cards-grid">
+
+      <!-- OFFRE 1 — Landing Page -->
+      <div class="p-card reveal">
+        <div class="p-num">Offre 01</div>
+        <div class="p-name">LANDING PAGE</div>
+        <div class="p-price-wrap">
+          <div class="p-price">70€</div>
+          <div class="p-price-sub">Une page · paiement après validation</div>
+        </div>
+        <p class="p-desc">
+          La solution idéale pour être <strong style="color:var(--white);font-weight:500">visible rapidement</strong> sur le web sans vous ruiner. Une page unique, bien conçue, qui dit l'essentiel sur votre activité et donne envie de vous contacter. Parfaite pour lancer votre présence en ligne ou tester un nouveau service.
+        </p>
+        <div class="feat-line"></div>
+        <div class="feat-list">
+          <div class="feat-item">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Design responsive (mobile, tablette, desktop)
+          </div>
+          <div class="feat-item">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Coordonnées & horaires d'ouverture
+          </div>
+          <div class="feat-item">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Google Maps intégré
+          </div>
+          <div class="feat-item">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            SEO de base — trouvé localement sur Google
+          </div>
+          <div class="feat-item">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Maquette visuelle offerte avant développement
+          </div>
+          <div class="feat-item">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Hébergement Vercel + SSL inclus
+          </div>
+        </div>
+        <div class="p-extra">+50€ par page supplémentaire</div>
+        <a href="contact.html?offre=landing" class="btn-feat">
+          Commander sur Come Up
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <!-- OFFRE 2 — Site Vitrine (FEATURED) -->
+      <div class="p-card featured reveal rd1">
+        <div class="featured-tag">⭐ La plus populaire</div>
+        <div class="p-num">Offre 02</div>
+        <div class="p-name">SITE VITRINE</div>
+        <div class="p-price-wrap">
+          <div class="p-price">100€</div>
+          <div class="p-price-sub">2 à 3 pages · paiement après validation</div>
+        </div>
+        <p class="p-desc">
+          La formule qu'il vous faut pour <strong style="color:var(--black);font-weight:600">convertir vos visiteurs en clients</strong>. Un site multi-pages qui présente votre activité de façon professionnelle, avec un formulaire de contact pour capter directement les demandes. L'équilibre parfait entre prix et efficacité.
+        </p>
+        <div class="feat-line"></div>
+        <div class="feat-list">
+          <div class="feat-item">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Tout ce qui est inclus dans la Landing Page
+          </div>
+          <div class="feat-item">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            2 à 3 pages (Accueil, Services, Contact…)
+          </div>
+          <div class="feat-item">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            SEO optimisé — balises, mots-clés locaux, titres
+          </div>
+          <div class="feat-item">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Formulaire de contact fonctionnel (Formspree)
+          </div>
+          <div class="feat-item">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Navigation fluide entre les pages
+          </div>
+          <div class="feat-item">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Maquette visuelle offerte avant développement
+          </div>
+        </div>
+        <div class="p-extra">+50€ par page supplémentaire</div>
+        <a href="https://comeup.com/fr/service/520154/creer-votre-site-vitrine-professionnel-et-rapide-pour-100-euros" class="btn-feat">
+          Commander sur Come Up
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <!-- OFFRE 3 — Site Pro -->
+      <div class="p-card reveal rd2">
+        <div class="p-num">Offre 03</div>
+        <div class="p-name">SITE PRO</div>
+        <div class="p-price-wrap">
+          <div class="p-price">250€</div>
+          <div class="p-price-sub">5 pages · paiement après validation</div>
+        </div>
+        <p class="p-desc">
+          Pour les entreprises qui veulent <strong style="color:var(--white);font-weight:500">aller plus loin</strong> et maximiser leurs revenus en ligne. Paiement en ligne, SEO poussé, formulaire de commande — tout ce qu'il faut pour transformer votre site en véritable outil de vente.
+        </p>
+        <div class="feat-line"></div>
+        <div class="feat-list">
+          <div class="feat-item">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Tout ce qui est inclus dans le Site Vitrine
+          </div>
+          <div class="feat-item">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            5 pages complètes sur-mesure
+          </div>
+          <div class="feat-item">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Paiement en ligne intégré (Stripe)
+          </div>
+          <div class="feat-item">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Formulaire de contact ou de commande (Formspree)
+          </div>
+          <div class="feat-item">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            SEO maximisé — structure technique complète
+          </div>
+          <div class="feat-item">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Maquette visuelle offerte avant développement
+          </div>
+        </div>
+        <div class="p-extra">+50€ par page supplémentaire</div>
+        <a href="https://comeup.com/fr/service/522045/creer-votre-site-web-pro-pour-encaisser-vos-commandes-en-ligne" class="btn-feat">
+          Commander sur Come Up
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON TABLE -->
+<section class="table-section">
+  <div class="table-inner">
+    <div class="table-hd reveal">
+      <div class="eyebrow">Comparatif détaillé</div>
+      <h2 class="table-title">CE QUI EST<br><span class="outline">INCLUS.</span></h2>
+      <p class="table-sub">Un aperçu complet de ce que comprend chaque formule pour choisir en toute clarté.</p>
+    </div>
+    <div class="reveal rd1" style="overflow-x:auto;">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>Fonctionnalité</th>
+            <th>Landing Page<br><span style="font-family:var(--fm);font-size:.7rem;font-weight:400;color:var(--muted);letter-spacing:.06em;">70€</span></th>
+            <th class="th-featured">Site Vitrine ⭐<br><span style="font-family:var(--fm);font-size:.7rem;font-weight:400;color:rgba(0,0,0,.5);letter-spacing:.06em;">100€</span></th>
+            <th>Site Pro<br><span style="font-family:var(--fm);font-size:.7rem;font-weight:400;color:var(--muted);letter-spacing:.06em;">200€</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Maquette visuelle offerte</td>
+            <td><span class="ic-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></td>
+            <td class="td-featured-cell"><span class="ic-check ic-check-feat"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></td>
+            <td><span class="ic-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></td>
+          </tr>
+          <tr>
+            <td>Design responsive (mobile)</td>
+            <td><span class="ic-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></td>
+            <td class="td-featured-cell"><span class="ic-check ic-check-feat"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></td>
+            <td><span class="ic-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></td>
+          </tr>
+          <tr>
+            <td>Hébergement Vercel + SSL</td>
+            <td><span class="ic-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></td>
+            <td class="td-featured-cell"><span class="ic-check ic-check-feat"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></td>
+            <td><span class="ic-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></td>
+          </tr>
+          <tr>
+            <td>Coordonnées & horaires</td>
+            <td><span class="ic-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></td>
+            <td class="td-featured-cell"><span class="ic-check ic-check-feat"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></td>
+            <td><span class="ic-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></td>
+          </tr>
+          <tr>
+            <td>Google Maps intégré</td>
+            <td><span class="ic-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></td>
+            <td class="td-featured-cell"><span class="ic-check ic-check-feat"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></td>
+            <td><span class="ic-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></td>
+          </tr>
+          <tr>
+            <td>Nombre de pages</td>
+            <td style="color:var(--white)">1 page</td>
+            <td class="td-featured-cell" style="font-weight:600">2 à 3 pages</td>
+            <td style="color:var(--white)">5 pages</td>
+          </tr>
+          <tr>
+            <td>SEO</td>
+            <td style="color:var(--white)">De base</td>
+            <td class="td-featured-cell" style="font-weight:600">Optimisé</td>
+            <td style="color:var(--white)">Maximisé</td>
+          </tr>
+          <tr>
+            <td>Formulaire de contact</td>
+            <td><span class="ic-cross"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M3 3l6 6M9 3l-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></td>
+            <td class="td-featured-cell"><span class="ic-check ic-check-feat"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></td>
+            <td><span class="ic-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></td>
+          </tr>
+          <tr>
+            <td>Formulaire de commande</td>
+            <td><span class="ic-cross"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M3 3l6 6M9 3l-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></td>
+            <td class="td-featured-cell"><span class="ic-cross" style="color:var(--black)"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M3 3l6 6M9 3l-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></td>
+            <td><span class="ic-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></td>
+          </tr>
+          <tr>
+            <td>Paiement en ligne (Stripe)</td>
+            <td><span class="ic-cross"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M3 3l6 6M9 3l-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></td>
+            <td class="td-featured-cell"><span class="ic-cross" style="color:var(--black)"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M3 3l6 6M9 3l-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></td>
+            <td><span class="ic-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></td>
+          </tr>
+          <tr>
+            <td>Page supplémentaire</td>
+            <td style="color:var(--white)">+50€</td>
+            <td class="td-featured-cell" style="font-weight:600">+50€</td>
+            <td style="color:var(--white)">+50€</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- REFONTE SECTION -->
+<section class="refonte-section">
+  <div class="refonte-inner">
+    <div class="reveal">
+      <div class="eyebrow">Service complémentaire</div>
+      <h2 class="ref-title">
+        REFONTE<br>
+        <span class="outline">DE SITE.</span>
+      </h2>
+      <p class="ref-desc">
+        Votre site actuel ne vous ressemble plus ? Il est lent, mal affiché sur mobile, ou simplement daté ?
+        <strong>Je prends en charge la refonte complète</strong> de votre site existant pour lui donner une seconde vie — design moderne, performances optimisées, SEO remis à niveau.
+      </p>
+      <div class="ref-points">
+        <div class="ref-point">
+          <span class="ref-point-num">01</span>
+          Vous m'envoyez votre site actuel avec vos retours — ce qui vous plaît, ce qui vous déplaît.
+        </div>
+        <div class="ref-point">
+          <span class="ref-point-num">02</span>
+          J'analyse le contenu, la structure et les points d'amélioration prioritaires.
+        </div>
+        <div class="ref-point">
+          <span class="ref-point-num">03</span>
+          On échange pour définir vos objectifs et je vous fais une proposition de tarif adaptée.
+        </div>
+        <div class="ref-point">
+          <span class="ref-point-num">04</span>
+          Maquette envoyée avant tout développement — comme pour toutes les offres.
+        </div>
+      </div>
+      <div class="ref-cta-note">
+        <strong>Tarif sur devis.</strong> Le prix dépend de la complexité de l'existant et du niveau de refonte souhaité. Aucun engagement avant notre échange.
+      </div>
+      <a href="refonte.html" class="btn-w">
+        Parler de ma refonte
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+    <div class="ref-visual reveal rd2">
+      <div class="ref-v-title">COMMENT ÇA SE PASSE</div>
+      <div class="ref-v-sub">4 étapes · de l'analyse à la mise en ligne</div>
+      <div class="ref-steps">
+        <div class="ref-step">
+          <div class="ref-step-n">01</div>
+          <div class="ref-step-body">
+            <div class="ref-step-t">ENVOI DU SITE ACTUEL</div>
+            <p class="ref-step-d">Partagez le lien de votre site et notez ce que vous souhaitez conserver ou changer.</p>
+          </div>
+        </div>
+        <div class="ref-step">
+          <div class="ref-step-n">02</div>
+          <div class="ref-step-body">
+            <div class="ref-step-t">ANALYSE & PROPOSITION</div>
+            <p class="ref-step-d">J'étudie votre site, identifie les points faibles et vous propose un plan de refonte avec un devis clair.</p>
+          </div>
+        </div>
+        <div class="ref-step">
+          <div class="ref-step-n">03</div>
+          <div class="ref-step-body">
+            <div class="ref-step-t">MAQUETTE & VALIDATION</div>
+            <p class="ref-step-d">Vous recevez une maquette de la nouvelle version avant tout développement.</p>
+          </div>
+        </div>
+        <div class="ref-step">
+          <div class="ref-step-n">04</div>
+          <div class="ref-step-body">
+            <div class="ref-step-t">DÉVELOPPEMENT & LIVRAISON</div>
+            <p class="ref-step-d">Votre site refait à neuf, hébergé et mis en ligne. Vous gardez votre nom de domaine existant.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="faq-inner">
+    <div class="faq-left reveal">
+      <div class="eyebrow">Questions fréquentes</div>
+      <h2 class="faq-title">VOUS AVEZ<br><span class="outline">DES QUESTIONS ?</span></h2>
+      <p>Les réponses aux questions que mes clients posent le plus souvent avant de se lancer.</p>
+    </div>
+    <div class="faq-list reveal rd1">
+      <div class="faq-item">
+        <div class="faq-q">
+          Comment se passe le paiement ?
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </div>
+        <div class="faq-a"><div class="faq-a-in">Vous ne payez rien avant d'avoir validé votre maquette. Une fois la maquette approuvée, je vous envoie un lien de paiement sécurisé. Le règlement s'effectue en une seule fois, avant le développement final.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          Combien de temps faut-il pour livrer un site ?
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </div>
+        <div class="faq-a"><div class="faq-a-in">En général, la maquette est envoyée sous 3 à 5 jours après notre échange. Une fois validée, le développement prend 3 à 7 jours selon la complexité. Vous pouvez donc avoir votre site en ligne en moins de deux semaines.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          Est-ce que je dois fournir les textes et photos ?
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </div>
+        <div class="faq-a"><div class="faq-a-in">Idéalement oui, les textes et photos de votre activité rendent le site beaucoup plus authentique. Si vous n'avez pas de photos, je peux utiliser des images libres de droits de qualité professionnelle en attendant que vous puissiez les remplacer.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          Puis-je modifier mon site après la livraison ?
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </div>
+        <div class="faq-a"><div class="faq-a-in">Oui. Pour les petites modifications (textes, horaires, photos), je les effectue gratuitement dans les 30 jours suivant la livraison. Pour des évolutions plus importantes, on en discute au cas par cas. Je propose également l'option interface admin (Firebase) pour que vous puissiez modifier certains contenus vous-même.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          Que se passe-t-il si la maquette ne me convient pas ?
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </div>
+        <div class="faq-a"><div class="faq-a-in">On en discute et je la retravaille jusqu'à ce qu'elle vous convienne. Les révisions sur la maquette sont incluses. Et si finalement vous décidez de ne pas donner suite, vous ne payez rien — la maquette est entièrement gratuite.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          Mon nom de domaine est-il inclus ?
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </div>
+        <div class="faq-a"><div class="faq-a-in">L'hébergement Vercel et le certificat SSL sont inclus dans toutes les formules. Le nom de domaine (ex : monentreprise.fr) est à votre charge — il coûte en général 10 à 15€/an. Je vous guide pour l'acheter et je m'occupe de la configuration.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="cta-tick">AMIRI STUDIO &mdash; AMIRI STUDIO &mdash; AMIRI STUDIO &mdash; AMIRI STUDIO &mdash;</div>
+  <div class="cta-in reveal">
+    <h2 class="cta-t">
+      PRÊT À<br>
+      <span class="outline">VOUS LANCER ?</span>
+    </h2>
+    <p class="cta-sub">Commencez par une maquette gratuite. Aucune obligation. Vous décidez ensuite.</p>
+    <div class="cta-acts">
+      <a href="contact.html" class="btn-w">
+        Demander ma maquette gratuite
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="portfolio.html" class="btn-ghost">
+        Voir mes réalisations
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-in">
+    <div class="ft-logo">
+      <img src="logo.png" alt="logo"/>
+      AMIRI STUDIO
+    </div>
+    <div class="ft-links">
+      <a href="index.html">Accueil</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="offres.html">Offres</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="#">Mentions légales</a>
+    </div>
+    <p class="ft-cp">© 2025 Amiri Studio · Bretagne</p>
+  </div>
+</footer>
+
+<script>
+/* CURSOR */
+const cur = document.getElementById('cursor');
+let mx=0,my=0,cx=0,cy=0;
+document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; });
+(function animC(){
+  cx+=(mx-cx)*.14; cy+=(my-cy)*.14;
+  cur.style.left=cx+'px'; cur.style.top=cy+'px';
+  requestAnimationFrame(animC);
+})();
+document.querySelectorAll('a,button,.p-card,.faq-item,.svc,.ref-step').forEach(el=>{
+  el.addEventListener('mouseenter',()=>cur.classList.add('big'));
+  el.addEventListener('mouseleave',()=>cur.classList.remove('big'));
+});
+
+/* NAV SCROLL */
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('sc',scrollY>50),{passive:true});
+
+/* MOBILE MENU */
+const hmbg=document.getElementById('hmbg');
+const mobMenu=document.getElementById('mobMenu');
+hmbg.addEventListener('click',()=>{
+  const o=mobMenu.classList.toggle('open');
+  document.body.style.overflow=o?'hidden':'';
+});
+function closeMob(){mobMenu.classList.remove('open');document.body.style.overflow='';}
+
+/* REVEAL */
+const revEls=document.querySelectorAll('.reveal');
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target);}});
+},{threshold:.1});
+revEls.forEach(el=>io.observe(el));
+
+/* FAQ ACCORDION */
+document.querySelectorAll('.faq-item').forEach(item=>{
+  item.querySelector('.faq-q').addEventListener('click',()=>{
+    const open=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>{
+      i.classList.remove('open');
+      i.querySelector('.faq-a').style.maxHeight='0';
+    });
+    if(!open){
+      item.classList.add('open');
+      item.querySelector('.faq-a').style.maxHeight=item.querySelector('.faq-a-in').scrollHeight+24+'px';
+    }
+  });
+});
+</script>
+</body>
+</html>
