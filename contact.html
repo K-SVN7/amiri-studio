@@ -59,11 +59,7 @@
           "@id": "https://amiristudio.fr/#business",
           "name": "Amiri Studio",
           "url": "https://amiristudio.fr",
-          "address": {
-            "@type": "PostalAddress",
-            "addressRegion": "Bretagne",
-            "addressCountry": "FR"
-          }
+          "address": { "@type": "PostalAddress", "addressRegion": "Bretagne", "addressCountry": "FR" }
         }
       },
       {
@@ -83,21 +79,9 @@
       {
         "@type": "FAQPage",
         "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "La maquette de site web est-elle vraiment gratuite ?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Oui, entièrement gratuite et sans engagement. Amiri Studio vous envoie une maquette visuelle complète avant tout développement. Vous décidez ensuite si vous souhaitez aller plus loin." }
-          },
-          {
-            "@type": "Question",
-            "name": "Combien de temps faut-il pour recevoir une maquette ?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Après réception de votre formulaire, Amiri Studio vous recontacte par mail sous 48h pour affiner vos attentes. La maquette est ensuite réalisée rapidement selon les échanges." }
-          },
-          {
-            "@type": "Question",
-            "name": "Amiri Studio réalise-t-il des refontes de sites existants ?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Oui. Amiri Studio propose des refontes de sites web sur devis. Partagez votre site actuel via le formulaire et une proposition adaptée vous sera faite sous 48h." }
-          }
+          { "@type": "Question", "name": "La maquette de site web est-elle vraiment gratuite ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui, entièrement gratuite et sans engagement. Amiri Studio vous envoie une maquette visuelle complète avant tout développement. Vous décidez ensuite si vous souhaitez aller plus loin." } },
+          { "@type": "Question", "name": "Combien de temps faut-il pour recevoir une maquette ?", "acceptedAnswer": { "@type": "Answer", "text": "Après réception de votre formulaire, Amiri Studio vous recontacte par mail sous 48h pour affiner vos attentes. La maquette est ensuite réalisée rapidement selon les échanges." } },
+          { "@type": "Question", "name": "Amiri Studio réalise-t-il des refontes de sites existants ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui. Amiri Studio propose des refontes de sites web sur devis. Partagez votre site actuel via le formulaire et une proposition adaptée vous sera faite sous 48h." } }
         ]
       }
     ]
@@ -107,7 +91,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
   <style>
-    #progress-bar{position:fixed;top:0;right:0;width:4px;background:var(--white);z-index:9999;height:0%;transition:height .1s linear;}
     :root{
       --black:#080808;--white:#f5f2ed;--grey:#141414;--grey2:#1c1c1c;
       --muted:#999;--border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.15);
@@ -115,12 +98,14 @@
     }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{scroll-behavior:smooth;}
-    body{background:var(--black);color:var(--white);font-family:var(--fb);font-size:16px;line-height:1.6;overflow-x:hidden;cursor:none;}
+    body{background:var(--black);color:var(--white);font-family:var(--fb);font-size:16px;line-height:1.6;overflow-x:hidden;cursor:auto;}
     a{color:inherit;text-decoration:none;}img{display:block;max-width:100%;}ul{list-style:none;}
     body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.028'/%3E%3C/svg%3E");pointer-events:none;z-index:9998;}
-    #cursor{width:10px;height:10px;background:var(--white);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s;mix-blend-mode:difference;}
-    #cursor.big{width:44px;height:44px;}
-    nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:1.6rem 5vw;transition:padding .4s,background .4s,border-color .4s;border-bottom:1px solid transparent;}
+
+    .sb-track{position:fixed;right:6px;top:50%;transform:translateY(-50%);width:6px;height:60vh;background:rgba(255,255,255,.1);border-radius:99px;z-index:9997;}
+    .sb-thumb{position:absolute;left:0;right:0;background:#fff;border-radius:99px;width:6px;height:40px;top:0;transition:top .08s linear;}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:1.6rem 5vw;transition:padding .4s,background .4s,border-color .4s;border-bottom:1px solid transparent;cursor:auto;}
     nav.sc{padding:1rem 5vw;background:rgba(8,8,8,.93);backdrop-filter:blur(20px);border-color:var(--border);}
     .n-logo{display:flex;align-items:center;gap:.7rem;}
     .n-logo img{width:34px;filter:invert(1);}
@@ -134,20 +119,23 @@
     .n-cta{border:1px solid rgba(255,255,255,.3)!important;color:var(--white)!important;padding:.5rem 1.4rem;border-radius:2rem;transition:background .25s,color .25s!important;}
     .n-cta::after{display:none!important;}
     .n-cta:hover{background:var(--white)!important;color:var(--black)!important;}
-    .hmbg{display:none;background:none;border:none;cursor:none;flex-direction:column;gap:5px;padding:4px;}
+    .hmbg{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px;}
     .hmbg span{display:block;width:22px;height:1px;background:var(--white);transition:all .3s;}
     .mob-menu{display:none;position:fixed;inset:0;background:var(--black);z-index:498;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;}
     .mob-menu.open{display:flex;}
     .mob-menu a{font-family:var(--fd);font-size:3rem;letter-spacing:.05em;color:var(--muted);transition:color .2s;}
     .mob-menu a:hover{color:var(--white);}
+
     .outline{-webkit-text-stroke:1px rgba(255,255,255,.25);color:transparent;}
     .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);}
     .reveal.vis{opacity:1;transform:none;}
     .rd1{transition-delay:.1s;}.rd2{transition-delay:.2s;}
-    .page-hero{min-height:48vh;display:flex;align-items:flex-end;padding:0 5vw 5rem;position:relative;overflow:hidden;}
+
+    .page-hero{min-height:100vh;display:flex;align-items:center;padding:0 5vw;position:relative;overflow:hidden;}
     .ph-lines{position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 79px,rgba(255,255,255,.025) 79px,rgba(255,255,255,.025) 80px);pointer-events:none;}
     .ph-bg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--fd);font-size:clamp(120px,20vw,380px);color:rgba(255,255,255,.016);pointer-events:none;user-select:none;white-space:nowrap;}
-    .ph-inner{max-width:1200px;margin:0 auto;width:100%;position:relative;z-index:2;}
+    .ph-inner{max-width:1200px;margin:0 auto;width:100%;position:relative;z-index:2;display:flex;flex-direction:column;align-items:flex-start;gap:3rem;}
+    .ph-top{}
     .ph-label{display:flex;align-items:center;gap:.75rem;font-family:var(--fm);font-size:.7rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.25rem;opacity:0;animation:fadeUp .8s .3s cubic-bezier(.16,1,.3,1) forwards;}
     .ph-label-line{width:28px;height:1px;background:var(--muted);}
     .ph-title{font-family:var(--fd);font-size:clamp(3rem,8vw,10rem);line-height:.92;overflow:hidden;}
@@ -159,28 +147,24 @@
     .ph-sub strong{color:var(--white);font-weight:500;}
     @keyframes slideUp{to{transform:translateY(0);}}
     @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
-    .scroll-ind{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;opacity:0;animation:fadeIn 1s 1.4s forwards;z-index:3;text-decoration:none;}
-    .scroll-ind span{font-family:var(--fm);font-size:.6rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;}
-    .scroll-arrow{width:28px;height:28px;border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;animation:bounce 2s ease-in-out infinite;}
-    .scroll-arrow svg{color:var(--muted);}
-    @keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(5px);}}
-    @keyframes fadeIn{to{opacity:1;}}
+
+    .ph-toggle-wrap{opacity:0;animation:fadeUp .8s 1s cubic-bezier(.16,1,.3,1) forwards;}
+    .ph-toggle-label{font-family:var(--fm);font-size:.66rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;text-align:left;margin-bottom:1rem;}
+    .toggle-wrap{display:flex;align-items:center;justify-content:flex-start;gap:0;border:1px solid var(--border2);width:fit-content;position:relative;}
+    .t-opt{font-family:var(--fd);font-size:1.1rem;letter-spacing:.04em;padding:1rem 2.5rem;cursor:pointer;position:relative;z-index:1;transition:color .35s;white-space:nowrap;user-select:none;}
+    .t-opt.on{color:var(--black);}
+    .t-opt.off{color:var(--muted);}
+    .t-slider{position:absolute;top:0;bottom:0;background:var(--white);transition:left .35s cubic-bezier(.16,1,.3,1),width .35s cubic-bezier(.16,1,.3,1);z-index:0;}
+    .t-div{width:1px;background:var(--border2);align-self:stretch;flex-shrink:0;}
+
     .mq-strip{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:.9rem 0;overflow:hidden;background:var(--grey);}
     .mq-track{display:flex;gap:3rem;width:max-content;animation:mq 22s linear infinite;}
     @keyframes mq{from{transform:translateX(0);}to{transform:translateX(-50%);}}
     .mq-item{display:flex;align-items:center;gap:.6rem;font-family:var(--fm);font-size:.68rem;color:var(--muted);letter-spacing:.06em;white-space:nowrap;text-transform:uppercase;}
     .mq-dot{width:3px;height:3px;background:var(--muted);border-radius:50%;}
-    .toggle-section{padding:5rem 5vw 0;}
-    #formulaire{scroll-margin-top:80px;}
-    .toggle-inner{max-width:860px;margin:0 auto;}
-    .toggle-label{font-family:var(--fm);font-size:.66rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;text-align:center;margin-bottom:2rem;}
-    .toggle-wrap{display:flex;align-items:center;justify-content:center;gap:0;border:1px solid var(--border2);width:fit-content;margin:0 auto;position:relative;}
-    .t-opt{font-family:var(--fd);font-size:1.1rem;letter-spacing:.04em;padding:1rem 2.5rem;cursor:none;position:relative;z-index:1;transition:color .35s;white-space:nowrap;user-select:none;}
-    .t-opt.on{color:var(--black);}
-    .t-opt.off{color:var(--muted);}
-    .t-slider{position:absolute;top:0;bottom:0;background:var(--white);transition:left .35s cubic-bezier(.16,1,.3,1),width .35s cubic-bezier(.16,1,.3,1);z-index:0;}
-    .t-div{width:1px;background:var(--border2);align-self:stretch;flex-shrink:0;}
-    .form-section{padding:4rem 5vw 0;}
+
+    .form-section{padding:5rem 5vw 0;}
+    #formulaire{scroll-margin-top:20px;}
     .form-inner{max-width:860px;margin:0 auto;}
     .form-panel{display:none;}
     .form-panel.active{display:block;}
@@ -201,19 +185,19 @@
     .field input,.field select,.field textarea{background:var(--grey);border:1px solid var(--border);color:var(--white);font-family:var(--fb);font-size:.875rem;font-weight:300;padding:.9rem 1rem;outline:none;transition:border-color .25s;width:100%;appearance:none;-webkit-appearance:none;}
     .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--white);}
     .field input::placeholder,.field textarea::placeholder{color:var(--muted);}
-    .field select{background-image:url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23666' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.5rem;cursor:none;}
+    .field select{background-image:url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23666' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.5rem;cursor:pointer;}
     .field select option{background:var(--grey);color:var(--white);}
     .field textarea{resize:vertical;min-height:120px;line-height:1.6;}
     .offre-group{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:.25rem;}
-    .offre-pill{position:relative;cursor:none;}
+    .offre-pill{position:relative;cursor:pointer;}
     .offre-pill input[type=radio]{position:absolute;opacity:0;width:0;height:0;}
-    .offre-pill label{display:flex;flex-direction:column;border:1px solid var(--border2);padding:.85rem 1.25rem;cursor:none;transition:border-color .25s,background .25s;min-width:140px;}
+    .offre-pill label{display:flex;flex-direction:column;border:1px solid var(--border2);padding:.85rem 1.25rem;cursor:pointer;transition:border-color .25s,background .25s;min-width:140px;}
     .offre-pill label .pill-name{font-family:var(--fd);font-size:1rem;letter-spacing:.04em;margin-bottom:.15rem;transition:color .2s;}
     .offre-pill label .pill-price{font-family:var(--fm);font-size:.6rem;color:var(--muted);letter-spacing:.08em;}
     .offre-pill input[type=radio]:checked + label{background:var(--white);border-color:var(--white);color:var(--black);}
     .offre-pill input[type=radio]:checked + label .pill-price{color:rgba(0,0,0,.5);}
     .form-submit{margin-top:2.5rem;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;}
-    .btn-submit{display:inline-flex;align-items:center;gap:.75rem;background:var(--white);color:var(--black);font-family:var(--fb);font-weight:600;font-size:.875rem;padding:.95rem 2.25rem;border:1px solid var(--white);cursor:none;transition:background .25s,color .25s;}
+    .btn-submit{display:inline-flex;align-items:center;gap:.75rem;background:var(--white);color:var(--black);font-family:var(--fb);font-weight:600;font-size:.875rem;padding:.95rem 2.25rem;border:1px solid var(--white);cursor:pointer;transition:background .25s,color .25s;}
     .btn-submit:hover{background:transparent;color:var(--white);}
     .btn-submit svg{transition:transform .25s;}
     .btn-submit:hover svg{transform:translateX(4px);}
@@ -223,22 +207,24 @@
     .success-icon{font-family:var(--fd);font-size:4rem;color:var(--white);opacity:.15;margin-bottom:1rem;}
     .success-title{font-family:var(--fd);font-size:2.5rem;letter-spacing:.03em;margin-bottom:.75rem;}
     .success-desc{font-size:.875rem;color:var(--muted);font-weight:300;line-height:1.7;max-width:400px;margin:0 auto;}
+
     .reassurance{padding:3.5rem 5vw 8rem;}
     .reassurance-inner{max-width:860px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);}
     .r-item{background:var(--black);padding:1.75rem 2rem;display:flex;align-items:flex-start;gap:1rem;}
     .r-icon{width:36px;height:36px;border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;color:var(--white);flex-shrink:0;}
     .r-title{font-family:var(--fd);font-size:1.1rem;letter-spacing:.03em;margin-bottom:.25rem;}
     .r-desc{font-size:.78rem;color:var(--muted);font-weight:300;line-height:1.5;}
+
     footer{padding:2rem 5vw;border-top:1px solid var(--border);}
     .ft-in{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
     .ft-logo{display:flex;align-items:center;gap:.6rem;font-family:var(--fd);font-size:1.1rem;letter-spacing:.05em;}
     .ft-logo img{width:26px;filter:invert(1);}
     .ft-links{display:flex;gap:2rem;flex-wrap:wrap;}
-    .ft-links a{font-family:var(--fm);font-size:.65rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;transition:color .2s;cursor:none;}
+    .ft-links a{font-family:var(--fm);font-size:.65rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;transition:color .2s;}
     .ft-links a:hover{color:var(--white);}
     .ft-cp{font-family:var(--fm);font-size:.62rem;color:var(--muted);}
+
     @media(max-width:768px){
-      body{cursor:auto;}#cursor{display:none;}
       .n-links{display:none;}.hmbg{display:flex;}
       .reassurance-inner{grid-template-columns:1fr;}
       .fields-grid{grid-template-columns:1fr;}
@@ -246,13 +232,14 @@
       .offre-pill label{min-width:unset;}
       .t-opt{padding:.85rem 1.5rem;font-size:.95rem;}
       .ft-in{flex-direction:column;}
-      .scroll-ind{display:none;}
+      .sb-track{display:none;}
+      .page-hero{min-height:auto;padding-top:8rem;padding-bottom:3rem;}
     }
   </style>
 </head>
 <body>
-<div id="progress-bar"></div>
-<div id="cursor"></div>
+
+<div class="sb-track"><div class="sb-thumb" id="sbThumb"></div></div>
 
 <nav id="nav">
   <a href="index.html" class="n-logo">
@@ -283,40 +270,50 @@
   <div class="ph-lines"></div>
   <div class="ph-bg">MAQUETTE</div>
   <div class="ph-inner">
-    <div class="ph-label">
-      <span class="ph-label-line"></span>
-      Gratuit · Sans engagement · Réponse sous 48h
+    <div class="ph-top">
+      <div class="ph-label">
+        <span class="ph-label-line"></span>
+        Gratuit · Sans engagement · Réponse sous 48h
+      </div>
+      <h1 class="ph-title">
+        <span class="ln"><span>VOTRE MAQUETTE,</span></span>
+        <span class="ln"><span class="outline">GRATUITE.</span></span>
+      </h1>
+      <p class="ph-sub">
+        Création de site ou refonte — choisissez votre demande ci-dessous.
+        <strong>Je vous recontacte par mail sous 48h</strong> pour affiner ensemble vos attentes avant de lancer la maquette.
+      </p>
     </div>
-    <h1 class="ph-title">
-      <span class="ln"><span>VOTRE MAQUETTE,</span></span>
-      <span class="ln"><span class="outline">GRATUITE.</span></span>
-    </h1>
-    <p class="ph-sub">
-      Création de site ou refonte — remplissez le formulaire correspondant.
-      <strong>Avant de lancer la maquette, je vous recontacte par mail sous 48h</strong> pour affiner ensemble vos attentes et vos envies.
-    </p>
+    <div class="ph-toggle-wrap">
+      <div class="ph-toggle-label">Choisissez votre demande</div>
+      <div class="toggle-wrap" id="toggleWrap">
+        <div class="t-slider" id="slider"></div>
+        <div class="t-opt on" id="opt1" data-target="creation">Création de site</div>
+        <div class="t-div"></div>
+        <div class="t-opt off" id="opt2" data-target="refonte">Refonte de site</div>
+      </div>
+    </div>
   </div>
-  <a href="#formulaire" class="scroll-ind" aria-label="Accéder au formulaire">
-    <span>Remplir le formulaire</span>
-    <div class="scroll-arrow">
-      <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M4 9l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </div>
-  </a>
 </section>
 
-<div class="toggle-section" id="formulaire">
-  <div class="toggle-inner">
-    <div class="toggle-label reveal">Choisissez votre demande</div>
-    <div class="toggle-wrap reveal rd1" id="toggleWrap">
-      <div class="t-slider" id="slider"></div>
-      <div class="t-opt on" id="opt1" data-target="creation">Création de site</div>
-      <div class="t-div"></div>
-      <div class="t-opt off" id="opt2" data-target="refonte">Refonte de site</div>
-    </div>
+<div class="mq-strip">
+  <div class="mq-track">
+    <div class="mq-item"><span class="mq-dot"></span>100% gratuit</div>
+    <div class="mq-item"><span class="mq-dot"></span>Aucun engagement</div>
+    <div class="mq-item"><span class="mq-dot"></span>Réponse sous 48h</div>
+    <div class="mq-item"><span class="mq-dot"></span>Échange personnalisé</div>
+    <div class="mq-item"><span class="mq-dot"></span>Maquette avant développement</div>
+    <div class="mq-item"><span class="mq-dot"></span>Zéro frais cachés</div>
+    <div class="mq-item"><span class="mq-dot"></span>100% gratuit</div>
+    <div class="mq-item"><span class="mq-dot"></span>Aucun engagement</div>
+    <div class="mq-item"><span class="mq-dot"></span>Réponse sous 48h</div>
+    <div class="mq-item"><span class="mq-dot"></span>Échange personnalisé</div>
+    <div class="mq-item"><span class="mq-dot"></span>Maquette avant développement</div>
+    <div class="mq-item"><span class="mq-dot"></span>Zéro frais cachés</div>
   </div>
 </div>
 
-<section class="form-section">
+<section class="form-section" id="formulaire">
   <div class="form-inner">
 
     <div class="form-panel active" id="panel-creation">
@@ -328,7 +325,6 @@
           Remplissez ce formulaire et <strong>je vous recontacte sous 48h par mail</strong> pour affiner ensemble votre projet avant de lancer la maquette.
         </p>
       </div>
-
       <div class="form-notice reveal">
         <div class="notice-icon">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
@@ -337,10 +333,8 @@
           <strong>Comment ça se passe ?</strong> Une fois ce formulaire envoyé, je vous écris par mail sous 48h pour mieux cerner vos attentes, votre style, vos références. C'est seulement après cet échange que je lance la maquette — pour qu'elle vous ressemble vraiment.
         </p>
       </div>
-
       <form id="form-creation" action="https://formspree.io/f/mqewybna" method="POST">
         <input type="hidden" name="_subject" value="[Amiri Studio] Nouvelle demande — Création de site"/>
-
         <div class="fields-grid reveal">
           <div class="field">
             <label for="c-prenom">Prénom *</label>
@@ -351,7 +345,6 @@
             <input type="text" id="c-nom" name="nom_societe" placeholder="Dupont ou Boulangerie Martin" required/>
           </div>
         </div>
-
         <div class="fields-grid reveal">
           <div class="field">
             <label for="c-email">Adresse e-mail *</label>
@@ -362,7 +355,6 @@
             <input type="tel" id="c-tel" name="telephone" placeholder="06 00 00 00 00" required/>
           </div>
         </div>
-
         <div class="fields-grid full reveal">
           <div class="field">
             <label for="c-activite">Type d'activité *</label>
@@ -380,7 +372,6 @@
             </select>
           </div>
         </div>
-
         <div class="fields-grid full reveal">
           <div class="field">
             <label>Quelle offre vous intéresse ?</label>
@@ -409,14 +400,12 @@
             </div>
           </div>
         </div>
-
         <div class="fields-grid full reveal">
           <div class="field">
             <label for="c-message">Ce que vous attendez de votre site</label>
             <textarea id="c-message" name="message" placeholder="Décrivez brièvement votre activité, ce que vous souhaitez mettre en avant, vos références visuelles si vous en avez…"></textarea>
           </div>
         </div>
-
         <div class="form-submit reveal">
           <button type="submit" class="btn-submit">
             Envoyer ma demande
@@ -425,7 +414,6 @@
           <p class="submit-note">Je vous recontacte sous 48h · Maquette entièrement gratuite · Aucun engagement</p>
         </div>
       </form>
-
       <div class="form-success" id="success-creation">
         <div class="success-icon">✓</div>
         <div class="success-title">MESSAGE ENVOYÉ.</div>
@@ -442,7 +430,6 @@
           Partagez-le moi et <strong>je vous recontacte sous 48h par mail</strong> pour analyser ensemble ce qui peut être amélioré.
         </p>
       </div>
-
       <div class="form-notice reveal">
         <div class="notice-icon">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
@@ -451,10 +438,8 @@
           <strong>Tarif sur devis.</strong> Le prix d'une refonte dépend de la complexité de l'existant et du niveau de refonte souhaité. Après réception de votre formulaire, je vous écris sous 48h pour analyser votre site et vous faire une proposition claire — avant tout engagement.
         </p>
       </div>
-
       <form id="form-refonte" action="https://formspree.io/f/mqewybna" method="POST">
         <input type="hidden" name="_subject" value="[Amiri Studio] Nouvelle demande — Refonte de site"/>
-
         <div class="fields-grid reveal">
           <div class="field">
             <label for="r-prenom">Prénom *</label>
@@ -465,7 +450,6 @@
             <input type="text" id="r-nom" name="nom_societe" placeholder="Dupont ou Boulangerie Martin" required/>
           </div>
         </div>
-
         <div class="fields-grid reveal">
           <div class="field">
             <label for="r-email">Adresse e-mail *</label>
@@ -476,7 +460,6 @@
             <input type="tel" id="r-tel" name="telephone" placeholder="06 00 00 00 00" required/>
           </div>
         </div>
-
         <div class="fields-grid full reveal">
           <div class="field">
             <label for="r-activite">Type d'activité *</label>
@@ -494,28 +477,24 @@
             </select>
           </div>
         </div>
-
         <div class="fields-grid full reveal">
           <div class="field">
             <label for="r-lien">Lien de votre site actuel *</label>
             <input type="url" id="r-lien" name="lien_site_actuel" placeholder="https://monsite.fr" required/>
           </div>
         </div>
-
         <div class="fields-grid full reveal">
           <div class="field">
             <label for="r-problemes">Ce qui ne va pas avec votre site actuel *</label>
             <textarea id="r-problemes" name="problemes_actuels" placeholder="Design vieilli, pas adapté au mobile, lent à charger, mal référencé sur Google, ne reflète plus votre activité…" required></textarea>
           </div>
         </div>
-
         <div class="fields-grid full reveal">
           <div class="field">
             <label for="r-attentes">Ce que vous attendez de la nouvelle version *</label>
             <textarea id="r-attentes" name="attentes_refonte" placeholder="Un design moderne, plus de clients via Google, une meilleure présentation de vos services, un formulaire de contact qui fonctionne…" required></textarea>
           </div>
         </div>
-
         <div class="form-submit reveal">
           <button type="submit" class="btn-submit">
             Envoyer ma demande
@@ -524,7 +503,6 @@
           <p class="submit-note">Je vous recontacte sous 48h · Tarif sur devis · Aucun engagement</p>
         </div>
       </form>
-
       <div class="form-success" id="success-refonte">
         <div class="success-icon">✓</div>
         <div class="success-title">MESSAGE ENVOYÉ.</div>
@@ -584,18 +562,16 @@
 </footer>
 
 <script>
- window.addEventListener('scroll',()=>{const p=(scrollY/(document.documentElement.scrollHeight-innerHeight))*100;document.getElementById('progress-bar').style.height=p+'%';},{passive:true});
-const cur=document.getElementById('cursor');
-let mx=0,my=0,cx=0,cy=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
-(function animC(){cx+=(mx-cx)*.14;cy+=(my-cy)*.14;cur.style.left=cx+'px';cur.style.top=cy+'px';requestAnimationFrame(animC);})();
-document.querySelectorAll('a,button,.offre-pill label,.t-opt').forEach(el=>{
-  el.addEventListener('mouseenter',()=>cur.classList.add('big'));
-  el.addEventListener('mouseleave',()=>cur.classList.remove('big'));
-});
+const sbThumb=document.getElementById('sbThumb');
+const sbTrack=document.querySelector('.sb-track');
+window.addEventListener('scroll',()=>{
+  const p=scrollY/(document.documentElement.scrollHeight-innerHeight);
+  const trackH=sbTrack.offsetHeight;
+  const thumbH=sbThumb.offsetHeight;
+  sbThumb.style.top=(p*(trackH-thumbH))+'px';
+  document.getElementById('nav').classList.toggle('sc',scrollY>50);
+},{passive:true});
 
-const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>nav.classList.toggle('sc',scrollY>50),{passive:true});
 document.getElementById('hmbg').addEventListener('click',()=>{
   const o=document.getElementById('mobMenu').classList.toggle('open');
   document.body.style.overflow=o?'hidden':'';
@@ -616,11 +592,8 @@ function positionSlider(el){
   slider.style.left=el.offsetLeft+'px';
   slider.style.width=el.offsetWidth+'px';
 }
-
 window.addEventListener('load',()=>positionSlider(opt1));
-window.addEventListener('resize',()=>{
-  positionSlider(opt1.classList.contains('on')?opt1:opt2);
-});
+window.addEventListener('resize',()=>{positionSlider(opt1.classList.contains('on')?opt1:opt2);});
 
 function switchTo(target){
   const isCreation=target==='creation';
@@ -629,13 +602,8 @@ function switchTo(target){
   opt2.classList.toggle('on',!isCreation);
   opt2.classList.toggle('off',isCreation);
   positionSlider(isCreation?opt1:opt2);
-  panels.forEach(p=>{
-    p.classList.toggle('active',p.id==='panel-'+target);
-  });
-  document.querySelectorAll('#panel-'+target+' .reveal').forEach(el=>{
-    el.classList.remove('vis');
-    io.observe(el);
-  });
+  panels.forEach(p=>{p.classList.toggle('active',p.id==='panel-'+target);});
+  document.querySelectorAll('#panel-'+target+' .reveal').forEach(el=>{el.classList.remove('vis');io.observe(el);});
   document.getElementById('formulaire').scrollIntoView({behavior:'smooth',block:'start'});
 }
 
@@ -654,11 +622,7 @@ function handleForm(formId,successId){
     btn.textContent='Envoi en cours…';
     btn.disabled=true;
     try{
-      const res=await fetch(form.action,{
-        method:'POST',
-        body:new FormData(form),
-        headers:{Accept:'application/json'}
-      });
+      const res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
       if(res.ok){
         form.style.display='none';
         document.getElementById(successId).classList.add('show');
