@@ -30,7 +30,6 @@
   <meta name="geo.placename" content="Bretagne, France"/>
   <meta name="ICBM" content="48.2020, -2.9326"/>
   <link rel="apple-touch-icon" href="images/logo.png"/>
-
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -71,31 +70,14 @@
         "@type": "Service",
         "name": "Création de site vitrine sur-mesure",
         "description": "Création de sites vitrines professionnels pour commerçants, artisans, restaurants et indépendants en Bretagne. Maquette gratuite avant tout développement.",
-        "provider": {
-          "@type": "LocalBusiness",
-          "name": "Amiri Studio",
-          "url": "https://amiristudio.fr"
-        },
+        "provider": { "@type": "LocalBusiness", "name": "Amiri Studio", "url": "https://amiristudio.fr" },
         "areaServed": [
           { "@type": "State", "name": "Bretagne" },
           { "@type": "Country", "name": "France" }
         ],
         "offers": [
-         
-          {
-            "@type": "Offer",
-            "name": "Site Vitrine",
-            "price": "100",
-            "priceCurrency": "EUR",
-            "description": "Site vitrine 2-3 pages pour commerçants et indépendants."
-          },
-          {
-            "@type": "Offer",
-            "name": "Site Pro",
-            "price": "200",
-            "priceCurrency": "EUR",
-            "description": "Site professionnel 5 pages avec SEO local optimisé."
-          }
+          { "@type": "Offer", "name": "Site Vitrine", "price": "100", "priceCurrency": "EUR", "description": "Site vitrine 2-3 pages pour commerçants et indépendants." },
+          { "@type": "Offer", "name": "Site Pro", "price": "250", "priceCurrency": "EUR", "description": "Site professionnel 5 pages avec SEO local optimisé." }
         ]
       },
       {
@@ -104,33 +86,23 @@
           {
             "@type": "Question",
             "name": "La maquette de site web est-elle vraiment gratuite ?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Oui, entièrement gratuite et sans engagement. Amiri Studio vous envoie une maquette visuelle complète avant tout développement. Vous décidez ensuite si vous souhaitez aller plus loin."
-            }
+            "acceptedAnswer": { "@type": "Answer", "text": "Oui, entièrement gratuite et sans engagement. Amiri Studio vous envoie une maquette visuelle complète avant tout développement. Vous décidez ensuite si vous souhaitez aller plus loin." }
           },
           {
             "@type": "Question",
             "name": "Combien de temps faut-il pour recevoir une maquette ?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Après réception de votre formulaire, Amiri Studio vous recontacte par mail sous 48h pour affiner vos attentes. La maquette est ensuite réalisée rapidement selon les échanges."
-            }
+            "acceptedAnswer": { "@type": "Answer", "text": "Après réception de votre formulaire, Amiri Studio vous recontacte par mail sous 48h pour affiner vos attentes. La maquette est ensuite réalisée rapidement selon les échanges." }
           },
           {
             "@type": "Question",
-            "name": "Amiri Studio réalise-t-il des refonte de sites existants ?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Oui. Amiri Studio propose des refontes de sites web sur devis. Partagez votre site actuel via le formulaire et une proposition adaptée vous sera faite sous 48h."
-            }
+            "name": "Amiri Studio réalise-t-il des refontes de sites existants ?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Oui. Amiri Studio propose des refontes de sites web sur devis. Partagez votre site actuel via le formulaire et une proposition adaptée vous sera faite sous 48h." }
           }
         ]
       }
     ]
   }
   </script>
-
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
@@ -145,10 +117,8 @@
     body{background:var(--black);color:var(--white);font-family:var(--fb);font-size:16px;line-height:1.6;overflow-x:hidden;cursor:none;}
     a{color:inherit;text-decoration:none;}img{display:block;max-width:100%;}ul{list-style:none;}
     body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.028'/%3E%3C/svg%3E");pointer-events:none;z-index:9998;}
-
     #cursor{width:10px;height:10px;background:var(--white);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s;mix-blend-mode:difference;}
     #cursor.big{width:44px;height:44px;}
-
     nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:1.6rem 5vw;transition:padding .4s,background .4s,border-color .4s;border-bottom:1px solid transparent;}
     nav.sc{padding:1rem 5vw;background:rgba(8,8,8,.93);backdrop-filter:blur(20px);border-color:var(--border);}
     .n-logo{display:flex;align-items:center;gap:.7rem;}
@@ -169,12 +139,10 @@
     .mob-menu.open{display:flex;}
     .mob-menu a{font-family:var(--fd);font-size:3rem;letter-spacing:.05em;color:var(--muted);transition:color .2s;}
     .mob-menu a:hover{color:var(--white);}
-
     .outline{-webkit-text-stroke:1px rgba(255,255,255,.25);color:transparent;}
     .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);}
     .reveal.vis{opacity:1;transform:none;}
     .rd1{transition-delay:.1s;}.rd2{transition-delay:.2s;}
-
     .page-hero{min-height:48vh;display:flex;align-items:flex-end;padding:0 5vw 5rem;position:relative;overflow:hidden;}
     .ph-lines{position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 79px,rgba(255,255,255,.025) 79px,rgba(255,255,255,.025) 80px);pointer-events:none;}
     .ph-bg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--fd);font-size:clamp(120px,20vw,380px);color:rgba(255,255,255,.016);pointer-events:none;user-select:none;white-space:nowrap;}
@@ -190,20 +158,17 @@
     .ph-sub strong{color:var(--white);font-weight:500;}
     @keyframes slideUp{to{transform:translateY(0);}}
     @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
-
+    .scroll-ind{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;opacity:0;animation:fadeIn 1s 1.4s forwards;z-index:3;text-decoration:none;}
+    .scroll-ind span{font-family:var(--fm);font-size:.6rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;}
+    .scroll-arrow{width:28px;height:28px;border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;animation:bounce 2s ease-in-out infinite;}
+    .scroll-arrow svg{color:var(--muted);}
+    @keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(5px);}}
+    @keyframes fadeIn{to{opacity:1;}}
     .mq-strip{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:.9rem 0;overflow:hidden;background:var(--grey);}
     .mq-track{display:flex;gap:3rem;width:max-content;animation:mq 22s linear infinite;}
     @keyframes mq{from{transform:translateX(0);}to{transform:translateX(-50%);}}
     .mq-item{display:flex;align-items:center;gap:.6rem;font-family:var(--fm);font-size:.68rem;color:var(--muted);letter-spacing:.06em;white-space:nowrap;text-transform:uppercase;}
     .mq-dot{width:3px;height:3px;background:var(--muted);border-radius:50%;}
-
-    .reassurance{padding:3.5rem 5vw;border-bottom:1px solid var(--border);}
-    .reassurance-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);}
-    .r-item{background:var(--black);padding:1.75rem 2rem;display:flex;align-items:flex-start;gap:1rem;}
-    .r-icon{width:36px;height:36px;border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;color:var(--white);flex-shrink:0;}
-    .r-title{font-family:var(--fd);font-size:1.1rem;letter-spacing:.03em;margin-bottom:.25rem;}
-    .r-desc{font-size:.78rem;color:var(--muted);font-weight:300;line-height:1.5;}
-
     .toggle-section{padding:5rem 5vw 0;}
     .toggle-inner{max-width:860px;margin:0 auto;}
     .toggle-label{font-family:var(--fm);font-size:.66rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;text-align:center;margin-bottom:2rem;}
@@ -213,8 +178,7 @@
     .t-opt.off{color:var(--muted);}
     .t-slider{position:absolute;top:0;bottom:0;background:var(--white);transition:left .35s cubic-bezier(.16,1,.3,1),width .35s cubic-bezier(.16,1,.3,1);z-index:0;}
     .t-div{width:1px;background:var(--border2);align-self:stretch;flex-shrink:0;}
-
-    .form-section{padding:4rem 5vw 8rem;}
+    .form-section{padding:4rem 5vw 0;}
     .form-inner{max-width:860px;margin:0 auto;}
     .form-panel{display:none;}
     .form-panel.active{display:block;}
@@ -257,8 +221,12 @@
     .success-icon{font-family:var(--fd);font-size:4rem;color:var(--white);opacity:.15;margin-bottom:1rem;}
     .success-title{font-family:var(--fd);font-size:2.5rem;letter-spacing:.03em;margin-bottom:.75rem;}
     .success-desc{font-size:.875rem;color:var(--muted);font-weight:300;line-height:1.7;max-width:400px;margin:0 auto;}
-    .form-sep{height:1px;background:var(--border);margin:2rem 0;}
-
+    .reassurance{padding:3.5rem 5vw 8rem;}
+    .reassurance-inner{max-width:860px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);}
+    .r-item{background:var(--black);padding:1.75rem 2rem;display:flex;align-items:flex-start;gap:1rem;}
+    .r-icon{width:36px;height:36px;border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;color:var(--white);flex-shrink:0;}
+    .r-title{font-family:var(--fd);font-size:1.1rem;letter-spacing:.03em;margin-bottom:.25rem;}
+    .r-desc{font-size:.78rem;color:var(--muted);font-weight:300;line-height:1.5;}
     footer{padding:2rem 5vw;border-top:1px solid var(--border);}
     .ft-in{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
     .ft-logo{display:flex;align-items:center;gap:.6rem;font-family:var(--fd);font-size:1.1rem;letter-spacing:.05em;}
@@ -267,7 +235,6 @@
     .ft-links a{font-family:var(--fm);font-size:.65rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;transition:color .2s;cursor:none;}
     .ft-links a:hover{color:var(--white);}
     .ft-cp{font-family:var(--fm);font-size:.62rem;color:var(--muted);}
-
     @media(max-width:768px){
       body{cursor:auto;}#cursor{display:none;}
       .n-links{display:none;}.hmbg{display:flex;}
@@ -277,6 +244,7 @@
       .offre-pill label{min-width:unset;}
       .t-opt{padding:.85rem 1.5rem;font-size:.95rem;}
       .ft-in{flex-direction:column;}
+      .scroll-ind{display:none;}
     }
   </style>
 </head>
@@ -326,6 +294,12 @@
       <strong>Avant de lancer la maquette, je vous recontacte par mail sous 48h</strong> pour affiner ensemble vos attentes et vos envies.
     </p>
   </div>
+  <a href="#formulaire" class="scroll-ind" aria-label="Accéder au formulaire">
+    <span>Remplir le formulaire</span>
+    <div class="scroll-arrow">
+      <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M4 9l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+  </a>
 </section>
 
 <div class="mq-strip">
@@ -345,39 +319,7 @@
   </div>
 </div>
 
-<div class="reassurance">
-  <div class="reassurance-inner">
-    <div class="r-item reveal">
-      <div class="r-icon">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      </div>
-      <div>
-        <div class="r-title">MAQUETTE OFFERTE</div>
-        <p class="r-desc">Vous recevez un aperçu visuel complet de votre futur site. Entièrement gratuit, sans condition.</p>
-      </div>
-    </div>
-    <div class="r-item reveal rd1">
-      <div class="r-icon">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-      </div>
-      <div>
-        <div class="r-title">RÉPONSE SOUS 48H</div>
-        <p class="r-desc">Je vous recontacte par mail sous 48h pour échanger sur votre projet avant de lancer la maquette.</p>
-      </div>
-    </div>
-    <div class="r-item reveal rd2">
-      <div class="r-icon">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 6L9 17l-5-5"/></svg>
-      </div>
-      <div>
-        <div class="r-title">ZÉRO ENGAGEMENT</div>
-        <p class="r-desc">Vous validez la maquette avant de payer quoi que ce soit. Si elle ne vous convient pas, vous ne devez rien.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="toggle-section">
+<div class="toggle-section" id="formulaire">
   <div class="toggle-inner">
     <div class="toggle-label reveal">Choisissez votre demande</div>
     <div class="toggle-wrap reveal rd1" id="toggleWrap">
@@ -411,7 +353,7 @@
         </p>
       </div>
 
-      <form id="form-creation" action="https://formspree.io/f/mqewybna">
+      <form id="form-creation" action="https://formspree.io/f/mqewybna" method="POST">
         <input type="hidden" name="_subject" value="[Amiri Studio] Nouvelle demande — Création de site"/>
 
         <div class="fields-grid reveal">
@@ -454,7 +396,10 @@
           </div>
         </div>
 
-        
+        <div class="fields-grid full reveal">
+          <div class="field">
+            <label>Quelle offre vous intéresse ?</label>
+            <div class="offre-group">
               <div class="offre-pill">
                 <input type="radio" id="o-vitrine" name="offre" value="Site Vitrine — 100€"/>
                 <label for="o-vitrine">
@@ -463,10 +408,10 @@
                 </label>
               </div>
               <div class="offre-pill">
-                <input type="radio" id="o-pro" name="offre" value="Site Pro — 200€"/>
+                <input type="radio" id="o-pro" name="offre" value="Site Pro — 250€"/>
                 <label for="o-pro">
                   <span class="pill-name">SITE PRO</span>
-                  <span class="pill-price">200€ · 5 pages</span>
+                  <span class="pill-price">250€ · 5 pages</span>
                 </label>
               </div>
               <div class="offre-pill">
@@ -498,8 +443,8 @@
 
       <div class="form-success" id="success-creation">
         <div class="success-icon">✓</div>
-        <div class="success-title">DEMANDE REÇUE.</div>
-        <p class="success-desc">Merci ! Je vous recontacte par mail sous 48h pour échanger sur votre projet avant de lancer la maquette.</p>
+        <div class="success-title">MESSAGE ENVOYÉ.</div>
+        <p class="success-desc">Votre demande a bien été reçue. Je vous recontacte par mail sous 48h pour échanger sur votre projet avant de lancer la maquette.</p>
       </div>
     </div>
 
@@ -522,7 +467,7 @@
         </p>
       </div>
 
-      <form id="form-refonte" action="https://formspree.io/f/mqewybna">
+      <form id="form-refonte" action="https://formspree.io/f/mqewybna" method="POST">
         <input type="hidden" name="_subject" value="[Amiri Studio] Nouvelle demande — Refonte de site"/>
 
         <div class="fields-grid reveal">
@@ -597,13 +542,45 @@
 
       <div class="form-success" id="success-refonte">
         <div class="success-icon">✓</div>
-        <div class="success-title">DEMANDE REÇUE.</div>
-        <p class="success-desc">Merci ! Je vous recontacte par mail sous 48h pour analyser votre site existant et vous faire une proposition adaptée.</p>
+        <div class="success-title">MESSAGE ENVOYÉ.</div>
+        <p class="success-desc">Votre demande a bien été reçue. Je vous recontacte par mail sous 48h pour analyser votre site existant et vous faire une proposition adaptée.</p>
       </div>
     </div>
 
   </div>
 </section>
+
+<div class="reassurance">
+  <div class="reassurance-inner">
+    <div class="r-item reveal">
+      <div class="r-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div>
+        <div class="r-title">MAQUETTE OFFERTE</div>
+        <p class="r-desc">Vous recevez un aperçu visuel complet de votre futur site. Entièrement gratuit, sans condition.</p>
+      </div>
+    </div>
+    <div class="r-item reveal rd1">
+      <div class="r-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      </div>
+      <div>
+        <div class="r-title">RÉPONSE SOUS 48H</div>
+        <p class="r-desc">Je vous recontacte par mail sous 48h pour échanger sur votre projet avant de lancer la maquette.</p>
+      </div>
+    </div>
+    <div class="r-item reveal rd2">
+      <div class="r-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 6L9 17l-5-5"/></svg>
+      </div>
+      <div>
+        <div class="r-title">ZÉRO ENGAGEMENT</div>
+        <p class="r-desc">Vous validez la maquette avant de payer quoi que ce soit. Si elle ne vous convient pas, vous ne devez rien.</p>
+      </div>
+    </div>
+  </div>
+</div>
 
 <footer>
   <div class="ft-in">
@@ -673,6 +650,7 @@ function switchTo(target){
     el.classList.remove('vis');
     io.observe(el);
   });
+  document.getElementById('formulaire').scrollIntoView({behavior:'smooth',block:'start'});
 }
 
 opt1.addEventListener('click',()=>switchTo('creation'));
