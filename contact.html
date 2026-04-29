@@ -101,9 +101,10 @@
     body{background:var(--black);color:var(--white);font-family:var(--fb);font-size:16px;line-height:1.6;overflow-x:hidden;cursor:auto;}
     a{color:inherit;text-decoration:none;}img{display:block;max-width:100%;}ul{list-style:none;}
     body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.028'/%3E%3C/svg%3E");pointer-events:none;z-index:9998;}
+Change les `width:6px` en `width:10px` aux deux endroits — et aussi `right:6px` en `right:4px` pour recentrer la piste :
 
-    .sb-track{position:fixed;right:6px;top:50%;transform:translateY(-50%);width:6px;height:60vh;background:rgba(255,255,255,.1);border-radius:99px;z-index:9997;}
-    .sb-thumb{position:absolute;left:0;right:0;background:#fff;border-radius:99px;width:6px;height:40px;top:0;transition:top .08s linear;}
+  .sb-track{position:fixed;right:4px;top:50%;transform:translateY(-50%);width:10px;height:60vh;background:rgba(255,255,255,.1);border-radius:99px;z-index:9997;}
+  .sb-thumb{position:absolute;left:0;right:0;background:#fff;border-radius:99px;width:10px;height:40px;top:0;transition:top .08s linear;}
 
     nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:1.6rem 5vw;transition:padding .4s,background .4s,border-color .4s;border-bottom:1px solid transparent;cursor:auto;}
     nav.sc{padding:1rem 5vw;background:rgba(8,8,8,.93);backdrop-filter:blur(20px);border-color:var(--border);}
