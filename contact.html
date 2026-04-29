@@ -107,6 +107,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
   <style>
+    #progress-bar{position:fixed;top:0;left:0;height:2px;background:var(--white);z-index:9999;width:0%;transition:width .1s linear;}
     :root{
       --black:#080808;--white:#f5f2ed;--grey:#141414;--grey2:#1c1c1c;
       --muted:#999;--border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.15);
@@ -249,7 +250,7 @@
   </style>
 </head>
 <body>
-
+<div id="progress-bar"></div>
 <div id="cursor"></div>
 
 <nav id="nav">
@@ -582,6 +583,7 @@
 </footer>
 
 <script>
+  window.addEventListener('scroll',()=>{const p=(scrollY/(document.documentElement.scrollHeight-innerHeight))*100;document.getElementById('progress-bar').style.width=p+'%';},{passive:true});
 const cur=document.getElementById('cursor');
 let mx=0,my=0,cx=0,cy=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
