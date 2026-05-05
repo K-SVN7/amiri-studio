@@ -91,50 +91,32 @@
           {
             "@type": "Question",
             "name": "Comment se passe le paiement ?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Vous ne payez rien avant d'avoir validé votre maquette. Une fois la maquette approuvée, un lien de paiement sécurisé vous est envoyé. Le règlement s'effectue en une seule fois, avant le développement final."
-            }
+            "acceptedAnswer": { "@type": "Answer", "text": "Vous ne payez rien avant d'avoir validé votre maquette. Une fois la maquette approuvée, un lien de paiement sécurisé vous est envoyé. Le règlement s'effectue en une seule fois, avant le développement final." }
           },
           {
             "@type": "Question",
             "name": "Combien de temps faut-il pour livrer un site web ?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "La maquette est envoyée sous 3 à 5 jours après l'échange initial. Une fois validée, le développement prend 3 à 7 jours selon la complexité. Le site peut être en ligne en moins de deux semaines."
-            }
+            "acceptedAnswer": { "@type": "Answer", "text": "La maquette est envoyée sous 3 à 5 jours après l'échange initial. Une fois validée, le développement prend 3 à 7 jours selon la complexité. Le site peut être en ligne en moins de deux semaines." }
           },
           {
             "@type": "Question",
             "name": "Que se passe-t-il si la maquette ne me convient pas ?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Les révisions sur la maquette sont incluses et illimitées. Si vous décidez finalement de ne pas donner suite, vous ne payez rien — la maquette est entièrement gratuite."
-            }
+            "acceptedAnswer": { "@type": "Answer", "text": "Les révisions sur la maquette sont incluses et illimitées. Si vous décidez finalement de ne pas donner suite, vous ne payez rien — la maquette est entièrement gratuite." }
           },
           {
             "@type": "Question",
             "name": "Le nom de domaine est-il inclus dans le prix ?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "L'hébergement Vercel et le certificat SSL sont inclus dans toutes les formules. Le nom de domaine (ex : monentreprise.fr) est à votre charge — environ 10 à 15€/an. La configuration est prise en charge."
-            }
+            "acceptedAnswer": { "@type": "Answer", "text": "L'hébergement Vercel et le certificat SSL sont inclus dans toutes les formules. Le nom de domaine (ex : monentreprise.fr) est à votre charge — environ 10 à 15€/an. La configuration est prise en charge." }
           },
           {
             "@type": "Question",
             "name": "Puis-je modifier mon site après la livraison ?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Oui. Les petites modifications (textes, horaires, photos) sont gratuites dans les 30 jours suivant la livraison. Une option interface admin Firebase permet également de modifier certains contenus de façon autonome."
-            }
+            "acceptedAnswer": { "@type": "Answer", "text": "Oui. Les petites modifications (textes, horaires, photos) sont gratuites dans les 30 jours suivant la livraison. Une option interface admin Firebase permet également de modifier certains contenus de façon autonome." }
           },
           {
             "@type": "Question",
             "name": "Proposez-vous la refonte de sites web existants ?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Oui. Amiri Studio propose des refontes complètes de sites existants sur devis. Le tarif dépend de la complexité de l'existant et du niveau de refonte souhaité. Maquette offerte avant tout développement."
-            }
+            "acceptedAnswer": { "@type": "Answer", "text": "Oui. Amiri Studio propose des refontes complètes de sites existants sur devis. Le tarif dépend de la complexité de l'existant et du niveau de refonte souhaité. Maquette offerte avant tout développement." }
           }
         ]
       }
@@ -153,13 +135,13 @@
     }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{scroll-behavior:smooth;}
-    body{background:var(--black);color:var(--white);font-family:var(--fb);font-size:16px;line-height:1.6;overflow-x:hidden;cursor:none;}
+    body{background:var(--black);color:var(--white);font-family:var(--fb);font-size:16px;line-height:1.6;overflow-x:hidden;cursor:auto;}
     a{color:inherit;text-decoration:none;}img{display:block;max-width:100%;}ul{list-style:none;}
 
     body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.028'/%3E%3C/svg%3E");pointer-events:none;z-index:9998;}
 
-    #cursor{width:10px;height:10px;background:var(--white);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s;mix-blend-mode:difference;}
-    #cursor.big{width:44px;height:44px;}
+    .sb-track{position:fixed;right:4px;top:50%;transform:translateY(-50%);width:10px;height:60vh;background:rgba(255,255,255,.1);border-radius:99px;z-index:9997;}
+    .sb-thumb{position:absolute;left:0;right:0;background:#fff;border-radius:99px;width:10px;height:40px;top:0;transition:top .08s linear;}
 
     nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:1.6rem 5vw;transition:padding .4s,background .4s,border-color .4s;border-bottom:1px solid transparent;}
     nav.sc{padding:1rem 5vw;background:rgba(8,8,8,.93);backdrop-filter:blur(20px);border-color:var(--border);}
@@ -176,7 +158,7 @@
     .n-cta{border:1px solid rgba(255,255,255,.3)!important;color:var(--white)!important;padding:.5rem 1.4rem;border-radius:2rem;transition:background .25s,color .25s!important;}
     .n-cta::after{display:none!important;}
     .n-cta:hover{background:var(--white)!important;color:var(--black)!important;}
-    .hmbg{display:none;background:none;border:none;cursor:none;flex-direction:column;gap:5px;padding:4px;}
+    .hmbg{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px;}
     .hmbg span{display:block;width:22px;height:1px;background:var(--white);transition:all .3s;}
     .mob-menu{display:none;position:fixed;inset:0;background:var(--black);z-index:498;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;}
     .mob-menu.open{display:flex;}
@@ -189,11 +171,11 @@
     .reveal.vis{opacity:1;transform:none;}
     .rd1{transition-delay:.1s;}.rd2{transition-delay:.2s;}.rd3{transition-delay:.3s;}.rd4{transition-delay:.4s;}
     .outline{-webkit-text-stroke:1px rgba(255,255,255,.25);color:transparent;}
-    .btn-w{display:inline-flex;align-items:center;gap:.7rem;background:var(--white);color:var(--black);font-family:var(--fb);font-weight:600;font-size:.875rem;padding:.9rem 2rem;border:1px solid var(--white);cursor:none;transition:background .25s,color .25s;letter-spacing:.02em;}
+    .btn-w{display:inline-flex;align-items:center;gap:.7rem;background:var(--white);color:var(--black);font-family:var(--fb);font-weight:600;font-size:.875rem;padding:.9rem 2rem;border:1px solid var(--white);cursor:pointer;transition:background .25s,color .25s;letter-spacing:.02em;}
     .btn-w:hover{background:transparent;color:var(--white);}
     .btn-w svg{transition:transform .25s;}
     .btn-w:hover svg{transform:translateX(4px);}
-    .btn-ghost{display:inline-flex;align-items:center;gap:.5rem;font-size:.75rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;font-family:var(--fm);transition:color .2s;cursor:none;}
+    .btn-ghost{display:inline-flex;align-items:center;gap:.5rem;font-size:.75rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;font-family:var(--fm);transition:color .2s;cursor:pointer;}
     .btn-ghost:hover{color:var(--white);}
     .btn-ghost svg{transition:transform .2s;}
     .btn-ghost:hover svg{transform:translateX(3px);}
@@ -229,16 +211,14 @@
 
     .cards-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border);position:relative;}
 
-    .p-card{background:var(--black);padding:2.5rem 2rem 2rem;position:relative;display:flex;flex-direction:column;transition:background .3s;cursor:none;}
+    .p-card{background:var(--black);padding:2.5rem 2rem 2rem;position:relative;display:flex;flex-direction:column;transition:background .3s;cursor:default;}
     .p-card:hover{background:var(--grey);}
-
     .p-card.featured{background:var(--white);color:var(--black);}
     .p-card.featured:hover{background:#ede9e3;}
     .p-card.featured .p-num{color:rgba(0,0,0,.25);}
     .p-card.featured .p-name{color:var(--black);}
     .p-card.featured .p-price{color:var(--black);}
     .p-card.featured .p-desc{color:rgba(0,0,0,.6);}
-    .p-card.featured .p-badge{background:var(--black);color:var(--white);}
     .p-card.featured .feat-line{background:rgba(0,0,0,.12);}
     .p-card.featured .feat-item{color:rgba(0,0,0,.7);}
     .p-card.featured .feat-item svg{color:var(--black);}
@@ -251,24 +231,18 @@
 
     .p-num{font-family:var(--fm);font-size:.62rem;color:var(--muted);letter-spacing:.1em;margin-bottom:1.5rem;}
     .p-name{font-family:var(--fd);font-size:1.5rem;letter-spacing:.04em;margin-bottom:1rem;}
-
     .p-price-wrap{margin-bottom:1.25rem;}
     .p-price{font-family:var(--fd);font-size:4.5rem;line-height:1;letter-spacing:-.02em;}
     .p-price-sub{font-family:var(--fm);font-size:.65rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-top:.2rem;}
     .p-card.featured .p-price-sub{color:rgba(0,0,0,.45);}
-
     .p-desc{font-size:.82rem;color:var(--muted);line-height:1.65;font-weight:300;margin-bottom:1.75rem;flex-grow:1;}
-
     .feat-line{height:1px;background:var(--border);margin-bottom:1.5rem;}
-
     .feat-list{display:flex;flex-direction:column;gap:.75rem;margin-bottom:1.75rem;}
     .feat-item{display:flex;align-items:flex-start;gap:.6rem;font-size:.8rem;color:var(--muted);font-weight:300;line-height:1.45;}
     .feat-item svg{flex-shrink:0;margin-top:2px;color:var(--white);}
     .p-card.featured .feat-item{color:rgba(0,0,0,.7);}
-
     .p-extra{font-family:var(--fm);font-size:.62rem;color:var(--muted);letter-spacing:.06em;padding-top:1rem;border-top:1px solid var(--border);margin-bottom:1.75rem;}
-
-    .btn-feat{display:flex;align-items:center;justify-content:center;gap:.6rem;background:transparent;color:var(--white);border:1px solid var(--border2);font-family:var(--fb);font-weight:600;font-size:.82rem;padding:.85rem 1.5rem;cursor:none;transition:background .25s,color .25s,border-color .25s;letter-spacing:.02em;margin-top:auto;}
+    .btn-feat{display:flex;align-items:center;justify-content:center;gap:.6rem;background:transparent;color:var(--white);border:1px solid var(--border2);font-family:var(--fb);font-weight:600;font-size:.82rem;padding:.85rem 1.5rem;cursor:pointer;transition:background .25s,color .25s,border-color .25s;letter-spacing:.02em;margin-top:auto;}
     .btn-feat:hover{background:var(--white);color:var(--black);border-color:var(--white);}
     .btn-feat svg{transition:transform .25s;}
     .btn-feat:hover svg{transform:translateX(4px);}
@@ -278,32 +252,44 @@
     .table-hd{margin-bottom:4rem;}
     .table-title{font-family:var(--fd);font-size:clamp(2rem,4vw,4.5rem);line-height:.95;margin-bottom:.75rem;}
     .table-sub{font-size:.875rem;color:var(--muted);font-weight:300;max-width:480px;line-height:1.7;}
-
     .comp-table{width:100%;border-collapse:collapse;border:1px solid var(--border);}
     .comp-table th,.comp-table td{padding:1rem 1.25rem;text-align:left;border-bottom:1px solid var(--border);font-size:.82rem;}
     .comp-table thead th{font-family:var(--fd);font-size:1.1rem;letter-spacing:.04em;background:var(--grey);vertical-align:bottom;padding-bottom:1.25rem;}
     .comp-table thead th:first-child{font-family:var(--fm);font-size:.65rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;font-style:normal;}
     .th-featured{background:var(--white)!important;color:var(--black)!important;}
-    .comp-table tbody tr{transition:background .2s;cursor:none;}
+    .comp-table tbody tr{transition:background .2s;cursor:default;}
     .comp-table tbody tr:hover{background:rgba(255,255,255,.025);}
     .comp-table tbody td{color:var(--muted);font-weight:300;vertical-align:middle;}
     .comp-table tbody td:first-child{color:var(--white);font-weight:400;}
-    .td-feat{background:rgba(255,255,255,.03);}
-    .check{color:var(--white);display:flex;align-items:center;}
-    .check-feat{color:var(--black);}
-    .cross{color:rgba(255,255,255,.2);}
     .td-featured-cell{background:#f0ece4;color:var(--black)!important;}
-
     .ic-check{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;background:rgba(255,255,255,.12);border-radius:50%;color:var(--white);}
     .ic-check-feat{background:rgba(0,0,0,.1)!important;color:var(--black)!important;}
     .ic-cross{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;opacity:.25;color:var(--white);}
     .td-featured-cell .ic-check{background:rgba(0,0,0,.1);color:var(--black);}
     .td-featured-cell .ic-cross{color:var(--black);opacity:.3;}
 
+    .maintenance-section{padding:7rem 5vw;border-bottom:1px solid var(--border);}
+    .maintenance-inner{max-width:1200px;margin:0 auto;}
+    .maintenance-hd{margin-bottom:4rem;}
+    .maintenance-title{font-family:var(--fd);font-size:clamp(2rem,4vw,4.5rem);line-height:.95;margin-bottom:.75rem;}
+    .maintenance-sub{font-size:.875rem;color:var(--muted);font-weight:300;max-width:560px;line-height:1.7;}
+    .maintenance-sub strong{color:var(--white);font-weight:500;}
+    .maint-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border);}
+    .maint-card{background:var(--black);padding:2.5rem 2rem;position:relative;transition:background .3s;}
+    .maint-card:hover{background:var(--grey);}
+    .maint-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--white);}
+    .maint-price-wrap{display:flex;align-items:baseline;gap:.5rem;margin-bottom:.35rem;}
+    .maint-price{font-family:var(--fd);font-size:3.5rem;line-height:1;letter-spacing:-.02em;}
+    .maint-period{font-family:var(--fm);font-size:.65rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;}
+    .maint-name{font-family:var(--fd);font-size:1rem;letter-spacing:.06em;color:var(--muted);margin-bottom:1.75rem;}
+    .maint-list{display:flex;flex-direction:column;gap:.75rem;}
+    .maint-item{display:flex;align-items:flex-start;gap:.6rem;font-size:.8rem;color:var(--muted);font-weight:300;line-height:1.45;}
+    .maint-item svg{flex-shrink:0;margin-top:2px;color:var(--white);}
+    .maint-note{margin-top:3rem;padding:1.25rem 1.5rem;border:1px solid var(--border);background:rgba(255,255,255,.02);font-family:var(--fm);font-size:.68rem;color:var(--muted);letter-spacing:.04em;line-height:1.65;}
+    .maint-note strong{color:var(--white);}
+
     .refonte-section{padding:7rem 5vw;border-bottom:1px solid var(--border);}
     .refonte-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;}
-    .ref-label-wrap{display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem;}
-    .ref-badge{font-family:var(--fm);font-size:.62rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--border2);padding:.3rem .75rem;}
     .ref-title{font-family:var(--fd);font-size:clamp(2.5rem,4.5vw,5rem);line-height:.95;margin-bottom:1.5rem;}
     .ref-desc{font-size:.875rem;color:var(--muted);line-height:1.75;font-weight:300;margin-bottom:2rem;}
     .ref-desc strong{color:var(--white);font-weight:500;}
@@ -328,7 +314,7 @@
     .faq-left .faq-title{font-family:var(--fd);font-size:clamp(2rem,4vw,4rem);line-height:.95;margin-bottom:1rem;}
     .faq-left p{font-size:.875rem;color:var(--muted);font-weight:300;line-height:1.7;}
     .faq-list{display:flex;flex-direction:column;gap:0;}
-    .faq-item{border-bottom:1px solid var(--border);cursor:none;}
+    .faq-item{border-bottom:1px solid var(--border);cursor:pointer;}
     .faq-q{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.5rem 0;font-size:.9rem;font-weight:500;transition:color .2s;}
     .faq-item:hover .faq-q{color:var(--white);}
     .faq-q svg{flex-shrink:0;transition:transform .3s;color:var(--muted);}
@@ -349,7 +335,7 @@
     .ft-logo{display:flex;align-items:center;gap:.6rem;font-family:var(--fd);font-size:1.1rem;letter-spacing:.05em;}
     .ft-logo img{width:26px;filter:invert(1);}
     .ft-links{display:flex;gap:2rem;flex-wrap:wrap;}
-    .ft-links a{font-family:var(--fm);font-size:.65rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;transition:color .2s;cursor:none;}
+    .ft-links a{font-family:var(--fm);font-size:.65rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;transition:color .2s;}
     .ft-links a:hover{color:var(--white);}
     .ft-cp{font-family:var(--fm);font-size:.62rem;color:var(--muted);}
 
@@ -357,19 +343,20 @@
       .refonte-inner{grid-template-columns:1fr;gap:3rem;}
       .faq-inner{grid-template-columns:1fr;gap:2.5rem;}
       .cards-grid{grid-template-columns:1fr;}
+      .maint-grid{grid-template-columns:1fr;}
       .comp-table{font-size:.75rem;}
     }
     @media(max-width:768px){
-      body{cursor:auto;}#cursor{display:none;}
       .n-links{display:none;}.hmbg{display:flex;}
       .cards-grid{grid-template-columns:1fr;}
       .comp-table th,.comp-table td{padding:.75rem .6rem;}
+      .sb-track{display:none;}
     }
   </style>
 </head>
 <body>
 
-<div id="cursor"></div>
+<div class="sb-track"><div class="sb-thumb" id="sbThumb"></div></div>
 
 <nav id="nav">
   <a href="index.html" class="n-logo">
@@ -411,25 +398,6 @@
     </p>
   </div>
 </section>
-
-<div class="mq-strip">
-  <div class="mq-track">
-    <div class="mq-item"><span class="mq-dot"></span>Maquette offerte</div>
-    <div class="mq-item"><span class="mq-dot"></span>Paiement après validation</div>
-    <div class="mq-item"><span class="mq-dot"></span>Design sur-mesure</div>
-    <div class="mq-item"><span class="mq-dot"></span>Code propre & rapide</div>
-    <div class="mq-item"><span class="mq-dot"></span>SEO local Google</div>
-    <div class="mq-item"><span class="mq-dot"></span>Hébergement Vercel inclus</div>
-    <div class="mq-item"><span class="mq-dot"></span>Zéro frais cachés</div>
-    <div class="mq-item"><span class="mq-dot"></span>Maquette offerte</div>
-    <div class="mq-item"><span class="mq-dot"></span>Paiement après validation</div>
-    <div class="mq-item"><span class="mq-dot"></span>Design sur-mesure</div>
-    <div class="mq-item"><span class="mq-dot"></span>Code propre & rapide</div>
-    <div class="mq-item"><span class="mq-dot"></span>SEO local Google</div>
-    <div class="mq-item"><span class="mq-dot"></span>Hébergement Vercel inclus</div>
-    <div class="mq-item"><span class="mq-dot"></span>Zéro frais cachés</div>
-  </div>
-</div>
 
 <section class="pricing-section">
   <div class="pricing-inner">
@@ -616,6 +584,71 @@
   </div>
 </section>
 
+<section class="maintenance-section">
+  <div class="maintenance-inner">
+    <div class="maintenance-hd reveal">
+      <div class="eyebrow">Après la livraison</div>
+      <h2 class="maintenance-title">MAINTENANCE<br><span class="outline">&amp; SUIVI.</span></h2>
+      <p class="maintenance-sub">Votre site est livré — mais je reste là. <strong>Une option de maintenance mensuelle</strong> vous permet de déléguer toute la partie technique et d'être accompagné sur la durée, sans vous en préoccuper.</p>
+    </div>
+    <div class="maint-grid reveal rd1">
+      <div class="maint-card">
+        <div class="maint-price-wrap">
+          <div class="maint-price">15€</div>
+          <div class="maint-period">/ mois</div>
+        </div>
+        <div class="maint-name">MAINTENANCE SITE VITRINE</div>
+        <div class="maint-list">
+          <div class="maint-item">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Surveillance et correction des problèmes techniques
+          </div>
+          <div class="maint-item">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Gestion technique du nom de domaine en tant qu'agent
+          </div>
+          <div class="maint-item">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Modifications de contenu sous 24/48h (textes, photos, horaires…)
+          </div>
+          <div class="maint-item">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Disponible par téléphone ou message pour toute question
+          </div>
+        </div>
+      </div>
+      <div class="maint-card">
+        <div class="maint-price-wrap">
+          <div class="maint-price">30€</div>
+          <div class="maint-period">/ mois</div>
+        </div>
+        <div class="maint-name">MAINTENANCE SITE PRO</div>
+        <div class="maint-list">
+          <div class="maint-item">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Tout ce qui est inclus dans la maintenance Site Vitrine
+          </div>
+          <div class="maint-item">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Suivi prioritaire — réponse plus rapide
+          </div>
+          <div class="maint-item">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Gestion des modules Stripe et Formspree incluse
+          </div>
+          <div class="maint-item">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Disponible par téléphone ou message pour toute question
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="maint-note reveal rd2">
+      <strong>Disponible uniquement après achat d'un site.</strong> Le domaine reste votre propriété — je me positionne simplement comme agent technique pour gérer les aspects hébergement, renouvellement et configuration à votre place, sans que vous ayez à vous en occuper.
+    </div>
+  </div>
+</section>
+
 <section class="refonte-section">
   <div class="refonte-inner">
     <div class="reveal">
@@ -785,17 +818,13 @@
 </footer>
 
 <script>
-const cur=document.getElementById('cursor');
-let mx=0,my=0,cx=0,cy=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
-(function animC(){cx+=(mx-cx)*.14;cy+=(my-cy)*.14;cur.style.left=cx+'px';cur.style.top=cy+'px';requestAnimationFrame(animC);})();
-document.querySelectorAll('a,button,.p-card,.faq-item,.svc,.ref-step').forEach(el=>{
-  el.addEventListener('mouseenter',()=>cur.classList.add('big'));
-  el.addEventListener('mouseleave',()=>cur.classList.remove('big'));
-});
-
-const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>nav.classList.toggle('sc',scrollY>50),{passive:true});
+const sbThumb=document.getElementById('sbThumb');
+const sbTrack=document.querySelector('.sb-track');
+window.addEventListener('scroll',()=>{
+  const p=scrollY/(document.documentElement.scrollHeight-innerHeight);
+  sbThumb.style.top=(p*(sbTrack.offsetHeight-sbThumb.offsetHeight))+'px';
+  document.getElementById('nav').classList.toggle('sc',scrollY>50);
+},{passive:true});
 
 const hmbg=document.getElementById('hmbg');
 const mobMenu=document.getElementById('mobMenu');
