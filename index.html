@@ -180,14 +180,6 @@
     .sb-track{position:fixed;right:4px;top:50%;transform:translateY(-50%);width:10px;height:60vh;background:rgba(255,255,255,.1);border-radius:99px;z-index:9997;}
     .sb-thumb{position:absolute;left:0;right:0;background:#fff;border-radius:99px;width:10px;height:40px;top:0;transition:top .08s linear;}
 
-    #loader{position:fixed;inset:0;background:var(--black);z-index:10000;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2rem;transition:opacity .7s,visibility .7s;}
-    #loader.out{opacity:0;visibility:hidden;}
-    .ld-logo{width:70px;filter:invert(1);animation:ldSpin 1.1s cubic-bezier(.16,1,.3,1) forwards;}
-    @keyframes ldSpin{from{transform:rotate(-180deg) scale(.4);opacity:0;}to{transform:rotate(0) scale(1);opacity:1;}}
-    .ld-bar{width:140px;height:1px;background:rgba(255,255,255,.1);overflow:hidden;}
-    .ld-fill{height:100%;background:var(--white);width:0;animation:ldFill 1.3s cubic-bezier(.16,1,.3,1) .2s forwards;}
-    @keyframes ldFill{to{width:100%;}}
-
     nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:1.6rem 5vw;transition:padding .4s,background .4s,border-color .4s;border-bottom:1px solid transparent;}
     nav.sc{padding:1rem 5vw;background:rgba(8,8,8,.93);backdrop-filter:blur(20px);border-color:var(--border);}
     .n-logo{display:flex;align-items:center;gap:.7rem;}
@@ -209,25 +201,16 @@
     .mob-menu a{font-family:var(--fd);font-size:3rem;letter-spacing:.05em;color:var(--muted);transition:color .2s;}
     .mob-menu a:hover{color:var(--white);}
 
-    .hero{min-height:100vh;display:flex;align-items:flex-end;padding:0 5vw 6rem;position:relative;overflow:hidden;}
-    .h-lines{position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 79px,rgba(255,255,255,.025) 79px,rgba(255,255,255,.025) 80px);pointer-events:none;}
-    .h-bg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--fd);font-size:clamp(200px,35vw,560px);color:rgba(255,255,255,.018);pointer-events:none;user-select:none;white-space:nowrap;letter-spacing:-.02em;}
-    .hero-inner{max-width:1400px;margin:0 auto;width:100%;position:relative;z-index:2;}
-    .h-label{display:flex;align-items:center;gap:.75rem;font-family:var(--fm);font-size:.7rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.5rem;opacity:0;animation:fadeUp .8s 1.8s cubic-bezier(.16,1,.3,1) forwards;}
-    .h-label-line{width:28px;height:1px;background:var(--muted);}
-    .h-title{font-family:var(--fd);font-size:clamp(4rem,11vw,13rem);line-height:.92;letter-spacing:-.01em;margin-bottom:3rem;overflow:hidden;}
-    .h-title .ln{display:block;overflow:hidden;}
-    .h-title .ln span{display:block;transform:translateY(110%);animation:slideUp .9s cubic-bezier(.16,1,.3,1) forwards;}
-    .h-title .ln:nth-child(1) span{animation-delay:1.4s;}
-    .h-title .ln:nth-child(2) span{animation-delay:1.55s;}
-    .h-title .ln:nth-child(3) span{animation-delay:1.7s;}
+    .hero{min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;padding:0 5vw 6rem;position:relative;overflow:hidden;background:var(--white);}
+    .hero-inner{width:100%;position:relative;z-index:2;}
+    .h-logo{margin-bottom:2rem;}
+    .h-logo img{width:80px;height:auto;}
+    .h-title{font-family:var(--fd);font-size:clamp(4rem,13vw,14rem);line-height:.9;letter-spacing:-.03em;color:var(--black);font-weight:400;}
+    @media(max-width:768px){
+      .hero{padding:0 5vw 4rem;}
+      .h-title{font-size:clamp(3rem,15vw,6rem);}
+    }
     .outline{-webkit-text-stroke:1px rgba(255,255,255,.25);color:transparent;}
-    @keyframes slideUp{to{transform:translateY(0);}}
-    .h-bottom{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;opacity:0;animation:fadeUp .8s 2.1s cubic-bezier(.16,1,.3,1) forwards;}
-    .h-sub{max-width:400px;font-size:.875rem;color:var(--muted);line-height:1.75;font-weight:300;}
-    .h-sub strong{color:var(--white);font-weight:500;}
-    .h-ctas{display:flex;flex-direction:column;align-items:flex-end;gap:1rem;}
-    @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
     .btn-w{display:inline-flex;align-items:center;gap:.7rem;background:var(--white);color:var(--black);font-family:var(--fb);font-weight:600;font-size:.875rem;padding:.9rem 2rem;border:1px solid var(--white);cursor:pointer;transition:background .25s,color .25s;letter-spacing:.02em;}
     .btn-w:hover{background:transparent;color:var(--white);}
     .btn-w svg{transition:transform .25s;}
@@ -236,11 +219,6 @@
     .btn-ghost:hover{color:var(--white);}
     .btn-ghost svg{transition:transform .2s;}
     .btn-ghost:hover svg{transform:translateX(3px);}
-    .scroll-ind{position:absolute;bottom:2.5rem;right:5vw;display:flex;flex-direction:column;align-items:center;gap:.5rem;opacity:0;animation:fadeIn 1s 2.6s forwards;}
-    .scroll-ind span{font-family:var(--fm);font-size:.62rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;writing-mode:vertical-rl;}
-    .sc-line{width:1px;height:56px;background:linear-gradient(to bottom,var(--muted),transparent);animation:scPulse 2s ease-in-out infinite;}
-    @keyframes scPulse{0%,100%{transform:scaleY(1);opacity:1;}50%{transform:scaleY(.4);opacity:.3;}}
-    @keyframes fadeIn{to{opacity:1;}}
 
     .mq-strip{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:.9rem 0;overflow:hidden;background:var(--grey);}
     .mq-track{display:flex;gap:3rem;width:max-content;animation:mq 22s linear infinite;}
@@ -293,45 +271,30 @@
     .step-desc{font-size:.83rem;color:var(--muted);line-height:1.65;font-weight:300;max-width:500px;}
     .step-tag{font-family:var(--fm);font-size:.62rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--border);padding:.3rem .65rem;align-self:center;white-space:nowrap;}
 
-    .porto{padding:8rem 0;border-bottom:1px solid var(--border);overflow:hidden;}
-    .porto-hd{max-width:1200px;margin:0 auto 4rem;padding:0 5vw;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;}
+    .porto{padding:8rem 5vw;border-bottom:1px solid var(--border);}
+    .porto-in{max-width:1200px;margin:0 auto;}
+    .porto-hd{margin-bottom:3rem;}
     .porto-ttl{font-family:var(--fd);font-size:clamp(2.5rem,5vw,5rem);line-height:.95;}
+    .porto-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;}
+    .pg-item{position:relative;overflow:hidden;aspect-ratio:16/10;cursor:pointer;display:block;}
+    .pg-item.pg-wide{grid-column:span 2;}
+    .pg-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.16,1,.3,1),filter .4s;filter:brightness(.85);}
+    .pg-item:hover img{transform:scale(1.04);filter:brightness(.65);}
+    .pg-ov{position:absolute;bottom:0;left:0;right:0;padding:1.2rem 1.5rem;display:flex;align-items:baseline;gap:.75rem;opacity:0;transform:translateY(8px);transition:opacity .3s,transform .3s;}
+    .pg-item:hover .pg-ov{opacity:1;transform:none;}
+    .pg-cat{font-family:var(--fm);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5);}
+    .pg-name{font-family:var(--fd);font-size:1.3rem;color:#fff;letter-spacing:.03em;}
+    .porto-ft{margin-top:2.5rem;}
     .link-m{font-family:var(--fm);font-size:.7rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;display:flex;align-items:center;gap:.5rem;transition:color .2s;cursor:pointer;}
     .link-m:hover{color:var(--white);}
     .link-m svg{transition:transform .2s;}
     .link-m:hover svg{transform:translateX(4px);}
-    .c-scene{perspective:1100px;perspective-origin:50% 50%;height:480px;position:relative;}
-    .c-stage{width:100%;height:100%;position:relative;transform-style:preserve-3d;}
-    .c-card{position:absolute;top:50%;left:50%;width:460px;height:320px;margin-top:-160px;margin-left:-230px;transform-origin:center;transform-style:preserve-3d;transition:transform .85s cubic-bezier(.16,1,.3,1),opacity .85s;cursor:pointer;}
-    .c-inner{width:100%;height:100%;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.09);transition:border-color .4s,box-shadow .4s;}
-    .c-card img{width:100%;height:100%;object-fit:cover;filter:brightness(.5) grayscale(.4);transition:filter .5s;}
-    .c-card.act img{filter:brightness(.72) grayscale(0);}
-    .c-card.act .c-inner{border-color:rgba(255,255,255,.3);box-shadow:0 0 60px rgba(255,255,255,.05),0 30px 80px rgba(0,0,0,.9);}
-    .c-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.92) 0%,transparent 55%);padding:1.5rem;display:flex;flex-direction:column;justify-content:flex-end;}
-    .c-cat{font-family:var(--fm);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:.35rem;}
-    .c-ttl{font-family:var(--fd);font-size:1.7rem;letter-spacing:.03em;line-height:1;color:var(--white);margin-bottom:.65rem;}
-    .c-link{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--fm);font-size:.62rem;color:rgba(255,255,255,.4);letter-spacing:.08em;text-transform:uppercase;opacity:0;transform:translateY(6px);transition:opacity .3s,transform .3s,color .2s;cursor:pointer;}
-    .c-card.act .c-link{opacity:1;transform:none;color:var(--white);}
-    .c-ctrl{max-width:1200px;margin:2.5rem auto 0;padding:0 5vw;display:flex;align-items:center;gap:1.5rem;}
-    .c-btn{width:46px;height:46px;border:1px solid var(--border2);background:none;color:var(--white);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,border-color .2s;}
-    .c-btn:hover{background:var(--white);color:var(--black);border-color:var(--white);}
-    .c-ctr{font-family:var(--fm);font-size:.7rem;color:var(--muted);letter-spacing:.1em;}
-    .c-dots{display:flex;gap:.5rem;margin-left:auto;}
-    .cdot{width:22px;height:1px;background:rgba(255,255,255,.2);transition:background .3s,width .3s;cursor:pointer;}
-    .cdot.act{background:var(--white);width:38px;}
-
-    .svcs{padding:8rem 5vw;border-bottom:1px solid var(--border);}
-    .svcs-in{max-width:1200px;margin:0 auto;}
-    .svcs-hd{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:4rem;gap:2rem;flex-wrap:wrap;}
-    .svcs-ttl{font-family:var(--fd);font-size:clamp(2.5rem,5vw,5rem);line-height:.95;}
-    .svcs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);}
-    .svc{background:var(--black);padding:2.5rem 2rem;transition:background .3s;cursor:default;}
-    .svc:hover{background:var(--grey);}
-    .svc-n{font-family:var(--fm);font-size:.62rem;color:var(--muted);letter-spacing:.1em;margin-bottom:1.5rem;}
-    .svc-t{font-family:var(--fd);font-size:1.35rem;letter-spacing:.03em;margin-bottom:.7rem;}
-    .svc-d{font-size:.82rem;color:var(--muted);line-height:1.65;font-weight:300;margin-bottom:1.4rem;}
-    .svc-tags{display:flex;flex-wrap:wrap;gap:.3rem;}
-    .stag{font-family:var(--fm);font-size:.6rem;color:var(--muted);border:1px solid var(--border2);padding:.2rem .55rem;letter-spacing:.05em;}
+    @media(max-width:768px){
+      .porto-grid{grid-template-columns:1fr 1fr;gap:.4rem;}
+      .pg-item.pg-wide{grid-column:span 2;}
+      .pg-item{aspect-ratio:16/9;}
+      .pg-ov{opacity:1;transform:none;background:linear-gradient(to top,rgba(0,0,0,.7),transparent);}
+    }
 
     .cta{padding:10rem 5vw;text-align:center;position:relative;overflow:hidden;}
     .cta-tick{position:absolute;top:50%;left:0;right:0;transform:translateY(-50%);font-family:var(--fd);font-size:clamp(70px,14vw,180px);color:rgba(255,255,255,.022);white-space:nowrap;pointer-events:none;animation:tickM 20s linear infinite;letter-spacing:.05em;}
@@ -366,8 +329,6 @@
       .step{grid-template-columns:50px 1fr;}
       .step-tag{display:none;}
       .svcs-grid{grid-template-columns:1fr;}
-      .c-card{width:300px;height:210px;margin-top:-105px;margin-left:-150px;}
-      .c-scene{height:300px;}
       .cta-t{font-size:clamp(2.5rem,12vw,5rem);}
       .ft-in{flex-direction:column;}
       .porto-hd,.svcs-hd{flex-direction:column;align-items:flex-start;}
@@ -378,11 +339,6 @@
 <body>
 
 <div class="sb-track"><div class="sb-thumb" id="sbThumb"></div></div>
-
-<div id="loader">
-  <img class="ld-logo" src="images/logo.png" alt="Amiri Studio"/>
-  <div class="ld-bar"><div class="ld-fill"></div></div>
-</div>
 
 <nav id="nav">
   <a href="index.html" class="n-logo">
@@ -408,93 +364,11 @@
 </div>
 
 <section class="hero">
-  <div class="h-lines"></div>
-  <div class="h-bg">AMIRI</div>
   <div class="hero-inner">
-    <div class="h-label">
-      <span class="h-label-line"></span>
-      Développeur web indépendant · Bretagne
+    <div class="h-logo">
+      <img src="images/logo.png" alt="Amiri Studio" width="80" height="80"/>
     </div>
-    <h1 class="h-title">
-      <span class="ln"><span>VOTRE</span></span>
-      <span class="ln"><span class="outline">VITRINE</span></span>
-      <span class="ln"><span>EN LIGNE.</span></span>
-    </h1>
-    <div class="h-bottom">
-      <p class="h-sub">
-        Sites web <strong>sur-mesure, rapides &amp; référencement optimisé sur Google</strong> pour les commerçants, artisans et indépendants.<br/><br/>
-        Vous validez une maquette avant que je code la moindre ligne. <strong>Zéro risque.</strong>
-      </p>
-      <div class="h-ctas">
-        <a href="contact.html" class="btn-w">
-          Votre maquette gratuite
-          <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        <a href="offres.html" class="btn-ghost">
-          Voir les offres &amp; tarifs
-          <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="stats" aria-label="Pourquoi créer un site web professionnel">
-  <div class="stats-in">
-    <div class="reveal">
-      <div class="eyebrow">Pourquoi un site ?</div>
-      <h2 class="st-title">
-        LES CHIFFRES<br>
-        <span class="outline">PARLENT</span><br>
-        D'EUX-MÊMES.
-      </h2>
-      <p class="st-desc">
-        En France, les entreprises connectées creusent l'écart chaque jour.
-        <strong>Être invisible en ligne, c'est laisser vos clients aller chez le voisin.</strong>
-      </p>
-      <div class="src-pill">
-        Source officielle ·
-        <a href="https://www.francenum.gouv.fr" target="_blank" rel="noopener">&nbsp;Baromètre France Num 2024</a>
-      </div>
-    </div>
-    <div class="chart reveal rd2">
-      <div class="chart-hd">
-        <div class="chart-ttl">IMPACT DU NUMÉRIQUE<br>SUR LES TPE/PME FR.</div>
-        <div class="chart-src">France Num 2024<br><a href="https://www.francenum.gouv.fr" target="_blank" rel="noopener">francenum.gouv.fr</a></div>
-      </div>
-      <div class="bar-row">
-        <div class="bar-meta">
-          <span class="bar-name">Jugent la présence en ligne indispensable</span>
-          <span class="bar-pct">75%</span>
-        </div>
-        <div class="bar-track"><div class="bar-fill" style="--w:75%"></div></div>
-      </div>
-      <div class="bar-row">
-        <div class="bar-meta">
-          <span class="bar-name">Voient un avantage concret sur leur chiffre d'affaires</span>
-          <span class="bar-pct">79%</span>
-        </div>
-        <div class="bar-track"><div class="bar-fill" style="--w:79%"></div></div>
-      </div>
-      <div class="bar-row">
-        <div class="bar-meta">
-          <span class="bar-name">Attirent +5% de nouveaux clients via internet</span>
-          <span class="bar-pct">56%</span>
-        </div>
-        <div class="bar-track"><div class="bar-fill" style="--w:56%"></div></div>
-      </div>
-      <div class="bar-row">
-        <div class="bar-meta">
-          <span class="bar-name">TPE-PME encore sans site — clients potentiels perdus</span>
-          <span class="bar-pct" style="color:rgba(255,255,255,.35)">15%</span>
-        </div>
-        <div class="bar-track"><div class="bar-fill dim" style="--w:15%"></div></div>
-      </div>
-      <div class="chart-note">
-        <strong>Ce que ça signifie :</strong> 15% de vos concurrents sont encore invisibles en ligne.
-        Un site professionnel, c'est l'avantage le plus accessible du marché.
-      </div>
-    </div>
+    <h1 class="h-title">VISIBLE. RAPIDE.<br>SUR-MESURE.</h1>
   </div>
 </section>
 
@@ -507,10 +381,10 @@
         <span class="outline">STUDIO</span>.
       </h2>
     <p class="st-desc">
-        Je m'appelle Raphael. J'ai lancé Amiri Studio parce que l'informatique et le développement c'est mon truc depuis longtemps et que je veux en faire mon métier.<br><br>
-        Ce que j'ai remarqué c'est que beaucoup de prestataires livrent un site puis disparaissent. Moi ce n'est pas ma façon de fonctionner. Ce qui m'intéresse c'est de comprendre votre situation, identifier ce qui bloque, et vous apporter quelque chose qui change vraiment les choses pour vous.<br><br>
-        Pour moi un client satisfait en vaut dix. Et pour ce qui est de ma méthode de travail : je veux que ce soit simple de votre côté. <strong>Pas de jargon technique, pas de surprise, pas de prise de tête.</strong> Vous me parlez de votre activité, de vos besoins et je m'occupe du reste.<br><br>
-        Basé en Bretagne, je travaille principalement avec des entreprises locales — mais à distance aussi, partout en France.
+        Je m'appelle Raphael. J'ai lancé Amiri Studio parce que je voulais mettre mes compétences au service des commerces locaux.<br><br>
+        Ce que j'ai constaté : beaucoup de prestataires livrent un site et disparaissent. Moi ce n'est pas ma façon de fonctionner.<br><br>
+        Mon job c'est que vous soyez visible sur Google, que vos clients vous trouvent avant vos concurrents, et que vous n'ayez rien à gérer côté technique. <strong>Vous vous occupez de votre métier. Moi du reste.</strong><br><br>
+        Basé en Bretagne, je travaille avec des commerces locaux partout dans la région.
       </p>
     </div>
     <div class="chart reveal rd2">
@@ -518,9 +392,9 @@
         <div class="chart-ttl">POURQUOI<br>AMIRI STUDIO ?</div>
       </div>
       <div class="chart-note">
-        <strong>Un seul interlocuteur :</strong> design, intégration et mise en ligne gérés directement.<br><br>
-        <strong>Approche humaine :</strong> chaque projet commence par l'écoute de votre activité.<br><br>
-        <strong>Résultat concret :</strong> un site rapide, clair et pensé pour vos clients locaux.
+        <strong>Qualité agence, prix freelance.</strong> Vous obtenez un site aussi professionnel qu'une agence web, sans payer pour leurs locaux et leurs intermédiaires.<br><br>
+        <strong>Zéro jargon technique.</strong> Vous n'avez pas besoin de comprendre le web pour travailler avec moi. Je m'adapte à vous.<br><br>
+        <strong>Zéro risque.</strong> Vous voyez la maquette avant de payer quoi que ce soit. Si ça ne vous convient pas, vous ne devez rien.
       </div>
     </div>
   </div>
@@ -530,17 +404,17 @@
   <div class="method-in">
     <div class="method-hd reveal">
       <div>
-        <div class="eyebrow">Ma méthode</div>
-        <h2 class="method-ttl">ZÉRO<br>SURPRISE.</h2>
+        <div class="eyebrow">Comment ça se passe</div>
+        <h2 class="method-ttl">COMMENT ÇA <span class="outline">SE PASSE.</span></h2>
       </div>
-      <p class="method-sub">Vous voyez exactement le résultat avant que je code la moindre ligne. C'est ma promesse.</p>
+      <p class="method-sub">Simple. Sans surprise. Sans jargon.</p>
     </div>
     <div>
       <div class="step reveal">
         <div class="step-n">01</div>
         <div>
-          <div class="step-ttl">ÉCHANGE &amp; BRIEF</div>
-          <p class="step-desc">On discute de votre activité, objectifs et clientèle cible. Je pose les bonnes questions pour comprendre ce qui vous rend unique.</p>
+          <div class="step-ttl">ON ÉCHANGE</div>
+          <p class="step-desc">Vous me parlez de votre activité, vos clients, ce que vous voulez. Pas besoin de connaître quoi que ce soit au web.</p>
         </div>
         <div class="step-tag">Gratuit</div>
       </div>
@@ -548,164 +422,78 @@
         <div class="step-n">02</div>
         <div>
           <div class="step-ttl">MAQUETTE VISUELLE</div>
-          <p class="step-desc">Je vous envoie votre maquette complète — design, couleurs, mise en page. Vous visualisez le résultat final avant tout engagement.</p>
+          <p class="step-desc">Je vous envoie votre maquette complète. Vous visualisez le résultat final avant tout engagement.</p>
         </div>
         <div class="step-tag">Inclus</div>
       </div>
       <div class="step reveal rd2">
         <div class="step-n">03</div>
         <div>
-          <div class="step-ttl">VALIDATION CLIENT</div>
-          <p class="step-desc">Vous validez. On ajuste si besoin. Le développement ne commence que quand vous êtes 100% satisfait.</p>
+          <div class="step-ttl">VOUS VALIDEZ</div>
+          <p class="step-desc">On ajuste si besoin. Le développement ne commence que quand vous êtes satisfait.</p>
         </div>
         <div class="step-tag">Votre accord</div>
       </div>
       <div class="step reveal rd3">
         <div class="step-n">04</div>
         <div>
-          <div class="step-ttl">DÉVELOPPEMENT &amp; MISE EN LIGNE</div>
-          <p class="step-desc">Code propre, rapide, responsive et optimisé SEO. Mise en ligne sur Vercel avec votre domaine. Livré en quelques jours.</p>
+          <div class="step-ttl">MISE EN LIGNE</div>
+          <p class="step-desc">Site livré, conforme RGPD, sécurisé. En moins d'une semaine après validation.</p>
         </div>
-        <div class="step-tag">Vercel · SSL</div>
+        <div class="step-tag">7 jours</div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="porto" aria-label="Portfolio Amiri Studio — réalisations de sites web">
-  <div class="porto-hd reveal">
-    <div>
+<section class="porto" aria-label="Portfolio Amiri Studio">
+  <div class="porto-in">
+    <div class="porto-hd reveal">
       <div class="eyebrow">Portfolio</div>
       <h2 class="porto-ttl">MES<br>RÉALISATIONS.</h2>
     </div>
-    <a href="portfolio.html" class="link-m">
-      Voir tous les projets
-      <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
-  </div>
-
-  <div class="c-scene">
-    <div class="c-stage" id="stage">
-
-      <div class="c-card" data-index="0" data-href="https://k-svn7.github.io/coach-Vannes/index.html">
-        <div class="c-inner">
-          <img src="images/coach-screen.png" alt="Site web coach sportif à domicile Vannes — réalisation Amiri Studio" loading="lazy"/>
-          <div class="c-ov">
-            <div class="c-cat">Coach</div>
-            <div class="c-ttl">Coach à domicile</div>
-            <a class="c-link" href="https://k-svn7.github.io/coach-Vannes/index.html" target="_blank" rel="noopener">Voir le site <svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-          </div>
+    <div class="porto-grid">
+      <a href="https://le-jardin-d-emile.vercel.app/" target="_blank" rel="noopener" class="pg-item pg-wide reveal">
+        <img src="images/restau-chic-1.png" alt="Site web restaurant Le Jardin d'Emile — réalisation Amiri Studio" loading="lazy" width="1200" height="600"/>
+        <div class="pg-ov">
+          <span class="pg-cat">Restaurant</span>
+          <span class="pg-name">Le Jardin d'Emile</span>
         </div>
-      </div>
-
-      <div class="c-card" data-index="1" data-href="https://coiffeur-3.vercel.app/">
-        <div class="c-inner">
-          <img src="images/coiffeur-3-portfolio.png" alt="Site web salon de coiffure Couep & Co — réalisation Amiri Studio" loading="lazy"/>
-          <div class="c-ov">
-            <div class="c-cat">Coiffeur</div>
-            <div class="c-ttl">Coupe & Co</div>
-            <a class="c-link" href="https://coiffeur-3.vercel.app/" target="_blank" rel="noopener">Voir le site <svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-          </div>
+      </a>
+      <a href="https://coiffeur-3.vercel.app/" target="_blank" rel="noopener" class="pg-item reveal rd1">
+        <img src="images/coiffeur-3-portfolio.png" alt="Site web salon de coiffure Coupe & Co — réalisation Amiri Studio" loading="lazy" width="800" height="600"/>
+        <div class="pg-ov">
+          <span class="pg-cat">Coiffeur</span>
+          <span class="pg-name">Coupe & Co</span>
         </div>
-      </div>
-
-      <div class="c-card" data-index="2" data-href="https://k-svn7.github.io/site-sucre-sale/">
-        <div class="c-inner">
-          <img src="images/sucre-sale-screen.png" alt="Site web épicerie Sucré Salé — réalisation Amiri Studio" loading="lazy"/>
-          <div class="c-ov">
-            <div class="c-cat">Magasin</div>
-            <div class="c-ttl">Sucré Salé</div>
-            <a class="c-link" href="https://k-svn7.github.io/site-sucre-sale/" target="_blank" rel="noopener">Voir le site <svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-          </div>
+      </a>
+      <a href="https://k-svn7.github.io/coach-Vannes/index.html" target="_blank" rel="noopener" class="pg-item reveal rd2">
+        <img src="images/coach-screen.png" alt="Site web coach sportif Vannes — réalisation Amiri Studio" loading="lazy" width="800" height="600"/>
+        <div class="pg-ov">
+          <span class="pg-cat">Coach</span>
+          <span class="pg-name">Coach à domicile</span>
         </div>
-      </div>
-
-      <div class="c-card" data-index="3" data-href="https://boulangerie-pain-dor-bis.vercel.app/">
-        <div class="c-inner">
-          <img src="images/boulangerie-2-portfolio.png" alt="Site web Au Pain Doré — réalisation Amiri Studio" loading="lazy"/>
-          <div class="c-ov">
-            <div class="c-cat">Paysagiste</div>
-            <div class="c-ttl">Au Pain Doré</div>
-            <a class="c-link" href="https://boulangerie-pain-dor-bis.vercel.app/" target="_blank" rel="noopener">Voir le site <svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-          </div>
+      </a>
+      <a href="https://k-svn7.github.io/site-sucre-sale/" target="_blank" rel="noopener" class="pg-item reveal rd1">
+        <img src="images/sucre-sale-screen.png" alt="Site web épicerie Sucré Salé — réalisation Amiri Studio" loading="lazy" width="800" height="600"/>
+        <div class="pg-ov">
+          <span class="pg-cat">Magasin</span>
+          <span class="pg-name">Sucré Salé</span>
         </div>
-      </div>
-
-      <div class="c-card" data-index="4" data-href="https://jardin-emile.vercel.app/index.html">
-        <div class="c-inner">
-          <img src="images/restau-chic-1.png" alt="Site web restaurant Le Jardin d'Emile — réalisation Amiri Studio" loading="lazy"/>
-          <div class="c-ov">
-            <div class="c-cat">Restaurant</div>
-            <div class="c-ttl">Le jardin d'Emile</div>
-            <a class="c-link" href="https://le-jardin-d-emile.vercel.app/" target="_blank" rel="noopener">Voir le site <svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-          </div>
+      </a>
+      <a href="https://boulangerie-pain-dor-bis.vercel.app/" target="_blank" rel="noopener" class="pg-item pg-wide reveal rd2">
+        <img src="images/boulangerie-2-portfolio.png" alt="Site web Au Pain Doré — réalisation Amiri Studio" loading="lazy" width="1200" height="600"/>
+        <div class="pg-ov">
+          <span class="pg-cat">Boulangerie</span>
+          <span class="pg-name">Au Pain Doré</span>
         </div>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="c-ctrl">
-    <button class="c-btn" id="cPrev" aria-label="Précédent">
-      <svg width="17" height="17" viewBox="0 0 18 18" fill="none"><path d="M11 4L6 9l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-    <button class="c-btn" id="cNext" aria-label="Suivant">
-      <svg width="17" height="17" viewBox="0 0 18 18" fill="none"><path d="M7 4l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-    <span class="c-ctr" id="cCtr">01 / 05</span>
-    <div class="c-dots" id="cDots"></div>
-  </div>
-</section>
-
-<section class="svcs" aria-label="Services de création de sites web — Amiri Studio">
-  <div class="svcs-in">
-    <div class="svcs-hd reveal">
-      <div>
-        <div class="eyebrow">Ce que je fais</div>
-        <h2 class="svcs-ttl">MES<br>SERVICES.</h2>
-      </div>
-      <a href="offres.html" class="btn-w" style="align-self:flex-end">
-        Voir les offres &amp; tarifs
-        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
-    <div class="svcs-grid">
-      <div class="svc reveal">
-        <div class="svc-n">01</div>
-        <h3 class="svc-t">SITE VITRINE SUR-MESURE</h3>
-        <p class="svc-d">Design 100% personnalisé selon votre image. Pas de template imposé — du code fait main, unique pour vous.</p>
-        <div class="svc-tags"><span class="stag">Design unique</span><span class="stag">HTML/CSS</span><span class="stag">Code propre</span></div>
-      </div>
-      <div class="svc reveal rd1">
-        <div class="svc-n">02</div>
-        <h3 class="svc-t">SEO LOCAL GOOGLE</h3>
-        <p class="svc-d">Votre site en première page quand vos clients locaux vous cherchent. Balises, vitesse, mots-clés — tout est soigné.</p>
-        <div class="svc-tags"><span class="stag">Mots-clés locaux</span><span class="stag">Balises SEO</span><span class="stag">Performance</span></div>
-      </div>
-      <div class="svc reveal rd2">
-        <div class="svc-n">03</div>
-        <h3 class="svc-t">RESPONSIVE &amp; RAPIDE</h3>
-        <p class="svc-d">Parfait sur mobile, tablette et desktop. Chargement ultra-rapide pour ne perdre aucun visiteur.</p>
-        <div class="svc-tags"><span class="stag">Mobile-first</span><span class="stag">Accessibilité</span><span class="stag">Core Web Vitals</span></div>
-      </div>
-      <div class="svc reveal">
-        <div class="svc-n">04</div>
-        <h3 class="svc-t">MAQUETTE AVANT TOUT</h3>
-        <p class="svc-d">Une maquette visuelle complète avant le moindre développement. Vous validez. Vous êtes satisfait. On commence.</p>
-        <div class="svc-tags"><span class="stag">Gratuit</span><span class="stag">Révisions incluses</span></div>
-      </div>
-      <div class="svc reveal rd1">
-        <div class="svc-n">05</div>
-        <h3 class="svc-t">HÉBERGEMENT &amp; MISE EN LIGNE</h3>
-        <p class="svc-d">Déploiement Vercel inclus. SSL, domaine configuré, site en ligne en quelques heures après validation.</p>
-        <div class="svc-tags"><span class="stag">Vercel</span><span class="stag">SSL gratuit</span><span class="stag">Domaine</span></div>
-      </div>
-      <div class="svc reveal rd2">
-      <div class="svc-n">06</div>
-      <h3 class="svc-t">PAIEMENT &amp; RÉSERVATION (OPTIONS)</h3>
-      <p class="svc-d">Encaissez en ligne via Stripe ou laissez vos clients réserver directement depuis votre site grâce à Planity — idéal pour les coiffeurs et prestataires de services.</p>
-      <div class="svc-tags"><span class="stag">Stripe</span><span class="stag">Planity</span><span class="stag">Option</span></div>
-    </div>
+    <div class="porto-ft reveal">
+      <a href="portfolio.html" class="link-m">
+        Voir tous les projets
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
     </div>
   </div>
 </section>
@@ -714,14 +502,14 @@
   <div class="cta-tick">AMIRI STUDIO &mdash; AMIRI STUDIO &mdash; AMIRI STUDIO &mdash; AMIRI STUDIO &mdash;</div>
   <div class="cta-in reveal">
     <h2 class="cta-t">
-      VOTRE SITE,<br>
-      <span class="outline">DÈS LA</span><br>
-      SEMAINE PRO.
+      VOTRE COMMERCE<br>
+      <span class="outline">MÉRITE</span><br>
+      D'ÊTRE TROUVÉ.
     </h2>
-    <p class="cta-sub">Maquette gratuite. Aucun engagement. Je vous montre à quoi ressemblera votre site — vous décidez ensuite.</p>
+    <p class="cta-sub">Une maquette gratuite. Aucun engagement. Vous voyez le résultat avant de payer quoi que ce soit.</p>
     <div class="cta-acts">
       <a href="contact.html" class="btn-w">
-        Demander votre maquette gratuite
+        Demander ma maquette gratuite
         <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
       <a href="offres.html" class="btn-ghost">
@@ -758,16 +546,13 @@
       <a href="index.html">Accueil</a>
       <a href="portfolio.html">Portfolio</a>
       <a href="offres.html">Offres</a>
+      <a href="mentions-legales.html">Mentions légales</a>
     </div>
-    <p class="ft-cp">© 2025 Amiri Studio · Bretagne</p>
+    <p class="ft-cp">© 2026 Amiri Studio · Bretagne</p>
   </div>
 </footer>
 
 <script>
-window.addEventListener('load', () => {
-  setTimeout(() => document.getElementById('loader').classList.add('out'), 1500);
-});
-
 const sbThumb=document.getElementById('sbThumb');
 const sbTrack=document.querySelector('.sb-track');
 window.addEventListener('scroll',()=>{
@@ -795,85 +580,6 @@ const barIO = new IntersectionObserver(entries => {
   entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('go'); barIO.unobserve(e.target); }});
 }, {threshold:.4});
 bars.forEach(b => barIO.observe(b));
-
-(function(){
-  const stage = document.getElementById('stage');
-  const cards = Array.from(stage.querySelectorAll('.c-card'));
-  const ctr   = document.getElementById('cCtr');
-  const dotsW = document.getElementById('cDots');
-  const total = cards.length;
-  let cur = 0, auto;
-
-  cards.forEach((_,i) => {
-    const d = document.createElement('div');
-    d.className = 'cdot' + (i===0?' act':'');
-    d.addEventListener('click', () => go(i));
-    dotsW.appendChild(d);
-  });
-
-  function place(){
-    cards.forEach((card, i) => {
-      let offset = i - cur;
-      if(offset > total/2)  offset -= total;
-      if(offset < -total/2) offset += total;
-      const angle  = offset * (360/total);
-      const absA   = Math.abs(angle);
-      const rad    = angle * Math.PI / 180;
-      const x      = Math.sin(rad) * 500;
-      const z      = Math.cos(rad) * 380 - 380;
-      const scale  = 0.55 + 0.45 * Math.cos(rad);
-      const rotY   = angle * 0.3;
-      const op     = absA > 130 ? 0 : Math.max(0, 1 - absA/130);
-      const zi     = Math.round(100 - absA);
-      card.style.transform = `translateX(${x}px) translateZ(${z}px) scale(${scale}) rotateY(${rotY}deg)`;
-      card.style.opacity   = op;
-      card.style.zIndex    = zi;
-      card.classList.toggle('act', i===cur);
-    });
-    ctr.textContent = String(cur+1).padStart(2,'0')+' / '+String(total).padStart(2,'0');
-    dotsW.querySelectorAll('.cdot').forEach((d,i) => d.classList.toggle('act', i===cur));
-  }
-
-  function go(idx){
-    cur = ((idx%total)+total)%total;
-    place();
-    clearInterval(auto);
-    auto = setInterval(() => go(cur+1), 5000);
-  }
-
-  document.getElementById('cPrev').addEventListener('click', () => go(cur-1));
-  document.getElementById('cNext').addEventListener('click', () => go(cur+1));
-  document.addEventListener('keydown', e => {
-    if(e.key==='ArrowLeft') go(cur-1);
-    if(e.key==='ArrowRight') go(cur+1);
-  });
-
-  cards.forEach((card,i) => {
-    card.addEventListener('click', () => {
-      if(i===cur){
-        const h = card.dataset.href;
-        if(h && !h.includes('LIEN-PROJET')) window.open(h,'_blank');
-      } else { go(i); }
-    });
-  });
-
-  let sx=0;
-  stage.addEventListener('touchstart', e => { sx=e.touches[0].clientX; }, {passive:true});
-  stage.addEventListener('touchend',   e => {
-    const dx = e.changedTouches[0].clientX - sx;
-    if(Math.abs(dx)>40) go(cur+(dx<0?1:-1));
-  });
-  let mdx=0, mdown=false;
-  stage.addEventListener('mousedown', e => { mdx=e.clientX; mdown=true; });
-  stage.addEventListener('mouseup',   e => {
-    if(!mdown) return; mdown=false;
-    const dx=e.clientX-mdx;
-    if(Math.abs(dx)>50) go(cur+(dx<0?1:-1));
-  });
-
-  place();
-  auto = setInterval(() => go(cur+1), 5000);
-})();
 </script>
 </body>
 </html>
