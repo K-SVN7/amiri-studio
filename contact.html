@@ -92,60 +92,56 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
   <style>
     :root{
-      --black:#080808;--white:#f5f2ed;--grey:#141414;--grey2:#1c1c1c;
-      --muted:#999;--border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.15);
+      --black:#080808;--white:#f5f2ed;--grey:#e8e4de;--grey2:#ddd9d3;
+      --muted:#080808;--border:rgba(0,0,0,0.08);--border2:rgba(0,0,0,0.15);
       --fd:'Bebas Neue',sans-serif;--fb:'DM Sans',sans-serif;--fm:'DM Mono',monospace;
     }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{scroll-behavior:smooth;}
-    body{background:var(--black);color:var(--white);font-family:var(--fb);font-size:16px;line-height:1.6;overflow-x:hidden;cursor:auto;}
+    body{background:var(--white);color:var(--black);font-family:var(--fm);font-size:16px;line-height:1.6;overflow-x:hidden;cursor:auto;}
     a{color:inherit;text-decoration:none;}img{display:block;max-width:100%;}ul{list-style:none;}
-    body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.028'/%3E%3C/svg%3E");pointer-events:none;z-index:9998;}
+    body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.015'/%3E%3C/svg%3E");pointer-events:none;z-index:9998;}
 Change les `width:6px` en `width:10px` aux deux endroits — et aussi `right:6px` en `right:4px` pour recentrer la piste :
 
-   .sb-track{position:fixed;right:4px;top:50%;transform:translateY(-50%);width:10px;height:60vh;background:rgba(255,255,255,.1);border-radius:99px;z-index:9997;}
-  .sb-thumb{position:absolute;left:0;right:0;background:#fff;border-radius:99px;width:10px;height:40px;top:0;transition:top .08s linear;}
+   .sb-track{position:fixed;right:4px;top:50%;transform:translateY(-50%);width:10px;height:60vh;background:rgba(0,0,0,.1);border-radius:99px;z-index:9997;}
+  .sb-thumb{position:absolute;left:0;right:0;background:#080808;border-radius:99px;width:10px;height:40px;top:0;transition:top .08s linear;}
 
     nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:1.6rem 5vw;transition:padding .4s,background .4s,border-color .4s;border-bottom:1px solid transparent;cursor:auto;}
-    nav.sc{padding:1rem 5vw;background:rgba(8,8,8,.93);backdrop-filter:blur(20px);border-color:var(--border);}
+    nav.sc{padding:1rem 5vw;background:rgba(245,242,237,.93);backdrop-filter:blur(20px);border-color:var(--border);}
     .n-logo{display:flex;align-items:center;gap:.7rem;}
     .n-logo img{width:34px;filter:invert(1);}
     .n-name{font-family:var(--fd);font-size:1.35rem;letter-spacing:.05em;}
     .n-links{display:flex;align-items:center;gap:2.5rem;}
     .n-links a{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;transition:color .2s;position:relative;}
-    .n-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--white);transition:width .3s cubic-bezier(.16,1,.3,1);}
-    .n-links a:hover{color:var(--white);}
+    .n-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--black);transition:width .3s cubic-bezier(.16,1,.3,1);}
+    .n-links a:hover{color:var(--black);}
     .n-links a:hover::after,.n-links a.active::after{width:100%;}
-    .n-links a.active{color:var(--white);}
-    .n-cta{border:1px solid rgba(255,255,255,.3)!important;color:var(--white)!important;padding:.5rem 1.4rem;border-radius:2rem;transition:background .25s,color .25s!important;}
+    .n-links a.active{color:var(--black);}
+    .n-cta{border:1px solid rgba(0,0,0,.3)!important;color:var(--black)!important;padding:.5rem 1.4rem;border-radius:2rem;transition:background .25s,color .25s!important;}
     .n-cta::after{display:none!important;}
-    .n-cta:hover{background:var(--white)!important;color:var(--black)!important;}
+    .n-cta:hover{background:var(--black)!important;color:var(--white)!important;}
     .hmbg{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px;}
-    .hmbg span{display:block;width:22px;height:1px;background:var(--white);transition:all .3s;}
-    .mob-menu{display:none;position:fixed;inset:0;background:var(--black);z-index:498;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;}
+    .hmbg span{display:block;width:22px;height:1px;background:var(--black);transition:all .3s;}
+    .mob-menu{display:none;position:fixed;inset:0;background:var(--white);z-index:498;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;}
     .mob-menu.open{display:flex;}
     .mob-menu a{font-family:var(--fd);font-size:3rem;letter-spacing:.05em;color:var(--muted);transition:color .2s;}
-    .mob-menu a:hover{color:var(--white);}
+    .mob-menu a:hover{color:var(--black);}
 
-    .outline{-webkit-text-stroke:1px rgba(255,255,255,.25);color:transparent;}
     .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);}
     .reveal.vis{opacity:1;transform:none;}
     .rd1{transition-delay:.1s;}.rd2{transition-delay:.2s;}
 
     .page-hero{min-height:100vh;display:flex;align-items:center;padding:0 5vw;position:relative;overflow:hidden;}
-    .ph-lines{position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 79px,rgba(255,255,255,.025) 79px,rgba(255,255,255,.025) 80px);pointer-events:none;}
-    .ph-bg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--fd);font-size:clamp(120px,20vw,380px);color:rgba(255,255,255,.016);pointer-events:none;user-select:none;white-space:nowrap;}
+    .ph-lines{position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 79px,rgba(0,0,0,.025) 79px,rgba(0,0,0,.025) 80px);pointer-events:none;}
     .ph-inner{max-width:1200px;margin:0 auto;width:100%;position:relative;z-index:2;display:flex;flex-direction:column;align-items:flex-start;gap:3rem;}
     .ph-top{}
-    .ph-label{display:flex;align-items:center;gap:.75rem;font-family:var(--fm);font-size:.7rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.25rem;opacity:0;animation:fadeUp .8s .3s cubic-bezier(.16,1,.3,1) forwards;}
-    .ph-label-line{width:28px;height:1px;background:var(--muted);}
-    .ph-title{font-family:var(--fd);font-size:clamp(3rem,8vw,10rem);line-height:.92;overflow:hidden;}
+    .ph-title{font-family:var(--fd);font-size:clamp(4rem,13vw,14rem);line-height:.9;letter-spacing:-.03em;overflow:hidden;}
     .ph-title .ln{display:block;overflow:hidden;}
     .ph-title .ln span{display:block;transform:translateY(110%);animation:slideUp .9s cubic-bezier(.16,1,.3,1) forwards;}
     .ph-title .ln:nth-child(1) span{animation-delay:.4s;}
     .ph-title .ln:nth-child(2) span{animation-delay:.55s;}
-    .ph-sub{margin-top:1.5rem;font-size:.875rem;color:var(--muted);max-width:480px;line-height:1.75;font-weight:300;opacity:0;animation:fadeUp .8s .75s cubic-bezier(.16,1,.3,1) forwards;}
-    .ph-sub strong{color:var(--white);font-weight:500;}
+    .ph-sub{margin-top:1.5rem;font-size:.875rem;color:var(--muted);max-width:480px;line-height:1.75;font-weight:300;opacity:0;animation:fadeUp .8s .75s cubic-bezier(.16,1,.3,1) forwards;font-family:var(--fb);}
+    .ph-sub strong{color:var(--black);font-weight:500;}
     @keyframes slideUp{to{transform:translateY(0);}}
     @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
 
@@ -174,20 +170,20 @@ Change les `width:6px` en `width:10px` aux deux endroits — et aussi `right:6px
     .form-tag::before{content:'';width:16px;height:1px;background:var(--muted);}
     .form-title{font-family:var(--fd);font-size:clamp(2rem,4vw,4rem);line-height:.95;margin-bottom:1rem;}
     .form-desc{font-size:.875rem;color:var(--muted);line-height:1.75;font-weight:300;max-width:580px;}
-    .form-desc strong{color:var(--white);font-weight:500;}
-    .form-notice{display:flex;align-items:flex-start;gap:.9rem;border:1px solid var(--border2);padding:1.25rem 1.5rem;margin-bottom:2.5rem;background:rgba(255,255,255,.02);}
-    .notice-icon{flex-shrink:0;margin-top:2px;color:var(--white);}
+    .form-desc strong{color:var(--black);font-weight:500;}
+    .form-notice{display:flex;align-items:flex-start;gap:.9rem;border:1px solid var(--border2);padding:1.25rem 1.5rem;margin-bottom:2.5rem;background:rgba(0,0,0,.02);}
+    .notice-icon{flex-shrink:0;margin-top:2px;color:var(--black);}
     .notice-text{font-family:var(--fm);font-size:.68rem;color:var(--muted);letter-spacing:.04em;line-height:1.65;}
-    .notice-text strong{color:var(--white);}
+    .notice-text strong{color:var(--black);}
     .fields-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:1.25rem;}
     .fields-grid.full{grid-template-columns:1fr;}
     .field{display:flex;flex-direction:column;gap:.5rem;}
     .field label{font-family:var(--fm);font-size:.62rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;}
-    .field input,.field select,.field textarea{background:var(--grey);border:1px solid var(--border);color:var(--white);font-family:var(--fb);font-size:.875rem;font-weight:300;padding:.9rem 1rem;outline:none;transition:border-color .25s;width:100%;appearance:none;-webkit-appearance:none;}
-    .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--white);}
+    .field input,.field select,.field textarea{background:var(--grey);border:1px solid var(--border);color:var(--black);font-family:var(--fm);font-size:.875rem;font-weight:300;padding:.9rem 1rem;outline:none;transition:border-color .25s;width:100%;appearance:none;-webkit-appearance:none;}
+    .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--black);}
     .field input::placeholder,.field textarea::placeholder{color:var(--muted);}
     .field select{background-image:url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23666' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.5rem;cursor:pointer;}
-    .field select option{background:var(--grey);color:var(--white);}
+    .field select option{background:var(--grey);color:var(--black);}
     .field textarea{resize:vertical;min-height:120px;line-height:1.6;}
     .offre-group{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:.25rem;}
     .offre-pill{position:relative;cursor:pointer;}
@@ -198,21 +194,21 @@ Change les `width:6px` en `width:10px` aux deux endroits — et aussi `right:6px
     .offre-pill input[type=radio]:checked + label{background:var(--white);border-color:var(--white);color:var(--black);}
     .offre-pill input[type=radio]:checked + label .pill-price{color:rgba(0,0,0,.5);}
     .form-submit{margin-top:2.5rem;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;}
-    .btn-submit{display:inline-flex;align-items:center;gap:.75rem;background:var(--white);color:var(--black);font-family:var(--fb);font-weight:600;font-size:.875rem;padding:.95rem 2.25rem;border:1px solid var(--white);cursor:pointer;transition:background .25s,color .25s;}
-    .btn-submit:hover{background:transparent;color:var(--white);}
+    .btn-submit{display:inline-flex;align-items:center;gap:.75rem;background:var(--black);color:var(--white);font-family:var(--fm);font-weight:600;font-size:.875rem;padding:.95rem 2.25rem;border:1px solid var(--black);cursor:pointer;transition:background .25s,color .25s;}
+    .btn-submit:hover{background:transparent;color:var(--black);border-color:var(--black);}
     .btn-submit svg{transition:transform .25s;}
     .btn-submit:hover svg{transform:translateX(4px);}
     .submit-note{font-family:var(--fm);font-size:.62rem;color:var(--muted);letter-spacing:.06em;line-height:1.5;}
-    .form-success{display:none;text-align:center;padding:4rem 2rem;border:1px solid var(--border2);background:rgba(255,255,255,.02);}
+    .form-success{display:none;text-align:center;padding:4rem 2rem;border:1px solid var(--border2);background:rgba(0,0,0,.02);}
     .form-success.show{display:block;}
-    .success-icon{font-family:var(--fd);font-size:4rem;color:var(--white);opacity:.15;margin-bottom:1rem;}
+    .success-icon{font-family:var(--fd);font-size:4rem;color:var(--black);opacity:.15;margin-bottom:1rem;}
     .success-title{font-family:var(--fd);font-size:2.5rem;letter-spacing:.03em;margin-bottom:.75rem;}
     .success-desc{font-size:.875rem;color:var(--muted);font-weight:300;line-height:1.7;max-width:400px;margin:0 auto;}
 
     .reassurance{padding:3.5rem 5vw 8rem;}
     .reassurance-inner{max-width:860px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);}
-    .r-item{background:var(--black);padding:1.75rem 2rem;display:flex;align-items:flex-start;gap:1rem;}
-    .r-icon{width:36px;height:36px;border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;color:var(--white);flex-shrink:0;}
+    .r-item{background:var(--white);padding:1.75rem 2rem;display:flex;align-items:flex-start;gap:1rem;}
+    .r-icon{width:36px;height:36px;border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;color:var(--black);flex-shrink:0;}
     .r-title{font-family:var(--fd);font-size:1.1rem;letter-spacing:.03em;margin-bottom:.25rem;}
     .r-desc{font-size:.78rem;color:var(--muted);font-weight:300;line-height:1.5;}
 
@@ -222,7 +218,7 @@ Change les `width:6px` en `width:10px` aux deux endroits — et aussi `right:6px
     .ft-logo img{width:26px;filter:invert(1);}
     .ft-links{display:flex;gap:2rem;flex-wrap:wrap;}
     .ft-links a{font-family:var(--fm);font-size:.65rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;transition:color .2s;}
-    .ft-links a:hover{color:var(--white);}
+    .ft-links a:hover{color:var(--black);}
     .ft-cp{font-family:var(--fm);font-size:.62rem;color:var(--muted);}
 
     @media(max-width:768px){
@@ -268,19 +264,14 @@ Change les `width:6px` en `width:10px` aux deux endroits — et aussi `right:6px
 
 <section class="page-hero">
   <div class="ph-lines"></div>
-  <div class="ph-bg">MAQUETTE</div>
   <div class="ph-inner">
     <div class="ph-top">
-      <div class="ph-label">
-        <span class="ph-label-line"></span>
-        Gratuit · Sans engagement · Réponse sous 48h
-      </div>
       <h1 class="ph-title">
         <span class="ln"><span>VOTRE MAQUETTE,</span></span>
-        <span class="ln"><span class="outline">GRATUITE.</span></span>
+        <span class="ln"><span>GRATUITE.</span></span>
       </h1>
       <p class="ph-sub">
-        Création de site ou refonte — choisissez votre demande ci-dessous.
+        Création de site ou refonte, choisissez votre demande ci-dessous.
         <strong>Je vous recontacte par mail sous 48h</strong> pour affiner ensemble vos attentes avant de lancer la maquette.
       </p>
     </div>
@@ -303,7 +294,7 @@ Change les `width:6px` en `width:10px` aux deux endroits — et aussi `right:6px
     <div class="form-panel active" id="panel-creation">
       <div class="form-header reveal">
         <div class="form-tag">Nouveau site</div>
-        <h2 class="form-title">CRÉATION<br><span class="outline">DE SITE.</span></h2>
+        <h2 class="form-title">CRÉATION<br><span>DE SITE.</span></h2>
         <p class="form-desc">
           Vous n'avez pas encore de site ou vous souhaitez repartir de zéro.
           Remplissez ce formulaire et <strong>je vous recontacte sous 48h par mail pour fixer un rendez vous téléphonique</strong> pour affiner ensemble votre projet avant de lancer la maquette.
@@ -314,7 +305,7 @@ Change les `width:6px` en `width:10px` aux deux endroits — et aussi `right:6px
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
         </div>
         <p class="notice-text">
-          <strong>Comment ça se passe ?</strong> Une fois ce formulaire envoyé, je vous écris par mail sous 48h pour mieux cerner vos attentes, votre style, vos références. C'est seulement après cet échange que je lance la maquette — pour qu'elle vous ressemble vraiment.
+          <strong>Comment ça se passe ?</strong> Une fois ce formulaire envoyé, je vous écris par mail sous 48h pour mieux cerner vos attentes, votre style, vos références. C'est seulement après cet échange que je lance la maquette, pour qu'elle vous ressemble vraiment.
         </p>
       </div>
       <form id="form-creation" action="https://formspree.io/f/mqewybna" method="POST">
@@ -364,14 +355,14 @@ Change les `width:6px` en `width:10px` aux deux endroits — et aussi `right:6px
                 <input type="radio" id="o-vitrine" name="offre" value="Site Vitrine — 100€"/>
                 <label for="o-vitrine">
                   <span class="pill-name">SITE VITRINE</span>
-                  <span class="pill-price">100€ · 2-3 pages</span>
+                  <span class="pill-price">100€, 2-3 pages</span>
                 </label>
               </div>
               <div class="offre-pill">
                 <input type="radio" id="o-pro" name="offre" value="Site Pro — 250€"/>
                 <label for="o-pro">
                   <span class="pill-name">SITE PRO</span>
-                  <span class="pill-price">250€ · 5 pages</span>
+                  <span class="pill-price">250€, 5 pages</span>
                 </label>
               </div>
               <div class="offre-pill">
@@ -395,7 +386,7 @@ Change les `width:6px` en `width:10px` aux deux endroits — et aussi `right:6px
             Envoyer ma demande
             <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
-          <p class="submit-note">Je vous recontacte sous 48h · Maquette entièrement gratuite · Aucun engagement</p>
+          <p class="submit-note">Je vous recontacte sous 48h, Maquette entièrement gratuite, Aucun engagement</p>
         </div>
       </form>
       <div class="form-success" id="success-creation">
@@ -408,9 +399,9 @@ Change les `width:6px` en `width:10px` aux deux endroits — et aussi `right:6px
     <div class="form-panel" id="panel-refonte">
       <div class="form-header reveal">
         <div class="form-tag">Site existant</div>
-        <h2 class="form-title">REFONTE<br><span class="outline">DE SITE.</span></h2>
+        <h2 class="form-title">REFONTE<br><span>DE SITE.</span></h2>
         <p class="form-desc">
-          Vous avez déjà un site mais il ne vous convient plus — design daté, pas responsive, mal référencé.
+          Vous avez déjà un site mais il ne vous convient plus, design daté, pas responsive, mal référencé.
           Partagez-le moi et <strong>je vous recontacte sous 48h par mail</strong> pour analyser ensemble ce qui peut être amélioré.
         </p>
       </div>
@@ -419,7 +410,7 @@ Change les `width:6px` en `width:10px` aux deux endroits — et aussi `right:6px
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
         </div>
         <p class="notice-text">
-          <strong>Tarif sur devis.</strong> Le prix d'une refonte dépend de la complexité de l'existant et du niveau de refonte souhaité. Après réception de votre formulaire, je vous écris sous 48h pour analyser votre site et vous faire une proposition claire — avant tout engagement.
+          <strong>Tarif sur devis.</strong> Le prix d'une refonte dépend de la complexité de l'existant et du niveau de refonte souhaité. Après réception de votre formulaire, je vous écris sous 48h pour analyser votre site et vous faire une proposition claire, avant tout engagement.
         </p>
       </div>
       <form id="form-refonte" action="https://formspree.io/f/mqewybna" method="POST">
@@ -484,7 +475,7 @@ Change les `width:6px` en `width:10px` aux deux endroits — et aussi `right:6px
             Envoyer ma demande
             <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
-          <p class="submit-note">Je vous recontacte sous 48h · Tarif sur devis · Aucun engagement</p>
+          <p class="submit-note">Je vous recontacte sous 48h, Tarif sur devis, Aucun engagement</p>
         </div>
       </form>
       <div class="form-success" id="success-refonte">
@@ -541,7 +532,7 @@ Change les `width:6px` en `width:10px` aux deux endroits — et aussi `right:6px
       <a href="offres.html">Offres</a>
       <a href="index.html#a-propos">À propos</a>
     </div>
-    <p class="ft-cp">© 2025 Amiri Studio · Bretagne</p>
+    <p class="ft-cp">© 2025 Amiri Studio, Bretagne</p>
   </div>
 </footer>
 
@@ -611,11 +602,11 @@ function handleForm(formId,successId){
         form.style.display='none';
         document.getElementById(successId).classList.add('show');
       } else {
-        btn.textContent='Erreur — réessayez';
+        btn.textContent='Erreur, réessayez';
         btn.disabled=false;
       }
     } catch(err){
-      btn.textContent='Erreur — réessayez';
+      btn.textContent='Erreur, réessayez';
       btn.disabled=false;
     }
   });
