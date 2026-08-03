@@ -272,28 +272,30 @@
     .step-tag{font-family:var(--fm);font-size:.62rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--border);padding:.3rem .65rem;align-self:center;white-space:nowrap;}
 
     .porto{padding:8rem 5vw;border-bottom:1px solid var(--border);}
-    .porto-in{max-width:1200px;margin:0 auto;}
-    .porto-hd{margin-bottom:3rem;}
-    .porto-ttl{font-family:var(--fd);font-size:clamp(2.5rem,5vw,5rem);line-height:.95;}
-    .porto-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;}
-    .pg-item{position:relative;overflow:hidden;aspect-ratio:16/10;cursor:pointer;display:block;}
-    .pg-item.pg-wide{grid-column:span 2;}
-    .pg-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.16,1,.3,1),filter .4s;filter:brightness(.85);}
-    .pg-item:hover img{transform:scale(1.04);filter:brightness(.65);}
-    .pg-ov{position:absolute;bottom:0;left:0;right:0;padding:1.2rem 1.5rem;display:flex;align-items:baseline;gap:.75rem;opacity:0;transform:translateY(8px);transition:opacity .3s,transform .3s;}
-    .pg-item:hover .pg-ov{opacity:1;transform:none;}
-    .pg-cat{font-family:var(--fm);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5);}
-    .pg-name{font-family:var(--fd);font-size:1.3rem;color:#fff;letter-spacing:.03em;}
-    .porto-ft{margin-top:2.5rem;}
-    .link-m{font-family:var(--fm);font-size:.7rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;display:flex;align-items:center;gap:.5rem;transition:color .2s;cursor:pointer;}
-    .link-m:hover{color:var(--white);}
-    .link-m svg{transition:transform .2s;}
-    .link-m:hover svg{transform:translateX(4px);}
+    .porto-in{max-width:1400px;margin:0 auto;}
+    .porto-hd{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;}
+    .porto-left{display:flex;align-items:flex-end;gap:1.5rem;}
+    .porto-ttl{font-family:var(--fd);font-size:clamp(3.5rem,8vw,7rem);line-height:.85;letter-spacing:-.02em;}
+    .porto-link{display:flex;align-items:center;justify-content:center;color:var(--white);transition:opacity .2s;margin-bottom:.5rem;}
+    .porto-link:hover{opacity:.5;}
+    .porto-right{display:flex;flex-direction:column;align-items:flex-end;gap:.1rem;}
+    .porto-by{font-family:var(--fm);font-size:.7rem;color:var(--muted);letter-spacing:.08em;}
+    .porto-name{font-family:var(--fb);font-size:.85rem;color:var(--white);font-weight:400;}
+    .porto-row{display:flex;gap:.5rem;align-items:flex-end;}
+    .pr-item{position:relative;overflow:hidden;flex:1;cursor:pointer;display:block;}
+    .pr-item.pr-tall{aspect-ratio:3/4;}
+    .pr-item.pr-short{aspect-ratio:4/3;}
+    .pr-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.16,1,.3,1),filter .4s;filter:brightness(.8);}
+    .pr-item:hover img{transform:scale(1.04);filter:brightness(.6);}
+    .pr-label{position:absolute;bottom:1rem;left:1rem;font-family:var(--fd);font-size:1rem;color:#fff;letter-spacing:.03em;opacity:0;transform:translateY(6px);transition:opacity .3s,transform .3s;}
+    .pr-item:hover .pr-label{opacity:1;transform:none;}
     @media(max-width:768px){
-      .porto-grid{grid-template-columns:1fr 1fr;gap:.4rem;}
-      .pg-item.pg-wide{grid-column:span 2;}
-      .pg-item{aspect-ratio:16/9;}
-      .pg-ov{opacity:1;transform:none;background:linear-gradient(to top,rgba(0,0,0,.7),transparent);}
+      .porto-hd{flex-direction:column;align-items:flex-start;gap:1rem;}
+      .porto-right{align-items:flex-start;}
+      .porto-row{flex-wrap:wrap;}
+      .pr-item{flex:1 1 45%;min-width:45%;}
+      .pr-item.pr-tall,.pr-item.pr-short{aspect-ratio:4/3;}
+      .pr-label{opacity:1;transform:none;}
     }
 
     .cta{padding:10rem 5vw;text-align:center;position:relative;overflow:hidden;}
@@ -449,50 +451,33 @@
 <section class="porto" aria-label="Portfolio Amiri Studio">
   <div class="porto-in">
     <div class="porto-hd reveal">
-      <div class="eyebrow">Portfolio</div>
-      <h2 class="porto-ttl">MES<br>RÉALISATIONS.</h2>
+      <div class="porto-left">
+        <h2 class="porto-ttl">RÉALI-<br>SATIONS</h2>
+        <a href="portfolio.html" class="porto-link">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" stroke="currentColor" stroke-width="1.5"/><path d="M10 8l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="porto-right">
+        <span class="porto-by">par</span>
+        <span class="porto-name">Amiri Studio</span>
+      </div>
     </div>
-    <div class="porto-grid">
-      <a href="https://le-jardin-d-emile.vercel.app/" target="_blank" rel="noopener" class="pg-item pg-wide reveal">
-        <img src="images/restau-chic-1.png" alt="Site web restaurant Le Jardin d'Emile — réalisation Amiri Studio" loading="lazy" width="1200" height="600"/>
-        <div class="pg-ov">
-          <span class="pg-cat">Restaurant</span>
-          <span class="pg-name">Le Jardin d'Emile</span>
-        </div>
+    <div class="porto-row">
+      <a href="https://le-jardin-d-emile.vercel.app/" target="_blank" rel="noopener" class="pr-item pr-tall reveal">
+        <img src="images/restau-chic-1.png" alt="Site web restaurant Le Jardin d'Emile — réalisation Amiri Studio" loading="lazy" width="800" height="1000"/>
+        <span class="pr-label">Le Jardin d'Emile</span>
       </a>
-      <a href="https://coiffeur-3.vercel.app/" target="_blank" rel="noopener" class="pg-item reveal rd1">
+      <a href="https://coiffeur-3.vercel.app/" target="_blank" rel="noopener" class="pr-item pr-short reveal rd1">
         <img src="images/coiffeur-3-portfolio.png" alt="Site web salon de coiffure Coupe & Co — réalisation Amiri Studio" loading="lazy" width="800" height="600"/>
-        <div class="pg-ov">
-          <span class="pg-cat">Coiffeur</span>
-          <span class="pg-name">Coupe & Co</span>
-        </div>
+        <span class="pr-label">Coupe & Co</span>
       </a>
-      <a href="https://k-svn7.github.io/coach-Vannes/index.html" target="_blank" rel="noopener" class="pg-item reveal rd2">
-        <img src="images/coach-screen.png" alt="Site web coach sportif Vannes — réalisation Amiri Studio" loading="lazy" width="800" height="600"/>
-        <div class="pg-ov">
-          <span class="pg-cat">Coach</span>
-          <span class="pg-name">Coach à domicile</span>
-        </div>
+      <a href="https://k-svn7.github.io/coach-Vannes/index.html" target="_blank" rel="noopener" class="pr-item pr-tall reveal rd2">
+        <img src="images/coach-screen.png" alt="Site web coach sportif Vannes — réalisation Amiri Studio" loading="lazy" width="800" height="1000"/>
+        <span class="pr-label">Coach à domicile</span>
       </a>
-      <a href="https://k-svn7.github.io/site-sucre-sale/" target="_blank" rel="noopener" class="pg-item reveal rd1">
-        <img src="images/sucre-sale-screen.png" alt="Site web épicerie Sucré Salé — réalisation Amiri Studio" loading="lazy" width="800" height="600"/>
-        <div class="pg-ov">
-          <span class="pg-cat">Magasin</span>
-          <span class="pg-name">Sucré Salé</span>
-        </div>
-      </a>
-      <a href="https://boulangerie-pain-dor-bis.vercel.app/" target="_blank" rel="noopener" class="pg-item pg-wide reveal rd2">
-        <img src="images/boulangerie-2-portfolio.png" alt="Site web Au Pain Doré — réalisation Amiri Studio" loading="lazy" width="1200" height="600"/>
-        <div class="pg-ov">
-          <span class="pg-cat">Boulangerie</span>
-          <span class="pg-name">Au Pain Doré</span>
-        </div>
-      </a>
-    </div>
-    <div class="porto-ft reveal">
-      <a href="portfolio.html" class="link-m">
-        Voir tous les projets
-        <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <a href="https://boulangerie-pain-dor-bis.vercel.app/" target="_blank" rel="noopener" class="pr-item pr-short reveal rd3">
+        <img src="images/boulangerie-2-portfolio.png" alt="Site web Au Pain Doré — réalisation Amiri Studio" loading="lazy" width="800" height="600"/>
+        <span class="pr-label">Au Pain Doré</span>
       </a>
     </div>
   </div>
