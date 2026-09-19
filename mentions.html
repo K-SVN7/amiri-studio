@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fr" prefix="og: https://ogp.me/ns#">
+<head>
+  <meta charset="UTF-8"/>
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg"/>
+  <link rel="icon" href="images/favicon.ico" sizes="32x32"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mentions légales | Amiri Studio</title>
+  <meta name="description" content="Mentions légales du site amiristudio.fr : éditeur, hébergement, propriété intellectuelle, données personnelles et cookies."/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://amiristudio.fr/mentions.html"/>
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --black:#080808;--white:#f5f2ed;--grey:#e8e4de;--grey2:#ddd9d3;
+      --muted:#080808;--border:rgba(0,0,0,0.08);--border2:rgba(0,0,0,0.15);
+      --fd:'Bebas Neue',sans-serif;--fb:'DM Sans',sans-serif;--fm:'DM Mono',monospace;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--white);color:var(--black);font-family:var(--fm);font-size:16px;line-height:1.6;overflow-x:hidden;cursor:auto;}
+    a{color:inherit;text-decoration:none;}img{display:block;max-width:100%;}ul{list-style:none;}
+
+    body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.015'/%3E%3C/svg%3E");pointer-events:none;z-index:9998;}
+
+    .sb-track{position:fixed;right:4px;top:50%;transform:translateY(-50%);width:10px;height:60vh;background:rgba(0,0,0,.1);border-radius:99px;z-index:9997;}
+    .sb-thumb{position:absolute;left:0;right:0;background:#080808;border-radius:99px;width:10px;height:40px;top:0;transition:top .08s linear;}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:1.6rem 5vw;transition:padding .4s,background .4s,border-color .4s;border-bottom:1px solid transparent;}
+    nav.sc{padding:1rem 5vw;background:rgba(245,242,237,.93);backdrop-filter:blur(20px);border-color:var(--border);}
+    .n-logo{display:flex;align-items:center;gap:.7rem;}
+    .n-logo img{width:34px;}
+    .n-name{font-family:var(--fd);font-size:1.35rem;letter-spacing:.05em;}
+    .n-links{display:flex;align-items:center;gap:2.5rem;}
+    .n-links a{font-size:.78rem;font-weight:400;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;transition:color .2s;position:relative;}
+    .n-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--black);transition:width .3s cubic-bezier(.16,1,.3,1);}
+    .n-links a:hover{color:var(--black);}
+    .n-links a:hover::after{width:100%;}
+    .n-links a.active{color:var(--black);}
+    .n-links a.active::after{width:100%;}
+    .n-cta{border:1px solid rgba(0,0,0,.3)!important;color:var(--black)!important;padding:.5rem 1.4rem;border-radius:2rem;transition:background .25s,color .25s!important;}
+    .n-cta::after{display:none!important;}
+    .n-cta:hover{background:var(--black)!important;color:var(--white)!important;}
+    .hmbg{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px;}
+    .hmbg span{display:block;width:22px;height:1px;background:var(--black);transition:all .3s;}
+    .mob-menu{display:none;position:fixed;inset:0;background:var(--white);z-index:498;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;}
+    .mob-menu.open{display:flex;}
+    .mob-menu a{font-family:var(--fd);font-size:3rem;letter-spacing:.05em;color:var(--muted);transition:color .2s;}
+    .mob-menu a:hover{color:var(--black);}
+
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);}
+    .reveal.vis{opacity:1;transform:none;}
+    .rd1{transition-delay:.1s;}.rd2{transition-delay:.2s;}.rd3{transition-delay:.3s;}.rd4{transition-delay:.4s;}
+
+    .page-hero{min-height:52vh;display:flex;align-items:flex-end;padding:clamp(8rem,12vw,12rem) 5vw 3rem;position:relative;overflow:hidden;}
+    .ph-lines{position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 79px,rgba(0,0,0,.025) 79px,rgba(0,0,0,.025) 80px);pointer-events:none;}
+    .ph-inner{max-width:1200px;margin:0 auto;width:100%;position:relative;z-index:2;}
+    .ph-title{font-family:var(--fd);font-size:clamp(3rem,10vw,9rem);line-height:.9;letter-spacing:-.03em;overflow:hidden;}
+
+    .legal-section{padding:2rem 5vw 8rem;}
+    .legal-inner{max-width:760px;margin:0 auto;}
+    .legal-block{margin-bottom:3rem;}
+    .legal-block:last-child{margin-bottom:0;}
+    .legal-title{font-family:var(--fd);font-size:clamp(1.5rem,3vw,2.2rem);letter-spacing:.02em;margin-bottom:1rem;}
+    .legal-text{font-size:.875rem;color:var(--muted);line-height:1.75;font-weight:300;}
+    .legal-text strong{color:var(--black);font-weight:500;}
+    .legal-text a{color:var(--black);text-decoration:underline;text-underline-offset:3px;}
+
+    footer{padding:2rem 5vw;border-top:1px solid var(--border);}
+    .ft-in{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+    .ft-logo{display:flex;align-items:center;gap:.6rem;font-family:var(--fd);font-size:1.1rem;letter-spacing:.05em;}
+    .ft-logo img{width:26px;}
+    .ft-links{display:flex;gap:2rem;flex-wrap:wrap;}
+    .ft-links a{font-family:var(--fm);font-size:.65rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;transition:color .2s;}
+    .ft-links a:hover{color:var(--black);}
+    .ft-cp{font-family:var(--fm);font-size:.62rem;color:var(--muted);}
+
+    @media(max-width:768px){
+      .n-links{display:none;}.hmbg{display:flex;}
+      .sb-track{display:none;}
+    }
+  </style>
+</head>
+<body>
+
+<div class="sb-track"><div class="sb-thumb" id="sbThumb"></div></div>
+
+<nav id="nav">
+  <a href="index.html" class="n-logo">
+    <img src="images/logo.png" alt="logo"/>
+    <span class="n-name">AMIRI STUDIO</span>
+  </a>
+  <ul class="n-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="offres.html">Offres</a></li>
+    <li><a href="contact.html" class="n-cta">Maquette gratuite</a></li>
+  </ul>
+  <button class="hmbg" id="hmbg" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mob-menu" id="mobMenu">
+  <a href="index.html" onclick="closeMob()">Accueil</a>
+  <a href="portfolio.html" onclick="closeMob()">Portfolio</a>
+  <a href="offres.html" onclick="closeMob()">Offres</a>
+  <a href="contact.html" onclick="closeMob()">Contact</a>
+</div>
+
+<section class="page-hero">
+  <div class="ph-lines"></div>
+  <div class="ph-inner">
+    <h1 class="ph-title">MENTIONS<br>LÉGALES.</h1>
+  </div>
+</section>
+
+<section class="legal-section">
+  <div class="legal-inner">
+
+    <div class="legal-block reveal">
+      <h2 class="legal-title">Éditeur du site</h2>
+      <p class="legal-text">
+        Raphael, travailleur indépendant<br>
+        Email : contact@amiristudio.fr<br>
+        Activité : création de sites web
+      </p>
+    </div>
+
+    <div class="legal-block reveal">
+      <h2 class="legal-title">Hébergement</h2>
+      <p class="legal-text">
+        Vercel Inc.<br>
+        440 N Barranca Ave #4133<br>
+        Covina, CA 91723, États-Unis<br>
+        <a href="https://vercel.com" target="_blank" rel="noopener">https://vercel.com</a>
+      </p>
+    </div>
+
+    <div class="legal-block reveal">
+      <h2 class="legal-title">Propriété intellectuelle</h2>
+      <p class="legal-text">
+        Les textes et le code du site amiristudio.fr sont la propriété d'Amiri Studio. Toute reproduction sans autorisation est interdite. Les images utilisées sur ce site proviennent de banques d'images libres de droits (Unsplash, Pexels ou similaires) et sont utilisées conformément à leurs licences respectives.
+      </p>
+    </div>
+
+    <div class="legal-block reveal">
+      <h2 class="legal-title">Données personnelles</h2>
+      <p class="legal-text">
+        Les seules données collectées sont celles transmises via le formulaire de contact (nom, email, message) dans le seul but de répondre aux demandes. Les données du formulaire sont traitées par le service Formspree Inc. (<a href="https://formspree.io" target="_blank" rel="noopener">https://formspree.io</a>) qui agit en tant que sous-traitant. Aucune donnée n'est vendue ni transmise à des tiers en dehors de ce traitement. Pour toute demande d'accès, de rectification ou de suppression de vos données : contact@amiristudio.fr
+      </p>
+    </div>
+
+    <div class="legal-block reveal">
+      <h2 class="legal-title">Cookies</h2>
+      <p class="legal-text">
+        Ce site n'utilise aucun cookie de suivi ni outil d'analyse.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="ft-in">
+    <div class="ft-logo">
+      <img src="images/logo.png" alt="logo"/>
+      AMIRI STUDIO
+    </div>
+    <div class="ft-links">
+      <a href="index.html">Accueil</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="offres.html">Offres</a>
+      <a href="contact.html">Contact</a>
+      <a href="mentions.html">Mentions légales</a>
+    </div>
+    <p class="ft-cp">© 2026 Amiri Studio, Bretagne</p>
+  </div>
+</footer>
+
+<script>
+const sbThumb=document.getElementById('sbThumb');
+const sbTrack=document.querySelector('.sb-track');
+window.addEventListener('scroll',()=>{
+  const p=scrollY/(document.documentElement.scrollHeight-innerHeight);
+  sbThumb.style.top=(p*(sbTrack.offsetHeight-sbThumb.offsetHeight))+'px';
+  document.getElementById('nav').classList.toggle('sc',scrollY>50);
+},{passive:true});
+
+const hmbg=document.getElementById('hmbg');
+const mobMenu=document.getElementById('mobMenu');
+hmbg.addEventListener('click',()=>{
+  const o=mobMenu.classList.toggle('open');
+  document.body.style.overflow=o?'hidden':'';
+});
+function closeMob(){mobMenu.classList.remove('open');document.body.style.overflow='';}
+
+const revEls=document.querySelectorAll('.reveal');
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target);}});
+},{threshold:.1});
+revEls.forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
